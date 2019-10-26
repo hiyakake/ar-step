@@ -49,7 +49,9 @@ CSVの書き方のルールについては、この[ドキュメント](Docs/DB/
 このサービスは、登録されるプレートの数が肝です。
 一緒にプレートの登録に協力してくれる仲間を募集しています🎉
 
-興味がある方は、[私のTwitterにDM]()をください。
+興味がある方は、[私のTwitterにDM](https://twitter.com/nlavp)をください。
+
+ステップを登録する作業は、[plates.csv](Code/DB/plates.csv)に新しい行を追加してプッシュするだけです。
 
 ## MATCH PLATE API
 ATCH PLATE APIは、以下の条件に沿ったPLATEをDBから探し出しだす検索APIです。
