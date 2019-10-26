@@ -12,13 +12,13 @@ PLATEはWordPressのカスタム投稿タイプに保存され、ACFによりブ
 
 |記載すること|CSVに記載する値|必須か|ACFと対応するslag|ACF上での型|
 |:-|:-|:-|:-|:-|
-|プレートの購入URL|エンコーディング済みのURL|YES|url|URL|
 |プレートが室内用か外用か|inside / outside|YES|plate_is_use_for|RadioButton( inside / outside)|
 |プレートの奥は何に接するか|step / ground|YES|plate_is_on|RadioButton( ground / step)|
 |プレートの横幅|数値(cm)|YES|width|数値(cm)|
 |プレートの高さ|数値(cm)|YES|height|数値(cm)|
 |プレートの奥行き|数値(cm) / -1|YES|depth|数値(cm)|
 |プレートの角度|数値(度) / -1|YES|angle|数値(度)|
+|プレートの購入URL|エンコーディング済みのURL|YES|url|URL|
 
 奥行きが不明な場合は、-1を記入し、代わりに角度を入力します。
 どちらも情報がある場合は、奥行き情報が優先されます。
