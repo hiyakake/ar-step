@@ -14,7 +14,7 @@ PLATEはWordPressのカスタム投稿タイプに保存され、ACFによりブ
 |:-|:-|:-|:-|:-|
 |プレートの購入URL|エンコーディング済みのURL|YES|url|URL|
 |プレートが室内用か外用か|inside / outside|YES|plate_is_use_for|RadioButton( inside / outside)|
-|プレートの奥は地面に接するか|step / ground|YES|plate_is_on|RadioButton( ground / step)|
+|プレートの奥は何に接するか|step / ground|YES|plate_is_on|RadioButton( ground / step)|
 |プレートの横幅|数値(cm)|YES|width|数値(cm)|
 |プレートの高さ|数値(cm)|YES|height|数値(cm)|
 |プレートの奥行き|数値(cm) / -1|YES|depth|数値(cm)|
