@@ -1,0 +1,32 @@
+# plates.csvについて
+
+STEPはWordPressのカスタム投稿タイプに保存され、ACFによりブラウザ上から登録できるように整備しています。
+
+しかしACFは、フィールドの設定を変更するときの不慮の事故によりデータを失うことがあります。
+
+それを防ぐため、サービスが安定するまではブラウザ用での登録は行わず、[CSVファイル](/Code/DB/plates.csv)に情報を記載し、それを[プラグイン](http://www.wpallimport.com/)を使って一斉登録する手法を取ります。
+
+# CSVファイルの書き方とACFとの対応
+
+次の情報を表の順番と同じようにして1行づつ定義します。
+
+|記載すること|CSVに記載する値|必須か|ACFと対応するslag|ACF上での型|
+|:-|:-|:-|:-|:-|
+|プレートの購入URL|エンコーディング済みのURL|YES|url|URL|
+|プレートが室内用か外用か|inside / outside|YES|plate_is_use_for|RadioButton( inside / outside)|
+|プレートの奥は地面に接するか|step / ground|YES|plate_is_on|RadioButton( ground / step)|
+|プレートの横幅|数値(cm)|YES|width|数値(cm)|
+|プレートの高さ|数値(cm)|YES|height|数値(cm)|
+|プレートの奥行き|数値(cm)|下記参照|depth|数値(cm)|
+|プレートの角度|数値(度)|下記参照|angle|数値(度)|
+
+奥行きが不明な場合は、角度を記入します。
+どちらも情報がある場合は、奥行き情報が優先されます。
+
+# ACFにCSVを読み込む方法
+
+この記事を参考にする
+
+https://ahalog.tdesignworks.net/cms/wordpress/how-to-use-wp-all-import/
+
+この記事によると[WP All Importプラグイン](http://www.wpallimport.com/)と同プラグインのアドオンを用いることで、ACFのフィールドとCSVをバインドすることが可能とのこと。
