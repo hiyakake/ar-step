@@ -43,3 +43,24 @@ ARを使って入り口を撮影するだけで、お店にぴったりなステ
 ステップを登録する作業は、[plates.csv](/Code/PLATE_DB/plates.csv)に新しい行を追加してプッシュするだけです。
 
 SVCファイルの詳しい書き方は[このドキュメント](/Docs/PLATE_DB/CSV_rule.md)に記しています。
+
+# スケジュール
+
+スケジュールは、GitHubのプロジェクト機能を使って管理します。<br>
+それぞれのタスクはissueとして扱い、プロジェクト機能との連携を行います。
+
+プロジェクトで使用するプロジェクトボードは次のとおりです。
+
+|ボード名|使用用途|
+|:-|:-|
+|[マイルストーン](https://github.com/LavP/ar-step/projects/6)|スケジュールにを管理するボード<br>各タスクを週ごとに振り分け、マイルストーンとしたもの。|
+|[全体に関わること](https://github.com/LavP/ar-step/projects/5)|全体の進捗に関わる課題だけ表示したボード|
+|[PLATE_SITEを実現するのに必要なこと](https://github.com/LavP/ar-step/projects/4)|PLATE_SITEの制作に関わる課題を表示したボード|
+|[PLATE_SITEを実現するのに必要なこと](https://github.com/LavP/ar-step/projects/3)|PLATE_SITEの制作に関わる課題を表示したボード|
+|[PLATE_DBを実現するのに必要なこと](https://github.com/LavP/ar-step/projects/2)|PLATE_DBの制作に関わる課題を表示したボード|
+|[AR_SCANを実現するのに必要なこと](https://github.com/LavP/ar-step/projects/1)|AR_SCANの制作に関わる課題を表示したボード|
+
+## マイルストーンボードの運用
+マイルストーンボードは、1列あたりが1週を表しています。
+
+当該週のGitHubのボードのManage automationの設定をToDoに設定することで、ボードの進捗度をプログレス表示できます。
