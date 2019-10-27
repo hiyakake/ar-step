@@ -32,9 +32,9 @@ PLATE_DBはACFを使っていますが、情報の登録は、[CSVファイル](
 
 今回のデータでは「"」を含まないため、省きます。
 
-i,g,55,4,10,-1,https://amazon.com/hoge
+>i,g,55,4,10,-1,https://amazon.com/hoge
 
-i,s,55,4,-1,5.1,https://amazon.com/hoge
+>i,s,55,4,-1,5.1,https://amazon.com/hoge
 
 CSVなのでExcelやNumbersで編集しても良いですが、書き出し時に「”」が出力されないように注意してください。
 
