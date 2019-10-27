@@ -1,0 +1,23 @@
+{
+  "name": "ar-step",
+  "version": "1.0.0",
+  "description": "店内のバリアフリーはイケてるのに、入り口だけがネックになって行くことができない。 そんなもったいないお店を減らすことがMISSIONです。",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^4.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LavP/ar-step.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LavP/ar-step/issues"
+  },
+  "homepage": "https://github.com/LavP/ar-step#readme"
+}
