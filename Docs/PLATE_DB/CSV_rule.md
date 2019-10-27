@@ -13,11 +13,12 @@ PLATE DBはACFを使っていますが、情報の登録は、[CSVファイル](
 # CSVファイルの書き方とACFとの対応
 
 次の情報を表の順番と同じようにして1行づつ定義します。
+プレートが室内でも屋外でも使えるという場合は、**別のプレートとして扱って**登録をします。
 
 |記載すること|CSVに記載する値|必須か|ACFと対応するslag|ACF上での型|
 |:-|:-|:-|:-|:-|
-|プレートが室内用か外用か|inside / outside|YES|plate_is_use_for|RadioButton( inside / outside)|
-|プレートの奥は何に接するか|step / ground|YES|plate_is_on|RadioButton( ground / step)|
+|プレートが室内用か外用か| i / o|YES|plate_is_use_for|RadioButton( inside / outside)|
+|プレートの奥は何に接するか| g / s |YES|plate_is_on|RadioButton( ground / step)|
 |プレートの横幅|数値(cm)|YES|width|数値(cm)|
 |プレートの高さ|数値(cm)|YES|height|数値(cm)|
 |プレートの奥行き|数値(cm) / -1|YES|depth|数値(cm)|
@@ -31,9 +32,9 @@ PLATE DBはACFを使っていますが、情報の登録は、[CSVファイル](
 
 今回のデータでは「"」を含まないため、省きます。
 
-https://amazon.com/hoge,inside,ground,55,4,10,-1
+i,g,55,4,10,-1,https://amazon.com/hoge
 
-https://amazon.com/hoge,inside,ground,55,4,-1,5.1
+i,s,55,4,-1,5.1,https://amazon.com/hoge
 
 CSVなのでExcelやNumbersで編集しても良いですが、書き出し時に「”」が出力されないように注意してください。
 
