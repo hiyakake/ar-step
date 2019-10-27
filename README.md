@@ -30,3 +30,14 @@ ARを使って入り口を撮影するだけで、お店にぴったりなステ
 - [WordPress構造ドキュメント](/Docs/wordpress.md)
 - [デザインルールドキュメント](/Docs/design_rule.md)
 - [コーディングルールドキュメント](/Docs/coding_rule.md)
+
+# プレート情報収集の協力者募集！
+
+>このサービスは、登録されるプレートの数が肝です。<br>
+一緒にプレートの登録に協力してくれる仲間を募集しています🎉
+
+興味がある方は、[私のTwitterにDM](https://twitter.com/nlavp)をください！
+
+ステップを登録する作業は、[plates.csv](/Code/PLATE_DB/plates.csv)に新しい行を追加してプッシュするだけです。
+
+SVCファイルの詳しい書き方は[このドキュメント](/Docs/PLATE_DB/CSV_rule.md)に記しています。
