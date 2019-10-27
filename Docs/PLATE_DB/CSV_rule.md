@@ -1,6 +1,6 @@
 # plates.csvについて
 
-PLATE_DBはACFを使っていますが、情報の登録は、[CSVファイル](Code/PLATE_DB/plates.csv)上に記載し、これを[プラグイン](http://www.wpallimport.com/)を使ってWordPressにインポートする形で行います。<br>
+PLATE_DBはACFを使っていますが、情報の登録は、[CSVファイル](/Code/PLATE_DB/plates.csv)上に記載し、これを[プラグイン](http://www.wpallimport.com/)を使ってWordPressにインポートする形で行います。<br>
 こうすることで、以下のメリットがあります。
 
 - 不慮の事故によりDBのデータが失われた場合でも、データを守ることができます。
