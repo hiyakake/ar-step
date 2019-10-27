@@ -23,3 +23,10 @@ ARを使って入り口を撮影するだけで、お店にぴったりなステ
 |:-|:-|
 |ステップ / step|段差そのもののことを指します|
 |プレート / plate|段差を解消するために設置するもののことを指します|
+
+# 各ドキュメント
+
+- [ソースコードと書き出し先の関係（Gulp）](Docs/gulp_setting.md)
+- [WordPress構造ドキュメント](Docs/wordpress.md)
+- [デザインルールドキュメント](Docs/design_rule.md)
+- [コーディングルールドキュメント](Docs/coding_rule.md)
