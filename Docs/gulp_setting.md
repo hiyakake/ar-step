@@ -24,3 +24,9 @@
 ## Gulpfile.js
 
 このファイルが[Gulpfile.js](/gulpfile.js)です。
+
+## 変更履歴
+
+|日付|バージョン|変更内容|
+|:-|:-|:-|
+|2019/10/27|v0.1|[NEW] image&css&jsの変換を定義<br>[[issue]](https://github.com/LavP/ar-step/issues/1#issue-512923544) gulp-sassがロードされないためcssが動作しない|
