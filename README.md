@@ -29,20 +29,24 @@ ARを使って入り口を撮影するだけで、お店にぴったりなステ
 プレートの情報をWordPressのカスタム投稿タイプとして保存します。
 保存する情報は次のとおりです。
 
-|項目|ACFの型|必須か|
-|:-|:-|:-|
-|プレートの購入URL|URL|YES|
-|プレートが室内用か外用か|RadioButton( inside / outside)|YES|
-|プレートの奥は地面に接するか|RadioButton( ground / step)|YES|
-|プレートの横幅|数値(cm)|YES|
-|プレートの高さ|数値(cm)|YES|
-|プレートの奥行き|数値(cm)|下記参照|
-|プレートの角度|数値(度)|下記参照|
+|項目|ACFの型|ACFのslag|必須か|
+|:-|:-|:-|:-|
+|プレートの購入URL|URL|url|YES|
+|プレートが室内用か外用か|RadioButton( inside / outside)|plate_is_use_for|YES|
+|プレートの奥は何に接するか|RadioButton( ground / step)|plate_is_on|YES|
+|プレートの横幅|数値(cm)|width|YES|
+|プレートの高さ|数値(cm)|height|YES|
+|プレートの奥行き|数値(cm) / -1|depth|YES|
+|プレートの角度|数値(度) / -1|angle|YES|
 
 奥行きが不明な場合は、代わりに角度を入力します。
 どちらも情報がある場合は、奥行き情報が優先されます。
 
-情報の登録は、サービスが安定するまではWordPress上で直接登録することは避け、[CSVファイル](Code/DB/plates.csv)上に記載し、これをWordPressにインポートする形で行います。こうすることで、不慮の事故によりDBのデータが失われた場合でも、データを守ることができます。
+ACFを使っていますが、情報の登録は、[CSVファイル](Code/DB/plates.csv)上に記載し、これをWordPressにインポートする形で行います。<br>
+こうすることで、以下のメリットがあります。
+
+- 不慮の事故によりDBのデータが失われた場合でも、データを守ることができます。
+- 将来的にCMSをWordPressからNuxt.jsなどに移動する際もデータを安全に移行できます。
 
 CSVの書き方のルールについては、この[ドキュメント](Docs/DB/CSV_rule.md)に定義しています。
 
@@ -66,7 +70,7 @@ APIはJSONを返し、URLに次のパラメタをつけてリクエストしま�
 
 |パラメタ|許可される値|説明|必須か|
 |:-|:-|:-|:-|
-|?place|inside / outside|プレートが設置される場所を定義します|YES
+|?set_place|inside / outside|プレートが設置される場所を定義します|YES
 |?height|数値(cm)|段差の高さを定義します|YES
 |?width|数値(cm)|設置場所の横幅を定義します|YES
 |?set_type|MIN / MAX / MINMAX / ABSOLUTE / FREE|設置場所の奥行きに関する条件を定義します。詳細については「Webアプリ（AR測量）」の欄に記載しています|YES
