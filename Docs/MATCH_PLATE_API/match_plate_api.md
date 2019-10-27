@@ -26,3 +26,12 @@ APIはJSONを返し、URLに次のパラメタをつけてリクエストしま�
 必要に応じて、各プレートの情報に購入先のOGP TITLEとOGP IMAGEを含めて返すこともできます。
 
 APIの内部処理のプロセスは、[フローチャートドキュメント](https://drive.google.com/file/d/1W09Ghfw_q0mOiHjbBG68rleekI0MqNu4/view?usp=sharing)によって定義しています。
+
+## APIファイルの実態
+このAPIファイルは、WordPressの固定ページとして存在します。<br>
+そのため、WordPressテーマからみるとこのフォルダは次のとおりです。
+>/page-match_plate_api.php
+
+WordPressの内部に入れ込むことで、PLATEの情報をWP_Queryによって取得することができます。
+
+これにより、場合によっては豊富なWordPressプラグインの恩恵を受けることができます。
