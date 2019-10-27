@@ -35,6 +35,8 @@ https://amazon.com/hoge,inside,ground,55,4,10,-1
 
 https://amazon.com/hoge,inside,ground,55,4,-1,5.1
 
+CSVなのでExcelやNumbersで編集しても良いですが、書き出し時に「”」が出力されないように注意してください。
+
 # ACFにCSVを読み込む方法
 
 この記事を参考にする
