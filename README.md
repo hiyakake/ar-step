@@ -12,10 +12,12 @@ ARを使って入り口を撮影するだけで、お店にぴったりなステ
 このプロジェクトを実現するWebアプリケーションを構成するするのは次の要素です。<br>
 それぞれの詳しい役割や仕様は各ドキュメントに記載しています。
 
-- [PLATE_DB](/Docs/PLATE_DB/plate_db.md)（市販されているプレートの情報を格納したDB）
-- [MATCH_PLATE_API](/Docs/MATCH_PLATE_API/match_plate_api.md)(条件に沿ったPLATEをDBから探し出しだす検索API)
-- [PLATE_SITE（情報表示）](/Docs/PLATE_SITE/plate_site.md)（Webアプリケーションのフロント）
-- [AR_SCAN（AR測量）](/Docs/AR_SCAN/ar_scan.md)（ARを用いて段差の寸法を測量）
+|制作物|これが何か|
+|:-|:-|
+|[PLATE_DB<br>(PDB)](/Docs/PLATE_DB/plate_db.md)|市販されているプレートの情報を格納したDB|
+|[MATCH_PLATE_API<br>(MPA)](/Docs/MATCH_PLATE_API/match_plate_api.md)|条件に沿ったPLATEをDBから探し出しだす検索API|
+|[PLATE_SITE<br>(PS)](/Docs/PLATE_SITE/plate_site.md)|Webアプリケーションのフロント|
+|[AR_SCAN<br>(ARS)](/Docs/AR_SCAN/ar_scan.md)|ARを用いて段差の寸法を測量|
 
 # ドキュメント内での用語
 
