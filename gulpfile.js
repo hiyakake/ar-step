@@ -2,22 +2,21 @@
 const devBuild = (process.env.NODE_ENV !== 'production');
  
  // modulesの読み込み
-const
-  gulp = require('gulp'),
-  sass = require('gulp-sass'),
-  noop = require('gulp-noop'),//DevModeだったら何もしないなどを実現
-  newer = require('gulp-newer'),//新しいファイルのみビルドする
-  imagemin = require('gulp-imagemin')//画像圧縮
-  concat = require('gulp-concat'),//全てのJSを一つのファイルにまとめる
-  deporder = require('gulp-deporder'),//依存関係が先にロードされるようにする
-  terser = require('gulp-terser'),//コードの最小化
-  stripdebug = devBuild ? null : require('gulp-strip-debug'),//console.logなどを削除
-  sourcemaps = devBuild ? require('gulp-sourcemaps') : null, //ソースマップを生成
-  postcss = require('gulp-postcss'),
-  assets = require('postcss-assets'),//CSS内のファイルパスの解決やインラインイメージ化
-  autoprefixer = require('autoprefixer'),
-  mqpacker = require('css-mqpacker'),//メディアクエリをひとまとまりに
-  cssnano = require('cssnano');//CSSの圧縮
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const noop = require('gulp-noop');//DevModeだったら何もしないなどを実現
+const newer = require('gulp-newer');//新しいファイルのみビルドする
+const imagemin = require('gulp-imagemin');//画像圧縮
+const concat = require('gulp-concat');//全てのJSを一つのファイルにまとめる
+const deporder = require('gulp-deporder');//依存関係が先にロードされるようにする
+const terser = require('gulp-terser');//コードの最小化
+const stripdebug = devBuild ? null : require('gulp-strip-debug');//console.logなどを削除
+const sourcemaps = devBuild ? require('gulp-sourcemaps') : null; //ソースマップを生成
+const postcss = require('gulp-postcss');
+const assets = require('postcss-assets');//CSS内のファイルパスの解決やインラインイメージ化
+const autoprefixer = require('autoprefixer');
+const mqpacker = require('css-mqpacker');//メディアクエリをひとまとまりに
+const cssnano = require('cssnano');//CSSの圧縮
 
 // folders
 const src = 'Code/',
