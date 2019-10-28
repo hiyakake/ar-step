@@ -17,6 +17,10 @@ const assets = require('postcss-assets');//CSS内のファイルパスの解決�
 const autoprefixer = require('autoprefixer');
 const mqpacker = require('css-mqpacker');//メディアクエリをひとまとまりに
 const cssnano = require('cssnano');//CSSの圧縮
+const htmlclean = require('gulp-htmlclean'); //htmlのコメントなど不要なものを削除
+const browserify = require('browserify'); //JSライブラリの依存関係を解決
+const source = require('vinyl-source-stream');//上のに必要
+
 
 // folders
 const src = 'Code/',
@@ -38,10 +42,25 @@ function images() {
   exports.images = images;
 
 
+// HTML圧縮
+function html() {
+  const out = build + 'test/';
+
+  return gulp.src(src + '**/*.html')
+    .pipe(newer(out))
+    .pipe(devBuild ? noop() : htmlclean())
+    .pipe(gulp.dest(out));
+}
+exports.html = gulp.series(images, html);
+
 /*JavaScript圧縮*/
 function js_AR_SCAN() {
     //AR_SCAN
-    return gulp.src(src + 'AR_SCAN/js/**/*')
+      return browserify({
+        entries: [src + 'AR_SCAN/js/**/*']
+      })
+      .bundle()
+      .pipe(source('ar_step.js'))
       .pipe(sourcemaps ? sourcemaps.init() : noop())
       .pipe(deporder())
       .pipe(concat('ar_step.js'))
@@ -52,7 +71,11 @@ function js_AR_SCAN() {
 }
 function js_PLATE_SITE(){
     //PLATE_SITE
-    return gulp.src(src + 'PLATE_SITE/js/**/*')
+    return browserify({
+          entries: [src + 'PLATE_SITE/js/**/*']
+        })
+        .bundle()
+        .pipe(source('plate_site.js'))
         .pipe(sourcemaps ? sourcemaps.init() : noop())
         .pipe(deporder())
         .pipe(concat('plate_site.js'))
@@ -62,6 +85,7 @@ function js_PLATE_SITE(){
         .pipe(gulp.dest(build + 'js/'));
 }
 exports.js = gulp.series(js_AR_SCAN,js_PLATE_SITE);
+
 
 
 /*CSS圧縮*/
