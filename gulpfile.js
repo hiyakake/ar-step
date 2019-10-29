@@ -53,38 +53,50 @@ function html() {
 }
 exports.html = gulp.series(images, html);
 
+
+
 /*JavaScript圧縮*/
+function js_AR_SCAN_browserify(){
+  browserify({
+    entries: [src + 'AR_SCAN/js/ar_scan.js']
+  })
+  .bundle()
+  .pipe(source('ar_scan.js'))
+  .pipe(gulp.dest(build+'js/ar_scan.js'));
+};
 function js_AR_SCAN() {
     //AR_SCAN
-      return browserify({
-        entries: [src + 'AR_SCAN/js/**/*']
-      })
-      .bundle()
-      .pipe(source('ar_step.js'))
+      return gulp.src(build+'js/ar_scan.js')
       .pipe(sourcemaps ? sourcemaps.init() : noop())
       .pipe(deporder())
-      .pipe(concat('ar_step.js'))
+      .pipe(concat('ar_scan.js'))
       .pipe(stripdebug ? stripdebug() : noop())
       .pipe(terser())
       .pipe(sourcemaps ? sourcemaps.write() : noop())
-      .pipe(gulp.dest(build + 'js/'))
+      .pipe(gulp.dest(build + 'js/ar_scan.js'))
 }
+
+function js_PLATE_SITE_browserify(){
+  browserify({
+    entries: [src + 'PLATE_SITE/js/plate_site.js']
+  })
+  .bundle()
+  .pipe(source('plate_site.js'))
+  .pipe(gulp.dest(build+'js/plate_site.js'));
+};
 function js_PLATE_SITE(){
     //PLATE_SITE
-    return browserify({
-          entries: [src + 'PLATE_SITE/js/**/*']
-        })
-        .bundle()
-        .pipe(source('plate_site.js'))
+    return gulp.src(build+'js/plate_site.js')
         .pipe(sourcemaps ? sourcemaps.init() : noop())
         .pipe(deporder())
         .pipe(concat('plate_site.js'))
         .pipe(stripdebug ? stripdebug() : noop())
         .pipe(terser())
         .pipe(sourcemaps ? sourcemaps.write() : noop())
-        .pipe(gulp.dest(build + 'js/'));
+        .pipe(gulp.dest(build + 'js/plate_site.js'));
 }
-exports.js = gulp.series(js_AR_SCAN,js_PLATE_SITE);
+
+exports.js = gulp.series(js_AR_SCAN_browserify,js_AR_SCAN,js_PLATE_SITE_browserify,js_PLATE_SITE);
 
 
 
