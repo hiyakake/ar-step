@@ -23,6 +23,7 @@ PLATE_DBはACFを使っていますが、情報の登録は、[CSVファイル](
 |プレートの高さが固定の場合|`数値(cm)`|YES|height|文字列|
 |プレートの高さが可変の場合|`min数値/max数値(cm)`<br>スラッシュを含める|YES|height|文字列|
 |プレートの奥行き|`数値(cm)` / `-1`|YES|depth|数値(cm)|
+|複数つなげて使用できるか|`y` / `n`|YES|canBind|RadioButton( yes / no)|
 |プレートの角度|`数値(度)` / `-1`|YES|angle|数値(度)|
 |プレートの購入URL|`エンコーディング済みのURL`|YES|url|URL|
 
