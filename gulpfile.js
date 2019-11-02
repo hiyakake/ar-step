@@ -73,7 +73,7 @@ function js_AR_SCAN() {
       .pipe(stripdebug ? stripdebug() : noop())
       .pipe(terser())
       .pipe(sourcemaps ? sourcemaps.write() : noop())
-      .pipe(gulp.dest(build + 'js/ar_scan.js'))
+      .pipe(gulp.dest(build + 'js/ar_scan.js'));
 }
 
 function js_PLATE_SITE_browserify(){
@@ -146,3 +146,29 @@ function css_AR_STEP() {
       .pipe(gulp.dest(build + 'style/'));
   }
   exports.css = gulp.series(images, css_AR_STEP , css_PLATE_SITE);
+
+
+
+// run all tasks
+exports.build = gulp.parallel(exports.html, exports.css, exports.js);
+
+
+// watch for file changes
+function watch(done) {
+
+  // image changes
+  gulp.watch(src + 'images/**/*', images);
+  // html changes
+  gulp.watch(src + '**/*', html);
+  // css changes
+  gulp.watch(src + 'Scss/**/*', css);
+  // js changes
+  gulp.watch(src + 'js/**/*', js);
+
+  done();
+
+}
+exports.watch = watch;
+
+// default task
+exports.default = gulp.series(exports.build, exports.watch);
