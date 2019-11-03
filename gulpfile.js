@@ -56,13 +56,15 @@ exports.html = gulp.series(images, html);
 
 
 /*JavaScript圧縮*/
-function js_AR_SCAN_browserify(){
+function js_AR_SCAN_browserify(done){
   browserify({
     entries: [src + 'AR_SCAN/js/ar_scan.js']
   })
   .bundle()
   .pipe(source('ar_scan.js'))
   .pipe(gulp.dest(build+'js/ar_scan.js'));
+
+  done();
 };
 function js_AR_SCAN() {
     //AR_SCAN
@@ -74,15 +76,17 @@ function js_AR_SCAN() {
       .pipe(terser())
       .pipe(sourcemaps ? sourcemaps.write() : noop())
       .pipe(gulp.dest(build + 'js/ar_scan.js'));
-}
+};
 
-function js_PLATE_SITE_browserify(){
+function js_PLATE_SITE_browserify(done){
   browserify({
     entries: [src + 'PLATE_SITE/js/plate_site.js']
   })
   .bundle()
   .pipe(source('plate_site.js'))
   .pipe(gulp.dest(build+'js/plate_site.js'));
+
+  done();
 };
 function js_PLATE_SITE(){
     //PLATE_SITE
@@ -94,7 +98,7 @@ function js_PLATE_SITE(){
         .pipe(terser())
         .pipe(sourcemaps ? sourcemaps.write() : noop())
         .pipe(gulp.dest(build + 'js/plate_site.js'));
-}
+};
 
 exports.js = gulp.series(js_AR_SCAN_browserify,js_AR_SCAN,js_PLATE_SITE_browserify,js_PLATE_SITE);
 
