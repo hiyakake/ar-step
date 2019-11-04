@@ -14,7 +14,8 @@ PLATE_DBは市販されているプレートの情報を格納したDBです。
 |プレートの高さ（可変の高さの場合）|文字列|height|YES|
 |プレートの奥行き|数値(cm) or -1|depth|YES|
 |プレートの角度|数値(度) or -1|angle|YES|
-|複数つなげて使用できるか|文字列|RadioButton( yes / no)|canBind|YES|
+|複数つなげて使用できるか|文字列|RadioButton( yes / no)|can_bind|YES|
+|画像URL|url|image_url|YES|
 
 奥行きが不明な場合は、代わりに角度を入力します。
 どちらも情報がある場合は、奥行き情報が優先されます。
