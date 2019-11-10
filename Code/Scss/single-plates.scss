@@ -4,25 +4,26 @@ $teamaGray : #464646;
 
 
 div.from_google_msg {
-    display: none;
     position: fixed;
     top: 0;
+    left: 0;
     z-index: 1000;
     width: 100%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.7);
     //filter: blur(4px);
     color: white;
-    //display: flex;
+    display: flex;
     align-items: center;
 	button.close {
         position: absolute;
-        right: 2em;
-        top: 2em;
+        right: 1rem;
+        top: 1rem;
         background: none;
         border: none;
-        width: 3em;
-        height: 3em;
+        width: 2em;
+        height: 2em;
+        display: block;
         >div{
             width: 5%;
             height: 100%;
@@ -44,21 +45,27 @@ div.from_google_msg {
         padding: 10%;
         box-sizing: border-box;
 		h2 {
-            font-size: 3em;
+            font-size: 2.8em;
+            line-height: 1.5;
+            font-weight: bold;
 		}
 		p {
-            width: 20em;
+            margin-top: 1.5rem;
+            max-width: 15em;
             text-align: justify;
+            line-height: 2;
 		}
 		p.use_ar {
+            margin-top: 1.5rem;
 			a {
                 color: $teamaGray;
                 background-color: $teamaYellow;
                 display: inline-block;
-                padding: .8em 1em;
+                padding: .4em 1em;
                 text-decoration: none;
                 font-size: 1.6em;
                 border-radius: 5px;
+                font-weight: bold;
 			}
 		}
 	}

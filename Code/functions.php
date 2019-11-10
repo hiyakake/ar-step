@@ -19,5 +19,25 @@ function add_files(){
         [],
         date('U')
     );
+    wp_enqueue_style(
+        'home-style',
+        get_template_directory_uri().'/style/home.min.css',
+        ['globa-style'],
+        date('U')
+    );
+    wp_enqueue_script(
+        'plate-single-script',
+        get_template_directory_uri().'/js/singel-plates.js',
+        ['vue'],
+        date('U'),
+        true
+    );
+    wp_enqueue_script(
+        'vue',
+        'https://cdn.jsdelivr.net/npm/vue/dist/vue.js',
+        [],
+        false,
+        true
+    );
 };
 add_action('wp_enqueue_scripts','add_files');

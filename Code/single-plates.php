@@ -42,8 +42,8 @@ if(isset($_SESSION['fro'])){
     </header>
     <!--Googleから来た人にメッセージを出す-->
     <?php if($is_from_google):?>
-    <div class="from_google_msg">
-        <button class="close"><div class='close1'></div>
+    <div class="from_google_msg" v-show='view'>
+        <button class="close" @click='view = false'><div class='close1'></div>
         <div class='close2'></div></button>
         <div class="center">
             <h2>
