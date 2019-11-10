@@ -20,29 +20,24 @@ PLATE_DBはACFを使っていますが、情報の登録は、[CSVファイル](
 |プレートが室内用か外用か| `i` / `o`|YES|plate_is_use_for|RadioButton( inside / outside)|
 |プレートの奥は何に接するか| `g` / `s` |YES|plate_is_on|RadioButton( ground / step)|
 |プレートの横幅|`数値(cm)`|YES|width|数値(cm)|
-|プレートの高さが固定の場合|`数値(cm)`|YES|height|文字列|
-|プレートの高さが可変の場合|`min数値/max数値(cm)`<br>スラッシュを含める|YES|height|文字列|
-|プレートの奥行き|`数値(cm)` / `-1`|YES|depth|数値(cm)|
-|複数つなげて使用できるか|`y` / `n`|YES|canBind|RadioButton( yes / no)|
-|プレートの角度|`数値(度)` / `-1`|YES|angle|数値(度)|
+|プレートの最小高さ|`数値(cm)`|YES|min_height|文字列|
+|プレートの最大高さ|`数値(cm)`<br>プレートの高さが固定の場合は`-1`|YES|max_height|文字列|
+|プレートの奥行き|`数値(cm)`|YES|depth|数値(cm)|
+|複数つなげて使用できるか|`y` / `n`|YES|canBind|RadioButton(yes / no)|
 |プレートの購入URL|`エンコーディング済みのURL`|YES|url|URL|
-
-奥行きが不明な場合は、-1を記入し、代わりに角度を入力します。
-どちらも情報がある場合は、奥行き情報が優先されます。
+|画像のURL|`エンコーディング済みのURL`|YES|image_url|URL|
 
 プレートの設置面がgの場合は底辺を入力し、sの場合は斜辺を入力します。
 
-プレートの高さは、高さが[固定ではなく可変となるプレートもあり](https://www.monotaro.com/g/01144824/)<br>
-その最大値と最小値を格納する際は、値をmin/maxのようにスラッシュで区切ります。<br>
-そのため、ACFの型は文字列となります。
+プレートの高さは、高さが[固定ではなく可変となるプレートもあります](https://www.monotaro.com/g/01144824/)
 
 ## 記述例
 
 今回のデータでは「"」を含まないため、省きます。
 
->i,g,55,4,10,-1,https://amazon.com/hoge
+>i,g,55,4,20,10,-1,https://amazon.com/hoge,imageURL
 
->i,s,55,4,-1,5.1,https://amazon.com/hoge
+>i,s,55,4,-1,-1,5.1,https://amazon.com/hoge,imageURL
 
 CSVなのでExcelやNumbersで編集しても良いですが、書き出し時に「”」が出力されないように注意してください。
 
