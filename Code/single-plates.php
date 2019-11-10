@@ -25,9 +25,6 @@ if(isset($_SESSION['fro'])){
 }else{
     $is_from_google = true;
 };
-
-echo '現在のセッションの情報は次のとおりです type'.$_SESSION['fro'].'<br>';
-echo '現在のis_from_googleの情報は次のとおりです'.($is_from_google == true ? 'true' : 'false');
 ?>
 
 <?php get_header();?>

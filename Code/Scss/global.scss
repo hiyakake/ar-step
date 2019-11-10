@@ -109,7 +109,7 @@ footer.basic {
                             margin-top: 1rem;
                             line-height: 1.5;
                             text-align: justify;
-                            text-align-last: justify;
+                            text-align-last: left;
                         }
                     }
                 }
@@ -131,8 +131,10 @@ footer.basic {
                 margin-top: 1.5rem;
                 text-align: justify;
                 text-align-last: left;
+                line-height: 1.5;
                 span:first-child {
                     font-weight: bold;
+                    line-height: 1;
                     text-align: left;
                     text-align-last: left;
                     display: block;
