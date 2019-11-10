@@ -1,0 +1,148 @@
+$teamaColor : #26957B;
+$teamaYellow : #E1E828;
+$teamaGray : #464646;
+
+header {
+    border-bottom: 2px solid $teamaColor;
+    color: $teamaColor;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+	div.titles {
+        font-size: 1.3em;
+        >*{
+            display: inline;
+        }
+		h1 {
+			a {
+				img {
+				}
+			}
+		}
+		span {
+		}
+		h2 {
+            font-size: 0.8em;
+		}
+	}
+	nav {
+		p {
+            color: white;
+            background-color: $teamaColor;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+		}
+	}
+}
+
+//フッター
+footer.basic {
+	section.share {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 4em 0;
+		h4 {
+            width: 80%;
+            margin: initial auto;
+            color: white;
+            background-color: $teamaColor;
+            font-size: 1.5em;
+            box-sizing: border-box;
+            padding: 0.8em 0.5em;
+            font-weight: bold;
+		}
+		ul {
+            margin-top: 2em;
+            width: 80%;
+            margin: initial auto;
+            display: grid;
+            grid-template-columns: repeat(4,auto);
+            gap: 2em;
+			li {
+                margin: auto;
+				a {
+					img {
+					}
+				}
+			}
+		}
+	}
+	div.wave {
+        background-image: url(../images/global/footer_wave.svg);
+        background-size: contain;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-repeat: repeat-x;
+        height: 2em;
+        width: 100%;
+        z-index: -1;
+        transform: scaleY(1.1);
+    }
+    div.contents{
+        display: flex;
+        flex-direction: column;
+        background-color: #06573C;
+        color: white;
+        padding-bottom: 4rem;
+        section.kannrenn {
+            padding: 2rem;
+            box-sizing: border-box;
+            margin-top: 3rem;
+            h4 {
+                text-align: center;
+                font-weight: bold;
+                font-size: 1.5em;
+            }
+            ul {
+                display: flex;
+                flex-direction: column;
+                li {
+                    margin-top: 3rem;
+                    a {
+                        text-decoration: none;
+                        color: white;
+                        img {
+                        }
+                        p {
+                            margin-top: 1rem;
+                            line-height: 1.5;
+                            text-align: justify;
+                            text-align-last: justify;
+                        }
+                    }
+                }
+            }
+        }
+        section.credit {
+            padding: 2rem;
+            box-sizing: border-box;
+            margin-top: 3rem;
+            border-top: 2px solid;
+            grid-area: credit;
+            div.github {
+                margin-top: 1.5rem;
+                img {
+                    width: 70%;
+                }
+            }
+            p.collaborators {
+                margin-top: 1.5rem;
+                text-align: justify;
+                text-align-last: left;
+                span:first-child {
+                    font-weight: bold;
+                    text-align: left;
+                    text-align-last: left;
+                    display: block;
+                }
+            }
+            p.copy {
+                margin-top: 1.5rem;
+                small {
+                }
+            }
+        }
+    }
+}

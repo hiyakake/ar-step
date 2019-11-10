@@ -1,46 +1,44 @@
-<footer>
-        <div class="share">
-            <h4>#進めバリアフリー</h4>
-            <ul>
-                <li><a href="" target='new'><img src="" alt="Twitterでシェアする"></a></li>
-                <li><a href="" target='new'><img src="" alt="LINEでシェアする"></a></li>
-                <li><a href="" target='new'><img src="" alt="Facebookでシェアする"></a></li>
-                <li><a href="" target='new'><img src="" alt="Instagramでシェアする"></a></li>
-            </ul>
-        </div>
-        <div class="wave" style='background-image:url()'></div>
-        <div class="kannrenn">
+<footer class='basic'>
+    <section class="share">
+        <h4>#進めバリアフリー</h4>
+        <ul>
+            <li><a href="" target='new'><img src="images/global/icon-twitter.svg" alt="Twitterでシェアする"></a></li>
+            <li><a href="" target='new'><img src="images/global/icon-line.svg" alt="LINEでシェアする"></a></li>
+            <li><a href="" target='new'><img src="images/global/icon-facebook.svg" alt="Facebookでシェアする"></a></li>
+            <li><a href="" target='new'><img src="images/global/icon-instagram.svg" alt="Instagramでシェアする"></a></li>
+        </ul>
+    </section>
+    <div class="wave"><!--波--></div>
+    <div class='contents'>
+        <section class="kannrenn">
             <h4>関連サイト</h4>
             <ul>
                 <li>
                     <a href="https://kamata-bfm.nextlav.xyz/?from=ar_step" target='new'>
-                        <img src="" alt="バリマ">
+                        <img src="images/global/logo-barima.svg" alt="バリマ">
                         <p>蒲田周辺のバリアフリー情報サイト</p>
                     </a>
                 </li>
                 <li>
                     <a href="" target='new'>
-                        <img src="" alt="原のサイト">
+                        <img src="images/global/logo-hara.svg" alt="原のサイト">
                         <p>横須賀周辺のバリアフリー情報サイト</p>
                     </a>
                 </li>
             </ul>
-        </div>
-        <div class='credit'>
+        </section>
+        <section class='credit'>
             <div class="github">
-                <img src="images/global/github-icon.svg" alt="GitHub">
-                <p>
-                    <span>Development on</span><br>
-                    <span>GitHub</span>
-                </p>
+                <img src="images/global/dev-in-github.svg" alt="Development on GitHub">
             </div>
             <p class="collaborators">
                 <span>Collaborators :</span><br>
-                <span>Jiei Kusuhara  / Cre-noa / comame</span>
+                <span>Jiei Kusuhara  / comame / Cre-noa</span>
             </p>
             <p class="copy"><small>© 2019 nextlav.xyz</small></p>
-        </div>
-    </footer>
-    <?php wp_footer();?>
+        </section>
+    </div>
+</footer>
+<?php wp_footer();?>
 </body>
 </html>
