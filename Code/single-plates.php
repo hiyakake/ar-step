@@ -30,7 +30,7 @@ if(isset($_SESSION['fro'])){
 <?php get_header();?>
 
 
-    <header>
+    <header class='global'>
         <div class="titles">
             <h1><a href='<?php echo esc_url( home_url('/'));?>'><img src="" alt="LOGO"></a></h1>
             <span>/</span>
