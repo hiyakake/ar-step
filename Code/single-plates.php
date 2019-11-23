@@ -6,9 +6,12 @@ $headerTitle = '投稿ページのタイトル';
 ?>
 <?php
 //ページに訪れたことがあるか
-if(isset($_SESSION['from']) || $_GET['from'] != 'google'){
+if(isset($_SESSION['from'])){
     $is_from_google = false;
     $_SESSION['from'] = true;
+    if($_GET['from'] == 'google'){
+        $is_from_google = true;
+    }
 }else{
     $is_from_google = true;
 };
@@ -16,7 +19,7 @@ if(isset($_SESSION['from']) || $_GET['from'] != 'google'){
 
 <?php get_header();?>
 
-
+    <?php if($is_from_google == true):?>
     <header class='global'>
         <div class="titles">
             <h1><a href='<?php echo esc_url( home_url('/'));?>'><img src="" alt="LOGO"></a></h1>
@@ -27,6 +30,7 @@ if(isset($_SESSION['from']) || $_GET['from'] != 'google'){
             <p>プレートを探す</p>
         </nav>
     </header>
+    <?php endif;?>
     <!--Googleから来た人にメッセージを出す-->
     <?php if($is_from_google):?>
     <div class="from_google_msg" v-show='view'>
@@ -118,7 +122,7 @@ if(isset($_SESSION['from']) || $_GET['from'] != 'google'){
                 <dl>
                     <?php function displayNum($title,$key,$max_key = -1){?>
                     <dt>
-                        <?php echo ($title == '傾斜' && $plate['max_height'] != -1 ? '平均の' : '').$title;?>
+                        <?php echo ($title == '傾斜' && $plate['max_height'] != -1 ? '平均' : '').$title;?>
                     </dt>
                     <dd>
                         <span class="num_int"><?php echo floor($key);?></span>

@@ -3,47 +3,15 @@
 Template Name:プレート検索結果ページ
 */
 
-//クエリーを保存
-$query = [
-    'height' => $_GET['hei'],
-    'width' => $_GET['wid'],
-    'depth_min' => $_GET['dep_min'],
-    'depth_max' => $_GET['dep_max'],
-    'angle' => $_GET['ang'],
-    'need' => $_GET['nee']
-];
+include('page-match_plate_api.php');
 
 ?>
 
 <?php get_header();?>
 
-<header>
-    <div class="titles">
-        <h1><a href='<?php echo esc_url( home_url('/'));?>'><img src="" alt="LOGO"></a></h1>
-        <span>/</span>
-        <h2><?php echo $headerTitle;?></h2>
-    </div>
-    <nav>
-        <p>プレートを探す</p>
-    </nav>
-</header>
-
 <main>
     <div class='header'>
-        <h1>おすすめのステップ</h1>
-        <p class="backToList">
-            <?php if($is_from_google == false):?>
-            <a href="<?php echo $_SERVER['HTTP_REFERER'];?>">
-                <img src="" alt="ステップの検索結果ページに戻る">
-                <span>一覧へ</span>
-            </a>
-            <?php else:?>
-            <a href="<?php echo $_SERVER['HTTP_REFERER'];?>">
-                <img src="<?php echo esc_url( home_url('/'));?>" alt="サイトのトップページヘ">
-                <span>TOPへ</span>
-            </a>
-            <?php endif;?>
-        </p>
+        <h2>詳細</h2>
     </div>
 
     <section class="set_place">
@@ -67,36 +35,38 @@ $query = [
         </dd>
         <?php };?>
         <dl>
-            <?php displayNum('横幅',$query['width']);?>
-            <?php displayNum('高さ',$query['height']);?>
-            <?php displayNum('高さ',$query['depth_min'],$query['depth_max']);?>
+            <?php displayNum('横幅',$QUERY['WIDTH']);?>
+            <?php displayNum('高さ',$QUERY['HEIGHT']);?>
+            <?php displayNum('高さ',$QUERY['MIN_DEPTH'],$QUERY['MAX_DEPTH']);?>
         </dl>
     </section>
-
-    <section class="wait_api" v-show='is_wait_api == true'>
-        <h2>あなたにぴったりにステップを探しています。</h2>
-        <div class="bar">
-            <div :style='{ width : loading_progress+"%" }'><!--これのwidthを変化させる--></div>
-        </div>
-        <p class="bar_percentage">{{loading_progress}}％</p>
+    
+    <?php if(count($PLATES) == 0):?>
+    <section class="list" <?php post_class();?>>
+        <p>マッチするプレートが見つかりませんでした</p>
     </section>
-
-    <section class="list" v-show='is_wait_api == false' <?php post_class();?>>
+    <?php else:?>
+    <section class="list" <?php post_class();?>>
         <h2>傾斜が緩やかな順</h2>
         <ol>
-            <li v-for='plate in plates'>
-                <figure>
-                    <img :src="plate.image_url" alt="プレートの写真です">
+            <?php for($i = 0;$i < count($PLATES);$i++):?>
+            <li>
+                <a href="<?php echo $PLATES[$i]['POST_URL'].'?angle_when_used='.$PLATES[$i]['angle_when_used'].'&need_count='.$PLATES[$i]['need_count'];?>">
+                    <figure>
+                        <img src="<?php echo $PLATES[$i]['IMAGE_URL'];?>" alt="プレートの写真です">
+                    </figure>
                     <dl>
-                        <dt>傾斜</dt>
-                        <dd>{{plate.angle}}度</dd>
-                        <dt>必要数</dt>
-                        <dd>{{plate.need}}枚</dd>
+                        <dt><img src="images/search/angle-icon.svg" alt="傾斜"></dt>
+                        <dd>傾斜<?php echo round($PLATES[$i]['angle_when_used'],1);?>°</dd>
+                        <dt><img src="images/search/stack-icon.svg" alt="必要枚数"></dt>
+                        <dd><?php echo $PLATES[$i]['need_count'];?>枚必要</dd>
                     </dl>
-                </figure>
+                </a>
             </li>
+        <?php endfor;?>
         </ol>
     </section>
+    <?php endif;?>
 </main>
 
 <?php get_footer();?>

@@ -50,5 +50,14 @@ function add_files(){
             date('U')
         );
     };
+    //検索ページに適用するもの
+    if($slug == 'search'){
+        wp_enqueue_style(
+            'search-style',
+            get_template_directory_uri().'/style/page-search.min.css',
+            ['global-style'],
+            date('U')
+        );
+    };
 };
 add_action('wp_enqueue_scripts','add_files');

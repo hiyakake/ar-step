@@ -1,0 +1,111 @@
+$teamaColor : #409FB5;
+$teamaYellow : #E1E828;
+$teamaGray : #464646;
+
+header {
+	div.titles {
+		h1 {
+			a {
+				img {
+				}
+			}
+		}
+		span {
+		}
+		h2 {
+		}
+	}
+	nav {
+		p {
+		}
+	}
+}
+main {
+	div.header {
+        margin-top: 2rem;
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+		h2 {
+            flex: 70% 0 0;
+            background-color: $teamaColor;
+            color: white;
+            border-radius: 0 100px 100px 0;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            padding: 0.8em 1em;
+		}
+	}
+	section.set_place {
+		h2 {
+		}
+		dt {
+		}
+		dd {
+			span.num_int {
+			}
+			span.num_floot {
+			}
+			span.kara {
+			}
+			span.tanni {
+			}
+		}
+		dl {
+		}
+	}
+	section.list {
+		p {
+		}
+		h2 {
+		}
+		ol {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2em 1em;
+			li {
+				a {
+					figure {
+                        position: relative;
+                        &::before{
+                            content: '';
+                            display: block;
+                            padding-top: 100%;
+                        }
+						img {
+                            display: block;
+                            object-fit: contain;
+                            object-position: center;
+                            height: 100%;
+                            border-radius: 5px;
+                            box-shadow: 0px 0px 14px #194D4639;
+                            background-color: white;
+                            box-sizing: border-box;
+                            padding: 5%;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+						}
+                    }
+                    dl {
+                        margin-top: 1em;
+                        display: grid;
+                        grid-template-columns: 22% 1fr;
+                        gap: 0.5em 1em;
+                        color: $teamaColor;
+                        dt {
+                        }
+                        dd {
+                            margin-top: auto;
+                            margin-bottom: auto;
+                            font-size: 1.2em;
+                        }
+                    }
+				}
+			}
+		}
+	}
+}

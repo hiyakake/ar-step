@@ -89,7 +89,7 @@ if( $the_query->have_posts() ){
     while( $the_query->have_posts() ){
         $the_query->the_post();
         //PLATES[]に格納
-        $PLATES[$i]['POST_ID'] = get_the_ID();
+        $PLATES[$i]['POST_URL'] = get_permalink();
         $PLATES[$i]['MIN_HEIGHT'] = get_field('min_height');
         $PLATES[$i]['MAX_HEIGHT'] = get_field('max_height');
         $PLATES[$i]['WIDTH'] = get_field('width');
@@ -112,7 +112,7 @@ if($QUERY['STEP_TYPE'] == 'single'){
         while( $the_query->have_posts() ){
             $the_query->the_post();
             //PLATES[]に格納
-            $PLATES_TMP[$i]['POST_ID'] = get_the_ID();
+            $PLATES_TMP[$i]['POST_URL'] = get_permalink();
             $PLATES_TMP[$i]['MIN_HEIGHT'] = get_field('min_height');
             $PLATES_TMP[$i]['MAX_HEIGHT'] = get_field('max_height');
             $PLATES_TMP[$i]['WIDTH'] = get_field('width');
