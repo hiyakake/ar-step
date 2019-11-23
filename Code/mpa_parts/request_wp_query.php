@@ -1,8 +1,9 @@
 <?php
+if($_GET['dev'] == 1) echo '<br>-------------高さを条件としてWP_QUERYを発行し、高さがマッチするプレートをPLATESに格納-------------';
 /*高さを条件としてWP_QUERYを発行し、高さがマッチするプレートをPLATESに格納*/
 
 if($QUERY['STEP_TYPE'] == 'single'){
-    if($_GET['dev'] == 1) echo '<br><br>work single';
+    if($_GET['dev'] == 1) echo '<br><br>動作モード：シングル型段差';
     //1段型
     $arg = array(
         'posts_per_page'=>'-1',
@@ -53,7 +54,7 @@ if($QUERY['STEP_TYPE'] == 'single'){
         )
     );
 }else{
-    if($_GET['dev'] == 1) echo '<br><br>work multiple';
+    if($_GET['dev'] == 1) echo '<br><br>動作モード：多段型/岡山型段差';
     //多段型
     $arg = array(
         'posts_per_page'=>'-1',
