@@ -50,6 +50,8 @@ for($i = 0;$i < count($PLATES);$i++){
         if($_GET['dev'] == 1) echo '<br>試算利用可能枚数 '.$PLATES[$i]['need_count'];
     }
 
+    //need_countをplates_tmpにもコピー
+    $plate_tmp[$i]['need_count'] = $PLATES[$i]['need_count'];
 
     //その枚数で使用した場合に条件を満たすかをチェック
 
