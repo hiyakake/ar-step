@@ -2,7 +2,7 @@
 /*高さを条件としてWP_QUERYを発行し、高さがマッチするプレートをPLATESに格納*/
 
 if($QUERY['STEP_TYPE'] == 'single'){
-    echo '<br><br>work single';
+    if($_GET['dev'] == 1) echo '<br><br>work single';
     //1段型
     $arg = array(
         'posts_per_page'=>'-1',
@@ -53,7 +53,7 @@ if($QUERY['STEP_TYPE'] == 'single'){
         )
     );
 }else{
-    echo '<br><br>work multiple';
+    if($_GET['dev'] == 1) echo '<br><br>work multiple';
     //多段型
     $arg = array(
         'posts_per_page'=>'-1',
@@ -97,7 +97,7 @@ if( $the_query->have_posts() ){
         $PLATES[$i]['URL'] = get_field('url');
         $PLATES[$i]['IMAGE_URL'] = get_field('image_url');
         $PLATES[$i]['CAN_BIND'] = get_field('can_bind');
-        echo '<br>'.$i.'回目のループ';
+        if($_GET['dev'] == 1) echo '<br>'.$i.'回目のループ';
         $i++;
     }
 }
@@ -120,7 +120,7 @@ if($QUERY['STEP_TYPE'] == 'single'){
             $PLATES_TMP[$i]['URL'] = get_field('url');
             $PLATES_TMP[$i]['IMAGE_URL'] = get_field('image_url');
             $PLATES_TMP[$i]['CAN_BIND'] = get_field('can_bind');
-            echo '<br>'.$i.'回目のループB';
+            if($_GET['dev'] == 1) echo '<br>'.$i.'回目のループB';
             $i++;
         }
     }
@@ -130,5 +130,5 @@ if($QUERY['STEP_TYPE'] == 'single'){
     $PLATES = array_merge($PLATES, $PLATES_TMP);
 }
 
-echo '<br><br>';
-echo json_encode($PLATES);
+if($_GET['dev'] == 1) echo '<br><br>';
+if($_GET['dev'] == 1) echo json_encode($PLATES);

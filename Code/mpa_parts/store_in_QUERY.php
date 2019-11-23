@@ -13,10 +13,12 @@ else $QUERY['MAX_ANGLE'] = 0;
 if($QUERY['MIN_DEPTH'] == 0) $QUERY['STEP_TYPE'] = 'single';
 else $QUERY['STEP_TYPE'] = 'multiple';
 
-print('<br>HEIGHT '.$QUERY['HEIGHT']);
-print('<br>WIDTH '.$QUERY['WIDTH']);
-print('<br>MIN_DEPTH '.$QUERY['MIN_DEPTH']);
-print('<br>MAX_DEPTH '.$QUERY['MAX_DEPTH']);
-print('<br>MIN_ANGLE '.$QUERY['MIN_ANGLE']);
-print('<br>MAX_ANGLE '.$QUERY['MAX_ANGLE']);
-print('<br>STEP_TYPE '.$QUERY['STEP_TYPE']);
+if($_GET['dev'] == 1){
+    print('<br>HEIGHT '.$QUERY['HEIGHT']);
+    print('<br>WIDTH '.$QUERY['WIDTH']);
+    print('<br>MIN_DEPTH '.$QUERY['MIN_DEPTH']);
+    print('<br>MAX_DEPTH '.$QUERY['MAX_DEPTH']);
+    print('<br>MIN_ANGLE '.$QUERY['MIN_ANGLE']);
+    print('<br>MAX_ANGLE '.$QUERY['MAX_ANGLE']);
+    print('<br>STEP_TYPE '.$QUERY['STEP_TYPE']);
+}

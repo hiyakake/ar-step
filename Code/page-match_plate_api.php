@@ -43,3 +43,6 @@ if($status[0] == 1 && $status[1] == 1 && $status[2] == 1 && $status[3] == 1){
     include('mpa_parts/request_wp_query.php'); //高さを条件としてWP_QUERYを発行し、高さがマッチするプレートをPLATESに格納
     include('mpa_parts/matching_depth.php'); //段差の形状毎に、奥行き条件と照らし合わせ抽出
 }
+
+if($_GET['dev'] == 1) echo '<br><br>';
+echo json_encode($PLATES);
