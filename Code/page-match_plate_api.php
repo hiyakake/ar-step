@@ -4,7 +4,9 @@ Template Name:MATCHI STEP API
 */
 session_start();
 
-/*必要なコンポーネントの読み込み*/
+/*******定数定義*************/
+$SAFETY_MIN_WIDTH = 110; //車椅子がプレートの上を走ることを想定した時の最小限必要な横幅
+$SAFETY_MAX_SPACE_CM = 30; //プレートを設置した時の左右の最大の隙間の大きさ(CM)
 
 
 /*全てのパラメタがセットされていることを確認した上で、無毒化*/
@@ -41,9 +43,9 @@ if(isset($_GET['max_depth'])){
 if($status[0] == 1 && $status[1] == 1 && $status[2] == 1 && $status[3] == 1){
     include('mpa_parts/store_in_QUERY.php'); //GETの不足部分を補完し、QUERYに保管
     include('mpa_parts/get_data_by_height.php'); //高さを条件としてWP_QUERYを発行し、高さがマッチするプレートをPLATESに格納
-    include('mpa_parts/matching_depth.php'); //段差の形状毎に、奥行き条件と照らし合わせ抽出
-    include('mpa_parts/matching_width.php'); //横幅の条件と照らし合わせて抽出
-    
+    if(count($PLATES) != 0) include('mpa_parts/matching_depth.php'); //段差の形状毎に、奥行き条件と照らし合わせ抽出
+    if(count($PLATES) != 0) include('mpa_parts/matching_width.php'); //横幅の条件と照らし合わせて抽出
+    if(count($PLATES) != 0) include('mpa_parts/sort_by_angle.php'); //配列を角度の緩やかな順に並び替え
 }
 
 
