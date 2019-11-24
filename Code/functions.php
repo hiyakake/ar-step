@@ -30,6 +30,13 @@ function add_files(){
         false,
         true
     );
+    wp_enqueue_script(
+        'front-global-script',
+        get_template_directory_uri().'/script/front_global.js',
+        [],
+        false,
+        false
+    );
     //platesの場合に適用するもの
     if(get_post_type() == 'plates'){
         wp_enqueue_script(
