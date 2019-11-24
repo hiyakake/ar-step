@@ -13,7 +13,7 @@ include('page-match_plate_api.php');
 
 <main>
     <div class='header'>
-        <h2>検索結果</h2>
+        <h2>おすすめのステップ</h2>
         <p class="backToList">
             <a href="<?php echo esc_url( home_url('/'));?>">
                 <img src="images/global/to-top.svg" alt="サイトのトップページヘ">
