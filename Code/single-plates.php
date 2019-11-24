@@ -19,18 +19,6 @@ if(isset($_SESSION['have_seen'])){
 
 <?php get_header();?>
 
-    <?php if($is_from_google == true):?>
-    <header class='global'>
-        <div class="titles">
-            <h1><a href='<?php echo esc_url( home_url('/'));?>'><img src="" alt="LOGO"></a></h1>
-            <span>/</span>
-            <h2><?php echo $headerTitle;?></h2>
-        </div>
-        <nav>
-            <p>プレートを探す</p>
-        </nav>
-    </header>
-    <?php endif;?>
     <!--Googleから来た人にメッセージを出す-->
     <?php if($is_from_google):?>
     <div class="from_google_msg" v-show='view'>

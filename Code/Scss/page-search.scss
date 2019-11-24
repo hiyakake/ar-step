@@ -36,11 +36,21 @@ main {
             color: white;
             border-radius: 0 100px 100px 0;
             box-sizing: border-box;
+            padding-left: 1em;
             display: flex;
             align-items: center;
             font-size: 1.5em;
             font-weight: bold;
-            padding: 0.8em 1em;
+		}
+		p.backToList {
+            padding-right: 1em;
+			a {
+                text-decoration: none;
+                display: inline-block;
+				img {
+                    display: block;
+				}
+			}
 		}
 	}
     div.sizes {
