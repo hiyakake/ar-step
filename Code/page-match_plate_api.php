@@ -46,6 +46,8 @@ if($status[0] == 1 && $status[1] == 1 && $status[2] == 1 && $status[3] == 1){
     if(count($PLATES) != 0) include('mpa_parts/matching_depth.php'); //段差の形状毎に、奥行き条件と照らし合わせ抽出
     if(count($PLATES) != 0) include('mpa_parts/matching_width.php'); //横幅の条件と照らし合わせて抽出
     if(count($PLATES) != 0) include('mpa_parts/sort_by_angle.php'); //配列を角度の緩やかな順に並び替え
+}else{
+    $PLATES = [];
 }
 
 
