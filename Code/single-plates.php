@@ -6,9 +6,9 @@ $headerTitle = '投稿ページのタイトル';
 ?>
 <?php
 //ページに訪れたことがあるか
-if(isset($_SESSION['from'])){
+if(isset($_SESSION['have_seen'])){
     $is_from_google = false;
-    $_SESSION['from'] = true;
+    $_SESSION['have_seen'] = true;
     if($_GET['from'] == 'google'){
         $is_from_google = true;
     }

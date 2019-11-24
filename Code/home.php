@@ -3,6 +3,7 @@
 Template Name:トップページ
 */
 session_start();
+$_SESSION['have_seen'] = true;
 ?>
 
 <?php get_header();?>
@@ -54,6 +55,4 @@ session_start();
 
 <?php
 get_footer();
-
-$_SESSION['fro'] = 1;
 ?>
