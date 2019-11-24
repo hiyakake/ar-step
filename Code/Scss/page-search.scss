@@ -21,6 +21,10 @@ header {
 	}
 }
 main {
+    > *:not(.header){
+        box-sizing: border-box;
+        padding: 0 1rem;
+    }
 	div.header {
         margin-top: 2rem;
         display: flex;
@@ -39,30 +43,114 @@ main {
             padding: 0.8em 1em;
 		}
 	}
-	section.set_place {
+    div.sizes {
+        margin-top: 2rem;
+        grid-area: sizes;
+        font-size: 1.2em;
+        line-height: 1;
+        color: $teamaColor;
+        h2{
+            font-size: 1.4em;
+            text-align: center;
+            border: solid 2px;
+            border-bottom: dotted 2px;
+            border-radius: 5px 5px 0 0;
+            padding: 0.8em 0;
+        }
+        dl {
+            display: grid;
+            grid-template: 
+            "top-left-title top-right-title" auto
+            "top-left-num top-right-num" auto
+            "bottom-title bottom-title" auto
+            "bottom-num bottom-num" auto
+            /1fr 1fr;
+            dt {
+                text-align: left;
+                box-sizing: border-box;
+                padding: 1em 1em 0.5em 1em;
+                &:nth-child(1){
+                    grid-area: top-left-title;
+                    border-left: solid 2px;
+                }
+                &:nth-child(3){
+                    grid-area: top-right-title;
+                    border-left: dotted 2px;
+                    border-right: solid 2px;
+                }
+                &:nth-child(5){
+                    grid-area: bottom-title;
+                    border-left: solid 2px;
+                    border-right: solid 2px;
+                }
+            }
+            dd {
+                text-align: left;
+                box-sizing: border-box;
+                padding: 0 1em 1em 1em;
+                font-size: 1.5em;
+                font-weight: bold;
+                &:nth-child(2){
+                    grid-area: top-left-num;
+                    border-bottom: dotted 2px;
+                    border-left: solid 2px;
+                }
+                &:nth-child(4){
+                    grid-area: top-right-num;
+                    border-bottom: dotted 2px;
+                    border-left: dotted 2px;
+                    border-right: solid 2px;
+                }
+                &:nth-child(6){
+                    grid-area: bottom-num;
+                    border-left: solid 2px;
+                    border-right: solid 2px;
+                    border-bottom: solid 2px;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
+                }
+                span.num_int {
+                }
+                span.num_floot {
+                    font-size: 0.6em;
+                }
+                span.tanni {
+                    font-size: 0.65em;
+                }
+            }
+        }
+    }
+    section.list.unmatch {
+        background: $teamaColor;
+        color: white;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2em;
+        box-sizing: content-box;
+        margin: 2em 1em;
+        border-radius: 5px;
+        line-height: 1.5;
+        p{
+            
+        }
+        p::before{
+            content: url(../images/global/icon-noti.svg);
+            display: block;
+            filter: brightness(10);
+            margin-bottom: 0.5em;
+        }
+    }       
+	section.list.matched {
 		h2 {
-		}
-		dt {
-		}
-		dd {
-			span.num_int {
-			}
-			span.num_floot {
-			}
-			span.kara {
-			}
-			span.tanni {
-			}
-		}
-		dl {
-		}
-	}
-	section.list {
-		p {
-		}
-		h2 {
+            margin-top: 3rem;
+            font-size: 1.5em;
+            color: $teamaColor;
+            font-weight: bold;
 		}
 		ol {
+            margin-top: 1.5rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2em 1em;

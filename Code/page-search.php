@@ -14,39 +14,42 @@ include('page-match_plate_api.php');
         <h2>詳細</h2>
     </div>
 
-    <section class="set_place">
-        <h2>設置場所の寸法</h2>
-        <?php function displayNum($title,$key,$max_key = null){?>
-        <dt><?php echo $title;?></dt>
-        <dd>
-            <span class="num_int"><?php echo floor($key);?></span>
-            <?php if($key >= floor($key)+0.1):?>
-                .<span class="num_floot"><?php echo substr($key-floor($key),2);?></span>
-            <?php endif;?>
-
-            <?php if($max_key != null):?>
-                <span class="kara">〜</span>
-                <span class="num_int"><?php echo floor($max_key);?></span>
-                <?php if($max_key >= floor($max_key)+0.1):?>
-                .<span class="num_floot"><?php echo substr($max_key-floor($max_key),2);?></span>
-            <?php endif;?>
-            <?php endif;?>
-            <span class="tanni">cm</span>
-        </dd>
-        <?php };?>
+    <div class="sizes">
+        <h2>
+            <?php echo ($_GET['from'] == 'ar') ? '計測した段差の寸法' : '指定した段差の寸法';?>
+        </h2>
         <dl>
-            <?php displayNum('横幅',$QUERY['WIDTH']);?>
+            <?php function displayNum($title,$key,$max_key = -1){?>
+            <dt>
+                <?php echo ($title == '傾斜' && $plate['max_height'] != -1 ? '平均' : '').$title;?>
+            </dt>
+            <dd>
+                <span class="num_int"><?php echo floor($key);?></span>
+                <?php if($key >= floor($key)+0.1):?>
+                    <span class="num_floot">.<?php echo substr($key-floor($key),2);?></span>
+                <?php endif;?>
+                <?php if($max_key != -1):?>
+                    <span class="kara">〜</span>
+                    <span class="num_int"><?php echo floor($max_key);?></span>
+                    <?php if($max_key >= floor($max_key)+0.1):?>
+                    .<span class="num_floot"><?php echo substr($max_key-floor($max_key),2);?></span>
+                <?php endif;?>
+                <?php endif;?>
+                <span class="tanni"><?php echo ($title == '傾斜' ? '度' : 'cm' );?></span>
+            </dd>
+            <?php };?>
             <?php displayNum('高さ',$QUERY['HEIGHT']);?>
-            <?php displayNum('高さ',$QUERY['MIN_DEPTH'],$QUERY['MAX_DEPTH']);?>
+            <?php displayNum('横幅',$QUERY['WIDTH']);?>
+            <?php displayNum('奥行き',$QUERY['MIN_DEPTH'],$QUERY['MAX_DEPTH']);?>
         </dl>
-    </section>
+    </div>
     
     <?php if(count($PLATES) == 0):?>
-    <section class="list" <?php post_class();?>>
-        <p>マッチするプレートが見つかりませんでした</p>
+    <section class="list unmatch" <?php post_class();?>>
+        <p>マッチするプレートが<br>見つかりません</p>
     </section>
     <?php else:?>
-    <section class="list" <?php post_class();?>>
+    <section class="list matched" <?php post_class();?>>
         <h2>傾斜が緩やかな順</h2>
         <ol>
             <?php for($i = 0;$i < count($PLATES);$i++):?>
