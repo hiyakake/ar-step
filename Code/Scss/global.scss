@@ -2,6 +2,10 @@ $teamaColor : #409FB5;
 $teamaYellow : #E1E828;
 $teamaGray : #464646;
 
+body{
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
 header.global {
     border-bottom: 2px solid $teamaColor;
     color: $teamaColor;

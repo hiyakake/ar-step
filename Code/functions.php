@@ -9,7 +9,7 @@ function add_files(){
     wp_enqueue_style(
         'global-style',
         get_template_directory_uri().'/style/global.min.css',
-        ['reset-style'],
+        ['reset-style','google-fonts-style'],
         date('U')
     );
     wp_enqueue_style(
@@ -17,6 +17,11 @@ function add_files(){
         get_template_directory_uri().'/style/reset.min.css',
         [],
         date('U')
+    );
+    wp_enqueue_style(
+        'google-fonts-style',
+        'https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap',
+        []
     );
     wp_enqueue_script(
         'vue',
