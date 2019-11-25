@@ -84,7 +84,7 @@ $_SESSION['have_seen'] = true;
                             <span class='text'>段差が１段だけのシンプルな段差です</span>
                         </p>
                     </label>
-                    <input type="radio" name="step_type" id="step_type_single" value='single' autofocus>
+                    <input type="radio" name="step_type" id="step_type_single" value='single' v-model='step_type' autofocus>
                 </div>
                 <div>
                     <label for="step_type_multipul">
@@ -95,7 +95,7 @@ $_SESSION['have_seen'] = true;
                             <span class='text'>階段状の段差や、岡山でよく見られる側溝をまたぐ段差などです</span>
                         </p>
                     </label>
-                    <input type="radio" name="step_type" id="step_type_multipul" value='multipul'>
+                    <input type="radio" name="step_type" id="step_type_multipul" value='multipul' v-model='step_type'>
                 </div>
             </fieldset>
             <!--2.段差の横幅と高さを教えて下さい-->
@@ -117,7 +117,7 @@ $_SESSION['have_seen'] = true;
                         <img class='ok' src="" alt="入力された値は正常です">
                         <img class='bad' src="" alt="入力された値に誤りがあります">
                     </div>
-                    <p class="error_msg">{{insert with Vue.js}}</p>
+                    <p class="error_msg"><!--insert with Vue.js--></p>
                 </div>
                 <div>
                     <input type="number" name="height" id="height" autocomplete='off' placeholder='高さを入力'>
@@ -126,11 +126,11 @@ $_SESSION['have_seen'] = true;
                         <img class='ok' src="" alt="入力された値は正常です">
                         <img class='bad' src="" alt="入力された値に誤りがあります">
                     </div>
-                    <p class="error_msg">{{insert with Vue.js}}</p>
+                    <p class="error_msg"><!--insert with Vue.js--></p>
                 </div>
             </fieldset>
             <!--3.段差の奥行きについて教えてください 多段型選択時-->
-            <fieldset class='ques3'>
+            <fieldset class='ques3' v-show='step_type == "multipul"'>
                 <legend>
                     <span class="num">3</span>
                     <span class='title'>段差の奥行きについて<br>教えてください</span>
@@ -144,41 +144,41 @@ $_SESSION['have_seen'] = true;
                     こすうることにより、車いすでも安全に登れる坂の角度を求めることができます。
                 </video>
                 <div>
-                    <input type="number" name="min_depth" id="min_depth" autocomplete='off' placeholder='最短の奥行きを入力'>
+                    <input type="number" name="min_depth" id="min_depth" autocomplete='off' placeholder='最短の奥行きを入力' v-bind:disabled='step_type != "multipul"'>
                     <span class="cm">cm</span>
                     <div class="check_icons">
                         <img class='ok' src="" alt="入力された値は正常です">
                         <img class='bad' src="" alt="入力された値に誤りがあります">
                     </div>
-                    <p class="error_msg">{{insert with Vue.js}}</p>
+                    <p class="error_msg"><!--insert with Vue.js--></p>
                 </div>
                 <div>
-                    <input type="number" name="max_depth" id="max_depth" autocomplete='off' placeholder='最長の奥行きを入力'>
+                    <input type="number" name="max_depth" id="max_depth" autocomplete='off' placeholder='最長の奥行きを入力' v-bind:disabled='step_type != "multipul"'>
                     <span class="cm">cm</span>
                     <div class="check_icons">
                         <img class='ok' src="" alt="入力された値は正常です">
                         <img class='bad' src="" alt="入力された値に誤りがあります">
                     </div>
-                    <p class="error_msg">{{insert with Vue.js}}</p>
+                    <p class="error_msg"><!--insert with Vue.js--></p>
                 </div>
             </fieldset>
             <!--3.プレートを設置する場所で設置できる最大の奥行きを教えて下さい １段型選択時-->
-            <fieldset class='ques3'>
+            <fieldset class='ques3' v-show='step_type == "single"'>
                 <legend>
                     <span class="num">3</span>
                     <span class='title'>プレートを設置する場所で<br>設置できる最大の奥行きを教えて下さい</span>
                 </legend>
                 <div>
-                    <input type="hidden" name="min_depth" id="min_depth" autocomplete='off' value='0'>
+                    <input type="hidden" name="min_depth" id="min_depth" autocomplete='off' value='0' v-bind:disabled='step_type != "single"'>
                 </div>
                 <div>
-                    <input type="number" name="max_depth" id="max_depth" autocomplete='off' placeholder='最大の奥行きを入力'>
+                    <input type="number" name="max_depth" id="max_depth" autocomplete='off' placeholder='最大の奥行きを入力' v-bind:disabled='step_type != "single"'>
                     <span class="cm">cm</span>
                     <div class="check_icons">
                         <img class='ok' src="" alt="入力された値は正常です">
                         <img class='bad' src="" alt="入力された値に誤りがあります">
                     </div>
-                    <p class="error_msg">{{insert with Vue.js}}</p>
+                    <p class="error_msg"><!--insert with Vue.js--></p>
                 </div>
             </fieldset>
             <!--submitボタンとメッセージ-->

@@ -32,7 +32,7 @@ function add_files(){
     );
     wp_enqueue_script(
         'front-global-script',
-        get_template_directory_uri().'/script/front_global.js',
+        get_template_directory_uri().'/js/front_global.js',
         [],
         false,
         false
@@ -60,6 +60,13 @@ function add_files(){
             get_template_directory_uri().'/style/home.min.css',
             ['global-style'],
             date('U')
+        );
+        wp_enqueue_script(
+            'home-script',
+            get_template_directory_uri().'/js/home.js',
+            ['vue'],
+            false,
+            true
         );
     };
     //検索ページに適用するもの
