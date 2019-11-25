@@ -2,4 +2,215 @@ $teamaColor : #409FB5;
 $teamaYellow : #E1E828;
 $teamaGray : #464646;
 
+header {
+    height: 100vh;
+	div.text {
+		h2.big {
+		}
+		p.regular {
+		}
+	}
+	img.visual {
+	}
+	div.scrollToBottom {
+	}
+}
+section.PR {
+    height: 100vh;
+	div.arde {
+		div.text {
+			p.big {
+			}
+			p.small {
+				small {
+				}
+			}
+		}
+		img.visual {
+		}
+	}
+	div.keisokusita {
+        height: 100vh;
+		div.text {
+			p {
+				span {
+				}
+			}
+		}
+		img.visual.sp {
+		}
+		img.visual.pc {
+		}
+	}
+}
+section.search {
+	section.ar_scan.sp {
+		h2.big {
+		}
+		p.button {
+			a {
+			}
+		}
+		div.main {
+			a {
+			}
+		}
+		a {
+			div.hukidashi {
+			}
+		}
+		p {
+		}
+	}
+	section.ar_scan.pc {
+		div.main {
+			img.qr {
+			}
+			p {
+			}
+		}
+	}
+	section.hand_scan {
+		h2 {
 
+        }
+        h2::before{
+            content: url(../images/home/hand_search_icon.svg);
+            display: block;
+        }
+		form {
+			fieldset.ques1 {
+				legend {
+					span.num {
+					}
+					span.title {
+					}
+				}
+				div {
+					label {
+						img.unselect {
+						}
+						img.selected {
+						}
+						p {
+							span.title {
+							}
+							span.text {
+							}
+						}
+					}
+
+/*============================
+#step_type_single
+============================*/
+					input#step_type_single {
+					}
+
+/*============================
+#step_type_multipul
+============================*/
+					input#step_type_multipul {
+					}
+				}
+			}
+			fieldset.ques2 {
+				legend {
+					span.num {
+					}
+					span.title {
+					}
+				}
+				video {
+				}
+				div {
+
+/*============================
+#width
+============================*/
+					input#width {
+					}
+					span.cm {
+					}
+					div.check_icons {
+						img.ok {
+						}
+						img.bad {
+						}
+					}
+					p.error_msg {
+					}
+
+/*============================
+#height
+============================*/
+					input#height {
+					}
+				}
+			}
+			fieldset.ques3 {
+				legend {
+					span.num {
+					}
+					span.title {
+					}
+				}
+				video {
+				}
+				div {
+
+/*============================
+#min_depth
+============================*/
+					input#min_depth {
+					}
+					span.cm {
+					}
+					div.check_icons {
+						img.ok {
+						}
+						img.bad {
+						}
+					}
+					p.error_msg {
+					}
+
+/*============================
+#max_depth
+============================*/
+					input#max_depth {
+					}
+				}
+			}
+			div {
+				button {
+				}
+				p.require {
+				}
+				p.error_msg {
+				}
+			}
+		}
+	}
+}
+section.gallery {
+	h2 {
+		span {
+		}
+	}
+	ol {
+		li {
+			h3 {
+			}
+			div.youtube {
+				iframe {
+				}
+			}
+			p.twitter {
+				a {
+					img {
+					}
+				}
+			}
+		}
+	}
+}

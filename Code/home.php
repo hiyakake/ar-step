@@ -13,7 +13,7 @@ $_SESSION['have_seen'] = true;
         <h2 class='big'>段差を<br>なくそう</h2>
         <p class='regular'>このサイトは、一つでも多くの場所に段差を解消するプレートを設置してもらうことを目指しています。</p>
     </div>
-    <img src="" alt="" class="visual">
+    <img src="images/home/home_hero.jpg" alt="" class="visual">
     <div class="scrollToBottom"><!--CSSで描く--></div>
 </header>
 
@@ -24,7 +24,7 @@ $_SESSION['have_seen'] = true;
             <p class='big'>ARで簡単に<br>段差を<br>計測できます</p>
             <p class='small'><small>※手入力もできます</small></p>
         </div>
-        <img src="" alt="" class="visual">
+        <img src="images/home/home_arde.jpg" alt="" class="visual">
     </div>
     <div class="keisokusita">
         <div class="text">
@@ -34,8 +34,8 @@ $_SESSION['have_seen'] = true;
                 <span>段差を提案します</span>
             </p>
         </div>
-        <img src="" alt="" class="visual sp">
-        <img src="" alt="" class="visual pc">
+        <img src="images/home/home_keisoku_sp.jpg" alt="" class="visual sp">
+        <img src="images/home/home_keisoku_pc.jpg" alt="" class="visual pc">
     </div>
 </section>
 
@@ -44,7 +44,7 @@ $_SESSION['have_seen'] = true;
     <section class="ar_scan sp">
         <h2 class='big'>段差を<br>なくしましょう</h2>
         <p class="button">
-            <a href="">
+            <a href="/ar">
                 <div class="main">
                     <!--アイコンはCSSで-->
                     ARで計測する
@@ -58,7 +58,7 @@ $_SESSION['have_seen'] = true;
     <section class="ar_scan pc">
         <div class="main">
             <!--スマホアイコンはCSSで-->
-            <img src="" alt="URL" class="qr">
+            <img src="images/home/sp_icon.svg" alt="URL" class="qr">
             <p>ARで<br>段差の大きさを<br>計測しましょう。</p>
         </div>
     </section>
@@ -77,8 +77,8 @@ $_SESSION['have_seen'] = true;
                 </legend>
                 <div>
                     <label for="step_type_single">
-                        <img class='unselect' src="" alt="1段型段差の例を紹介した画像です">
-                        <img class='selected' src="" alt="1段型段差の例を紹介した画像です">
+                        <img class='unselect' src="images/home/段差選択_1段.jpg" alt="1段型段差の例を紹介した画像です">
+                        <img class='selected' src="images/home/段差選択_1段_hover.jpg" alt="1段型段差の例を紹介した画像です">
                         <p>
                             <span class="title">1段型</span>
                             <span class='text'>段差が１段だけのシンプルな段差です</span>
@@ -88,8 +88,8 @@ $_SESSION['have_seen'] = true;
                 </div>
                 <div>
                     <label for="step_type_multipul">
-                        <img class='unselect' src="" alt="多段型段差の例を紹介した画像です">
-                        <img class='selected' src="" alt="多段型段差の例を紹介した画像です">
+                        <img class='unselect' src="images/home/段差選択_階段.jpg" alt="多段型段差の例を紹介した画像です">
+                        <img class='selected' src="images/home/段差選択_階段_hover.jpg" alt="多段型段差の例を紹介した画像です">
                         <p>
                             <span class="title">多段型</span>
                             <span class='text'>階段状の段差や、岡山でよく見られる側溝をまたぐ段差などです</span>
@@ -114,8 +114,8 @@ $_SESSION['have_seen'] = true;
                     <input type="number" name="width" id="width" autocomplete='off' placeholder='横幅を入力'>
                     <span class="cm">cm</span>
                     <div class="check_icons">
-                        <img class='ok' src="" alt="入力された値は正常です">
-                        <img class='bad' src="" alt="入力された値に誤りがあります">
+                        <img class='ok' src="images/home/form_ok_icon.svg" alt="入力された値は正常です">
+                        <img class='bad' src="images/form_bad_icon.svg" alt="入力された値に誤りがあります">
                     </div>
                     <p class="error_msg"><!--insert with Vue.js--></p>
                 </div>
@@ -123,8 +123,8 @@ $_SESSION['have_seen'] = true;
                     <input type="number" name="height" id="height" autocomplete='off' placeholder='高さを入力'>
                     <span class="cm">cm</span>
                     <div class="check_icons">
-                        <img class='ok' src="" alt="入力された値は正常です">
-                        <img class='bad' src="" alt="入力された値に誤りがあります">
+                        <img class='ok' src="images/home/form_ok_icon.svg" alt="入力された値は正常です">
+                        <img class='bad' src="images/form_bad_icon.svg" alt="入力された値に誤りがあります">
                     </div>
                     <p class="error_msg"><!--insert with Vue.js--></p>
                 </div>
@@ -147,8 +147,8 @@ $_SESSION['have_seen'] = true;
                     <input type="number" name="min_depth" id="min_depth" autocomplete='off' placeholder='最短の奥行きを入力' v-bind:disabled='step_type != "multipul"'>
                     <span class="cm">cm</span>
                     <div class="check_icons">
-                        <img class='ok' src="" alt="入力された値は正常です">
-                        <img class='bad' src="" alt="入力された値に誤りがあります">
+                        <img class='ok' src="images/home/form_ok_icon.svg" alt="入力された値は正常です">
+                        <img class='bad' src="images/form_bad_icon.svg" alt="入力された値に誤りがあります">
                     </div>
                     <p class="error_msg"><!--insert with Vue.js--></p>
                 </div>
