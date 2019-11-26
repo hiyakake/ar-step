@@ -104,8 +104,8 @@ if( $the_query->have_posts() ){
 }
 wp_reset_query();
 
+$PLATES_TMP = [];
 if($QUERY['STEP_TYPE'] == 'single'){
-    $PLATES_TMP = [];
     $i = 0;
     $the_query = new WP_Query( $arg2 );
     if( $the_query->have_posts() ){

@@ -31,7 +31,7 @@ $_SESSION['have_seen'] = true;
             <p>
                 <span>計測した寸法に</span>
                 <span>マッチする</span>
-                <span>段差を提案します</span>
+                <span>ステップを提案します</span>
             </p>
         </div>
         <img src="images/home/home_keisoku_sp.jpg" alt="" class="visual sp">
@@ -45,13 +45,12 @@ $_SESSION['have_seen'] = true;
         <h2 class='big'>段差を<br>なくしましょう</h2>
         <p class="button">
             <a href="/ar">
-                <div class="main">
-                    <!--アイコンはCSSで-->
+                <span class="main">
                     ARで計測する
-                </div>
-                <div class="hukidashi">
+                </span>
+                <span class="hukidashi">
                     簡単に計測できます
-                </div>
+                </span>
             </a>
         </p>
     </section>
@@ -68,34 +67,36 @@ $_SESSION['have_seen'] = true;
             <!--アイコンはCSSで-->
             手入力でも<br>検索できます
         </h2>
-        <form action="/search" method="get" require>
+        <form action="/search" method="get">
             <!--1.段差の形状はどちらですか？-->
             <fieldset class="ques1">
                 <legend>
                     <span class="num">1</span>
                     <span class='title'>段差の形状は<br>どちらですか？</span>
                 </legend>
-                <div>
-                    <label for="step_type_single">
-                        <img class='unselect' src="images/home/段差選択_1段.jpg" alt="1段型段差の例を紹介した画像です">
-                        <img class='selected' src="images/home/段差選択_1段_hover.jpg" alt="1段型段差の例を紹介した画像です">
-                        <p>
-                            <span class="title">1段型</span>
-                            <span class='text'>段差が１段だけのシンプルな段差です</span>
-                        </p>
-                    </label>
-                    <input type="radio" name="step_type" id="step_type_single" value='single' v-model='step_type' autofocus>
-                </div>
-                <div>
-                    <label for="step_type_multipul">
-                        <img class='unselect' src="images/home/段差選択_階段.jpg" alt="多段型段差の例を紹介した画像です">
-                        <img class='selected' src="images/home/段差選択_階段_hover.jpg" alt="多段型段差の例を紹介した画像です">
-                        <p>
-                            <span class="title">多段型</span>
-                            <span class='text'>階段状の段差や、岡山でよく見られる側溝をまたぐ段差などです</span>
-                        </p>
-                    </label>
-                    <input type="radio" name="step_type" id="step_type_multipul" value='multipul' v-model='step_type'>
+                <div class='contents'>
+                    <div :class='{ active : step_type == "single" }'>
+                        <label for="step_type_single">
+                            <img class='unselect' src="images/home/段差選択_1段.jpg" alt="1段型段差の例を紹介した画像です" v-show='step_type != "single"'>
+                            <img class='selected' src="images/home/段差選択_1段_hover.jpg" alt="1段型段差の例を紹介した画像です" v-show='step_type == "single"'>
+                            <p>
+                                <span class="title">1段型</span>
+                                <span class='text'>段差が１段だけのシンプルな段差です</span>
+                            </p>
+                        </label>
+                        <input require='require' type="radio" name="step_type" id="step_type_single" value='single' v-model='step_type' autofocus>
+                    </div>
+                    <div :class='{ active : step_type == "multipul" }'>
+                        <label for="step_type_multipul">
+                            <img class='unselect' src="images/home/段差選択_階段.jpg" alt="多段型段差の例を紹介した画像です" v-show='step_type != "multipul"'>
+                            <img class='selected' src="images/home/段差選択_階段_hover.jpg" alt="多段型段差の例を紹介した画像です" v-show='step_type == "multipul"'>
+                            <p>
+                                <span class="title">多段型</span>
+                                <span class='text'>階段状の段差や、岡山でよく見られる側溝をまたぐ段差などです</span>
+                            </p>
+                        </label>
+                        <input require='require' type="radio" name="step_type" id="step_type_multipul" value='multipul' v-model='step_type'>
+                    </div>
                 </div>
             </fieldset>
             <!--2.段差の横幅と高さを教えて下さい-->
@@ -104,29 +105,25 @@ $_SESSION['have_seen'] = true;
                     <span class="num">2</span>
                     <span class='title'>段差の横幅と高さを<br>教えてください</span>
                 </legend>
-                <video src="">
-                    横幅を測るときは、段差の一番手前の横幅を測ります。
-                    測るのは、必要な長さだけで構いません。
-                    高さを測るときは、身長を測るときのように板を用意して計測するとうまくいきます。
-                    水平と垂直を意識して計測作業を行いましょう。
+                <video src="images/home/how_to_width_and_height.mp4" controls repeat>
+                    <p>
+                        横幅を測るときは、段差の一番手前の横幅を測ります。
+                        測るのは、必要な長さだけで構いません。
+                        高さを測るときは、身長を測るときのように板を用意して計測するとうまくいきます。
+                        水平と垂直を意識して計測作業を行いましょう。
+                    </p>
                 </video>
-                <div>
-                    <input type="number" name="width" id="width" autocomplete='off' placeholder='横幅を入力'>
-                    <span class="cm">cm</span>
-                    <div class="check_icons">
-                        <img class='ok' src="images/home/form_ok_icon.svg" alt="入力された値は正常です">
-                        <img class='bad' src="images/form_bad_icon.svg" alt="入力された値に誤りがあります">
-                    </div>
+                <div class='num_input'>
                     <p class="error_msg"><!--insert with Vue.js--></p>
+                    <label for="width">横幅</label>
+                    <input require='require' type="number" pattern="[0-9]*" name="width" id="width" autocomplete='off' placeholder='入力'>
+                    <span class="cm">cm</span>
                 </div>
-                <div>
-                    <input type="number" name="height" id="height" autocomplete='off' placeholder='高さを入力'>
-                    <span class="cm">cm</span>
-                    <div class="check_icons">
-                        <img class='ok' src="images/home/form_ok_icon.svg" alt="入力された値は正常です">
-                        <img class='bad' src="images/form_bad_icon.svg" alt="入力された値に誤りがあります">
-                    </div>
+                <div class='num_input'>
                     <p class="error_msg"><!--insert with Vue.js--></p>
+                    <label for="height">高さ</label>
+                    <input require='require' type="number" pattern="[0-9]*" name="height" id="height" autocomplete='off' placeholder='入力'>
+                    <span class="cm">cm</span>
                 </div>
             </fieldset>
             <!--3.段差の奥行きについて教えてください 多段型選択時-->
@@ -135,55 +132,48 @@ $_SESSION['have_seen'] = true;
                     <span class="num">3</span>
                     <span class='title'>段差の奥行きについて<br>教えてください</span>
                 </legend>
-                <video src="">
-                    奥行きを測るときは「最短」と「最長」を考えます。
-                    プレートが階段の角にぶつからないようにするには、段差の奥行きよりも少し伸ばす必要があります。
-                    伸ばす距離は、階段の最も奥行きがある段の長さです。
-                    これが、最短の奥行きとなります。
-                    次に、設置場所の環境でプレートを設置できる最大の奥行きを指定します。
-                    こすうることにより、車いすでも安全に登れる坂の角度を求めることができます。
+                <video src="images/home/how_to_width_and_height.mp4" controls repeat>
+                    <p>
+                        奥行きを測るときは「最短」と「最長」を考えます。
+                        プレートが階段の角にぶつからないようにするには、段差の奥行きよりも少し伸ばす必要があります。
+                        伸ばす距離は、階段の最も奥行きがある段の長さです。
+                        これが、最短の奥行きとなります。
+                        次に、設置場所の環境でプレートを設置できる最大の奥行きを指定します。
+                        こすうることにより、車いすでも安全に登れる坂の角度を求めることができます。
+                    </p>
                 </video>
-                <div>
-                    <input type="number" name="min_depth" id="min_depth" autocomplete='off' placeholder='最短の奥行きを入力' v-bind:disabled='step_type != "multipul"'>
+                <div class='num_input'>
+                    <p class="error_msg">aaaaa<!--insert with Vue.js--></p>
+                    <label for="min_depth">最短の奥行き</label>
+                    <input require='require' type="number" pattern="[0-9]*" name="min_depth" id="min_depth" autocomplete='off' placeholder='入力'>
                     <span class="cm">cm</span>
-                    <div class="check_icons">
-                        <img class='ok' src="images/home/form_ok_icon.svg" alt="入力された値は正常です">
-                        <img class='bad' src="images/form_bad_icon.svg" alt="入力された値に誤りがあります">
-                    </div>
-                    <p class="error_msg"><!--insert with Vue.js--></p>
                 </div>
-                <div>
-                    <input type="number" name="max_depth" id="max_depth" autocomplete='off' placeholder='最長の奥行きを入力' v-bind:disabled='step_type != "multipul"'>
-                    <span class="cm">cm</span>
-                    <div class="check_icons">
-                        <img class='ok' src="" alt="入力された値は正常です">
-                        <img class='bad' src="" alt="入力された値に誤りがあります">
-                    </div>
+                <div class='num_input'>
                     <p class="error_msg"><!--insert with Vue.js--></p>
+                    <label for="max_depth">最長の奥行き</label>
+                    <input require='require' type="number" pattern="[0-9]*" name="max_depth" id="max_depth" autocomplete='off' placeholder='入力'>
+                    <span class="cm">cm</span>
                 </div>
             </fieldset>
             <!--3.プレートを設置する場所で設置できる最大の奥行きを教えて下さい １段型選択時-->
             <fieldset class='ques3' v-show='step_type == "single"'>
                 <legend>
                     <span class="num">3</span>
-                    <span class='title'>プレートを設置する場所で<br>設置できる最大の奥行きを教えて下さい</span>
+                    <span class='title'>プレートを設置する場所で<br>設置できる最大の奥行きを<br>教えて下さい</span>
                 </legend>
-                <div>
+                <div class='num_input'>
                     <input type="hidden" name="min_depth" id="min_depth" autocomplete='off' value='0' v-bind:disabled='step_type != "single"'>
                 </div>
-                <div>
-                    <input type="number" name="max_depth" id="max_depth" autocomplete='off' placeholder='最大の奥行きを入力' v-bind:disabled='step_type != "single"'>
-                    <span class="cm">cm</span>
-                    <div class="check_icons">
-                        <img class='ok' src="" alt="入力された値は正常です">
-                        <img class='bad' src="" alt="入力された値に誤りがあります">
-                    </div>
+                <div class='num_input'>
                     <p class="error_msg"><!--insert with Vue.js--></p>
+                    <label for="max_depth">最大の奥行き</label>
+                    <input require='require' type="number" pattern="[0-9]*" name="max_depth" id="max_depth" autocomplete='off' placeholder='入力' v-bind:disabled='step_type != "single"'>
+                    <span class="cm">cm</span>
                 </div>
             </fieldset>
             <!--submitボタンとメッセージ-->
-            <div>
-                <button type="submit">検索する</button>
+            <div class='submit'>
+                <input type="submit" value="検索する" >
                 <p class="require">全項目入力する必要があります</p>
                 <p class="error_msg"></p>
             </div>
@@ -200,22 +190,19 @@ $_SESSION['have_seen'] = true;
     <ol>
         <?php 
         //ギャラリー動画コンポーネント
-        $i = 1;
         function gallery_component($title,$youtubeID){?>
         <li>
-            <h3><?php echo $i.'.'.$title;?></h3>
+            <h3><?php echo $title;?></h3>
             <div class="youtube">
                 <iframe src="" frameborder="0"></iframe>
             </div>
             <p class="twitter">
                 <a href="">
-                    <img src="" alt="<?php echo $title.'をTwitterでつぶやく';?>">
+                    <img src="images/global/icon-twitter.svg" alt="<?php echo $title.'をTwitterでつぶやく';?>">
                 </a>
             </p>
         </li>
-        <?php
-        $i++;
-        };?>
+        <?php };?>
         <?php
         gallery_component('ほにゃにゃら編','youtubeID');
         gallery_component('ほにゃにゃら編','youtubeID');
