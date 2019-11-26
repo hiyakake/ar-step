@@ -1,9 +1,11 @@
 $teamaColor : #409FB5;
 $teamaYellow : #E1E828;
 $teamaGray : #464646;
+$baseText:#454343;
 
 body{
     font-family: 'Noto Sans JP', sans-serif;
+    font-feature-settings:'palt';
 }
 
 header.global {

@@ -1,6 +1,7 @@
 $teamaColor : #409FB5;
 $teamaYellow : #E1E828;
 $teamaGray : #464646;
+$baseText:#454343;
 
 header {
 	div.titles {
@@ -194,6 +195,7 @@ main {
                         grid-template-columns: 22% 1fr;
                         gap: 0.5em 1em;
                         color: $teamaColor;
+                        color: $baseText;
                         dt {
                         }
                         dd {

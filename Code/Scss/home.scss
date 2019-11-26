@@ -1,14 +1,15 @@
 $teamaColor : #409FB5;
 $teamaYellow : #E1E828;
 $teamaGray : #464646;
+$baseText:#454343;
 
 
 header,
 section.PR,
 section.ar_scan.sp{
     .text{
-        font-size: 1.2rem;
-        line-height: 2;
+        font-size: 1.1rem;
+        line-height: 1.7;
     }
     .big{
         font-size: 2.5rem;
@@ -27,20 +28,37 @@ header {
 	div.text {
         position:absolute;
         z-index: 1;
+        top: 11%;
+        left: 0;
+        padding: 0 2em;
 		h2.big {
             color: $teamaColor;
 		}
 		p.regular {
             color: $teamaGray;
+            margin-top: 1em;
 		}
 	}
 	img.visual {
         position: absolute;
         bottom: 0;
         right: 0;
+        max-width: 390px;
 	}
-	div.scrollToBottom {
-	}
+    .scrollToBottom {
+        border-left: 2.5px solid $teamaColor;
+        position: absolute;
+        bottom: 5%;
+        height: 50px;
+        width: 50px;
+        border-bottom: 2.5px solid $teamaColor;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        transform-origin: center;
+        transform: rotate(-45deg);
+    }
 }
 section.PR {
 	div.arde {
@@ -49,9 +67,10 @@ section.PR {
         position: relative;
 		div.text {
             position:absolute;
-            bottom: 0;
-            left: 0;
             z-index: 1;
+            right: 0;
+            bottom: 7%;
+            padding: 0 2em;
 			p.big {
                 color: $teamaColor;
 			}
@@ -63,6 +82,9 @@ section.PR {
 		}
 		img.visual {
             position: absolute;
+            top: 0;
+            left: 0;
+            max-width: 390px;
 		}
 	}
 	div.keisokusita {
@@ -71,24 +93,30 @@ section.PR {
         position: relative;
 		div.text {
             position:absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
 			p {
+                line-height: 1.5;
+                font-size: 1.2em;
                 text-align: justify;
                 text-align-last: justify;
 				span {
                     display: block;
                 }
-                span:nth-child(1){}
+                span:nth-child(1){
+                    font-weight: 700;
+                    font-size: 1.2em;
+                }
                 span:nth-child(2){
                     font-size: 2em;
+                    font-weight: 800;
                 }
-                span:nth-child(3){}
+                span:nth-child(3){
+                    font-weight: 700;
+                }
 			}
         }
         img.visual {
@@ -107,20 +135,25 @@ section.PR {
 }
 section.search {
 	section.ar_scan.sp {
+        box-sizing: border-box;
+        padding: 0 1.5em;
 		h2.big {
             color: $teamaColor;
+            margin: 1.5em 0;
 		}
 		p.button {
             position: relative;
 			a {
                 display: block;
                 color: $teamaGray;
-                background-color: $teamaYellow;
                 span.main{
                     text-align: center;
                     text-align-last: center;
                     display: block;
                     padding: 2em 0;
+                    border-radius: 15px;
+                    background-color: $teamaYellow;
+                    font-weight: 600;
                     &::before{
                         content: '';
                         background-image: url(../images/home/sp_icon.svg);
@@ -169,6 +202,9 @@ section.search {
 		}
 	}
 	section.hand_scan {
+        margin: 5em 1.5em;
+        border: 3px solid $teamaColor;
+        border-radius: 15px;
         box-sizing: border-box;
         padding: 0 1em;
 		h2 {
@@ -179,6 +215,7 @@ section.search {
             text-align: center;
             line-height: 1.5;
             color: $teamaColor;
+            margin: 3em 0;
         }
         h2::before{
             content: '';
@@ -211,6 +248,7 @@ section.search {
                 span.num {
                     width: 2.5em;
                     height: 2.5em;
+                    font-weight: 800;
                     background-color: $teamaGray;
                     color:white;
                     border-radius: 50%;
@@ -227,11 +265,14 @@ section.search {
                     display: inline-flex;
                     height: 100%;
                     align-items: center;
+                    font-weight: 700;
                 }
             }
             //入力フィールド
             fieldset .num_input {
                 position: relative;
+                margin-top: 1.5em;
+                font-weight: 500;
                 input {
                     display: block;
                     width: 100%;
@@ -241,26 +282,27 @@ section.search {
                     border-radius: 5px;
                     padding: 1em 3em 1em 4em;
                     text-align: right;
-                    border:1px solid rgba(0,0,0,0);
+                    border:2px solid rgba(0,0,0,0);
                     &:focus{
-                        border: 1px solid $teamaGray;
+                        border: 2px solid $teamaGray;
                     }
                 }
                 label{
                     position: absolute;
                     z-index: 1;
-                    bottom: calc(1em + 1px);
+                    bottom: calc(1em + 2px);
                     left: 1em;
                 }
                 span.cm {
                     position: absolute;
                     z-index: 1;
-                    bottom: calc(1em + 1px);
+                    bottom: calc(1em + 2px);
                     right: 1em;
                 }
                 p.error_msg {
                     text-align: right;
-                    margin-bottom: .7em;
+                    margin-bottom: .4em;
+                    color: red;
                 }
             }
             //余白
@@ -277,7 +319,7 @@ section.search {
                         border: 2px solid rgba(0,0,0,0);
                         border-radius: 10px;
                         box-sizing: border-box;
-                        padding: 0.8em;
+                        padding: 0.5em;
                         label {
                             cursor: pointer;
                             img{
@@ -287,24 +329,25 @@ section.search {
                                 span.title {
                                     margin-top: 1rem;
                                     display: block;
-                                    font-size: 1.8em;
+                                    font-size: 1.1em;
                                     text-align: center;
                                     color: $teamaColor;
+                                    font-weight: 500;
                                 }
                                 span.text {
                                     display: block;
                                     margin-top: 1em;
                                     line-height: 1.5;
                                     text-align: justify;
+                                    font-size: 0.8em;
                                 }
                             }
                         }
                         input {
-                            visibility: hidden;
+                            display: none;
                         }
                     }
                     div.active{
-                        color: $teamaColor;
                         border: 2px solid $teamaColor;
                     }
                 }
@@ -337,16 +380,18 @@ section.search {
                     align-items: center;
                     box-sizing: border-box;
                     height: 5rem;
-                    font-size: 1.5em;
+                    font-size: 1.1em;
                     background-color: $teamaYellow;
-                    color: $teamaGray;
+                    color: $baseText;
                     width: 100%;
                     letter-spacing: 1.5;
                     border: none;
                     border-radius: 10px;
+                    font-weight: 600;
 				}
 				p.require {
                     text-align: center;
+                    margin: 2em 0;
 				}
 				p.error_msg {
 				}
@@ -356,13 +401,14 @@ section.search {
 }
 section.gallery {
     box-sizing: border-box;
-    padding: 0 1em;
+    padding: 0 2em;
 	h2 {
         font-size: 1.7em;
         text-align: center;
-        width: 80%;
+        width: 90%;
         margin: 0 auto;
         max-width: 300px;
+        margin-bottom: 3em;
         span{
             padding: 0.35em 0;
             box-sizing: border-box;
@@ -378,7 +424,7 @@ section.gallery {
 	}
 	ol {
         display: grid;
-        gap: 1em;
+        gap: 3em;
 		li {
             display: flex;
             flex-direction: column-reverse;

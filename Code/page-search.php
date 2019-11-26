@@ -23,7 +23,7 @@ include('page-match_plate_api.php');
 
     <div class="sizes">
         <h2>
-            <?php echo ($_GET['from'] == 'ar') ? '計測した段差の寸法' : '指定した段差の寸法';?>
+            <?php echo ($_GET['from'] == 'ar') ? '計測した段差の寸法' : '入力した段差の寸法';?>
         </h2>
         <dl>
             <?php function displayNum($title,$key,$max_key = -1){?>

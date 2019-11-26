@@ -173,7 +173,7 @@ $_SESSION['have_seen'] = true;
             </fieldset>
             <!--submitボタンとメッセージ-->
             <div class='submit'>
-                <input type="submit" value="検索する" >
+                <input type="submit" value="ぴったりプレートを表示" >
                 <p class="require">全項目入力する必要があります</p>
                 <p class="error_msg"></p>
             </div>
@@ -192,7 +192,7 @@ $_SESSION['have_seen'] = true;
         //ギャラリー動画コンポーネント
         function gallery_component($title,$youtubeID){?>
         <li>
-            <h3><?php echo $title;?></h3>
+            <h3><?php echo '# '.$title;?></h3>
             <div class="youtube">
                 <iframe src="" frameborder="0"></iframe>
             </div>

@@ -20,7 +20,7 @@ function add_files(){
     );
     wp_enqueue_style(
         'google-fonts-style',
-        'https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap',
+        'https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700,900&display=swap&subset=japanese',
         []
     );
     wp_enqueue_script(
