@@ -73,7 +73,7 @@ include('page-match_plate_api.php');
                     </dl>
                 </a>
             </li>
-        <?php endfor;?>
+            <?php endfor;?>
         </ol>
     </section>
     <?php endif;?>

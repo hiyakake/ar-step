@@ -5,6 +5,12 @@ session_start();
 $headerTitle = '投稿ページのタイトル';
 ?>
 <?php
+    //GETの無毒化
+    $_GET['need_count'] = htmlspecialchars($_GET['ndde_count']);
+    $_GET['angle_when_used'] = htmlspecialchars($_GET['angle_when_used']);
+    $_GET['from'] = htmlspecialchars($_GET['form']);
+?>
+<?php
 //ページに訪れたことがあるか
 if(isset($_SESSION['have_seen'])){
     $is_from_google = false;
