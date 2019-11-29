@@ -5,7 +5,7 @@ Template Name:プレート検索結果ページ
 session_start();
 $_SESSION['have_seen'] = true;
 
-include('page-match_plate_api.php');
+include('mpa/match_plate_api.php');
 
 ?>
 
