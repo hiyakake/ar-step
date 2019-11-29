@@ -101,20 +101,19 @@ section.PR {
 			p {
                 line-height: 1.5;
                 font-size: 1.2em;
-                text-align: justify;
-                text-align-last: justify;
-				span {
-                    display: block;
+				>span {
+                    display: flex;
+                    justify-content: space-between;
                 }
-                span:nth-child(1){
+                >span:nth-child(1){
                     font-weight: 700;
                     font-size: 1.2em;
                 }
-                span:nth-child(2){
+                >span:nth-child(2){
                     font-size: 2em;
                     font-weight: 800;
                 }
-                span:nth-child(3){
+                >span:nth-child(3){
                     font-weight: 700;
                 }
 			}

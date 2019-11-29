@@ -29,9 +29,15 @@ $_SESSION['have_seen'] = true;
     <div class="keisokusita">
         <div class="text">
             <p>
-                <span>計測した寸法に</span>
-                <span>マッチする</span>
-                <span>ステップを提案します</span>
+                <span>
+                    <span>計</span><span>測</span><span>し</span><span>た</span><span>寸</span><span>法</span><span>に</span>
+                </span>
+                <span>
+                    <span>マ</span><span>ッ</span><span>チ</span><span>す</span><span>る</span>
+                </span>
+                <span>
+                    <span>ス</span><span>テ</span><span>ッ</span><span>プ</span><span>を</span><span>提</span><span>案</span><span>し</span><span>ま</span><span>す</span>
+                </span>
             </p>
         </div>
         <img src="images/home/home_keisoku_sp.jpg" alt="" class="visual sp">
