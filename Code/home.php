@@ -179,7 +179,7 @@ $_SESSION['have_seen'] = true;
             </fieldset>
             <!--submitボタンとメッセージ-->
             <div class='submit'>
-                <input type="submit" value="ぴったりプレートを表示" >
+                <input type="submit" value="ぴったりプレートを表示" v-show='step_type != null'>
                 <p class="require">全項目入力する必要があります</p>
                 <p class="error_msg"></p>
             </div>
