@@ -146,12 +146,12 @@ if(isset($_SESSION['have_seen'])){
                 $angle_msg = '車椅子にとって安全な高さです';
                 $angle_explanatory = 'とてもいい角度です。しかし、雨の日の濡れたプレートは滑りやすく危険です。プレートにマットを敷くと、より良くなりますよ。';
             };
-            if($plate['angle_when_used'] >= 15){
+            if($plate['angle_when_used'] >= 4){
                 $level = 'warning';
                 $angle_msg = '注意が必要なプレートです';
                 $angle_explanatory = '雨の日では、この角度のプレートは大変滑りやすくなります。設置する場合は、マットを一緒に敷くと安全になります。';
             };
-            if($plate['angle_when_used'] >= 30){
+            if($plate['angle_when_used'] >= 13){
                 $level = 'danger';
                 $angle_msg = '車椅子にとって危険な傾斜です';
                 $angle_explanatory = '天候に関わらず、危険な角度です。このプレートを車椅子ユーザーや重い荷物を積んだベビーカーが使用しようとした場合、転倒する恐れがあります。可能であれば、緩やかなプレートを設置する努力が必要です。';
