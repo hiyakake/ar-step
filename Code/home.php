@@ -122,13 +122,13 @@ $_SESSION['have_seen'] = true;
                 <div class='num_input'>
                     <p class="error_msg"><!--insert with Vue.js--></p>
                     <label for="width">横幅</label>
-                    <input require='require' type="number" pattern="[0-9]*" name="width" id="width" autocomplete='off' placeholder='入力'>
+                    <input require='require' type="number" pattern="[0-9]*" name="width" id="width" placeholder='入力'>
                     <span class="cm">cm</span>
                 </div>
                 <div class='num_input'>
                     <p class="error_msg"><!--insert with Vue.js--></p>
                     <label for="height">高さ</label>
-                    <input require='require' type="number" pattern="[0-9]*" name="height" id="height" autocomplete='off' placeholder='入力'>
+                    <input require='require' type="number" pattern="[0-9]*" name="height" id="height" placeholder='入力'>
                     <span class="cm">cm</span>
                 </div>
             </fieldset>
@@ -151,13 +151,13 @@ $_SESSION['have_seen'] = true;
                 <div class='num_input'>
                     <p class="error_msg">aaaaa<!--insert with Vue.js--></p>
                     <label for="min_depth">最短の奥行き</label>
-                    <input require='require' type="number" pattern="[0-9]*" name="min_depth" id="min_depth" autocomplete='off' placeholder='入力'>
+                    <input require='require' type="number" pattern="[0-9]*" name="min_depth" id="min_depth" placeholder='入力'>
                     <span class="cm">cm</span>
                 </div>
                 <div class='num_input'>
                     <p class="error_msg"><!--insert with Vue.js--></p>
                     <label for="max_depth">最長の奥行き</label>
-                    <input require='require' type="number" pattern="[0-9]*" name="max_depth" id="max_depth" autocomplete='off' placeholder='入力'>
+                    <input require='require' type="number" pattern="[0-9]*" name="max_depth" id="max_depth" placeholder='入力'>
                     <span class="cm">cm</span>
                 </div>
             </fieldset>
@@ -168,12 +168,12 @@ $_SESSION['have_seen'] = true;
                     <span class='title'>プレートを設置する場所で<br>設置できる最大の奥行きを<br>教えて下さい</span>
                 </legend>
                 <div class='num_input'>
-                    <input type="hidden" name="min_depth" id="min_depth" autocomplete='off' value='0' v-bind:disabled='step_type != "single"'>
+                    <input type="hidden" name="min_depth" id="min_depth" value='0' v-bind:disabled='step_type != "single"'>
                 </div>
                 <div class='num_input'>
                     <p class="error_msg"><!--insert with Vue.js--></p>
                     <label for="max_depth">最大の奥行き</label>
-                    <input require='require' type="number" pattern="[0-9]*" name="max_depth" id="max_depth" autocomplete='off' placeholder='入力' v-bind:disabled='step_type != "single"'>
+                    <input require='require' type="number" pattern="[0-9]*" name="max_depth" id="max_depth" placeholder='入力' v-bind:disabled='step_type != "single"'>
                     <span class="cm">cm</span>
                 </div>
             </fieldset>
