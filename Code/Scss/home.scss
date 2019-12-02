@@ -3,6 +3,11 @@ $teamaYellow : #E1E828;
 $teamaGray : #464646;
 $baseText:#454343;
 
+@mixin tab {
+    @media (min-width: (700px)) {
+        @content;
+    }
+}
 
 header,
 section.PR,
@@ -31,6 +36,14 @@ header {
         top: 11%;
         left: 0;
         padding: 0 2em;
+        max-width: 15em;
+        @include tab{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            top: 0;
+        }
 		h2.big {
             color: $teamaColor;
 		}
@@ -44,6 +57,13 @@ header {
         bottom: 0;
         right: 0;
         max-width: 390px;
+        @include tab{
+            top: 0;
+            bottom: 0;
+            margin-top: auto;
+            margin-bottom: auto;
+            max-width: 50%;
+        }
 	}
     .scrollToBottom {
         border-left: 2.5px solid $teamaColor;
@@ -71,6 +91,13 @@ section.PR {
             right: 0;
             bottom: 7%;
             padding: 0 2em;
+            @include tab{
+                bottom: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 100%;
+            }
 			p.big {
                 color: $teamaColor;
 			}
@@ -85,6 +112,9 @@ section.PR {
             top: 0;
             left: 0;
             max-width: 390px;
+            @include tab{
+                max-width: 70%;
+            }
 		}
 	}
 	div.keisokusita {
@@ -125,10 +155,16 @@ section.PR {
             object-position: center;
 		}
 		img.visual.sp {
-            
+            display: block;
+            @include tab{
+                display: none;
+            }
 		}
 		img.visual.pc {
             display: none;
+            @include tab{
+                display: block;
+            }
 		}
 	}
 }
@@ -136,6 +172,10 @@ section.search {
 	section.ar_scan.sp {
         box-sizing: border-box;
         padding: 0 1.5em;
+        display: block;
+        @include tab{
+            display: none;
+        }
 		h2.big {
             color: $teamaColor;
             margin: 1.5em 0;
@@ -193,10 +233,24 @@ section.search {
 	}
 	section.ar_scan.pc {
         display: none;
+        margin-top: 5em;
+        @include tab{
+            display: block;
+        }
 		div.main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 440px;
+            margin: auto;
 			img.qr {
+                width: 10em;
 			}
 			p {
+                color: $teamaColor;
+                font-weight: 700;
+                font-size: 2em;
+                line-height: 1.5;
 			}
 		}
 	}
@@ -206,6 +260,10 @@ section.search {
         border-radius: 15px;
         box-sizing: border-box;
         padding: 0 1em;
+        @include tab{
+            margin: 5em auto;
+            max-width: 700px;
+        }
 		h2 {
             display: flex;
             flex-direction: column;
@@ -228,6 +286,15 @@ section.search {
             margin-bottom: .8em;
         }
 		form {
+            @include tab{
+                display: grid;
+                grid-template: 
+                "ques1 ques1" auto
+                "ques2 ques3" auto
+                "submit submit" auto
+                /1fr 1fr;
+                gap: 2em 1.5em;
+            }
             div.check_icons {
                 img.ok {
                     width: 3em;
@@ -309,20 +376,41 @@ section.search {
                 margin: 2em 0;
             }
 			fieldset.ques1 {
+                grid-area: ques1;
                 .contents{
                     display: grid;
                     grid-template-columns: 1fr 1fr;
                     gap: 1em;
+                    @include tab{
+                        grid-template: 
+                        "one one ..." auto
+                        "... or ..." auto
+                        "... multi multi" auto
+                        /1fr 4em 1fr;
+                        gap: 1em 0;
+                    }
                     div {
                         color: black;
                         border: 2px solid rgba(0,0,0,0);
                         border-radius: 10px;
                         box-sizing: border-box;
                         padding: 0.5em;
+                        @include tab{
+                            border: 2px solid $teamaGray;
+                        }
                         label {
                             cursor: pointer;
+                            @include tab{
+                                display: flex;
+                                align-items: center;
+                            }
                             img{
                                 border-radius: 5px;
+                                @include tab{
+                                    margin-right: 1.5em;
+                                    height: 10em;
+                                    width: auto;
+                                }
                             }
                             p {
                                 span.title {
@@ -332,6 +420,10 @@ section.search {
                                     text-align: center;
                                     color: $teamaColor;
                                     font-weight: 500;
+                                    @include tab{
+                                        text-align: left;
+                                        margin-top: 0;
+                                    }
                                 }
                                 span.text {
                                     display: block;
@@ -349,8 +441,35 @@ section.search {
                     div.active{
                         border: 2px solid $teamaColor;
                     }
+                    div:first-child{
+                        @include tab{
+                            grid-area: one;
+                        }
+                    }
+                    div:last-child{
+                        @include tab{
+                            grid-area: multi;
+                        }
+                    }
+                    .or{
+                        display: none;
+                        @include tab{
+                            display: block;
+                            grid-area: or;
+                            text-align: center;
+                            font-size: 2em;
+                            color: $teamaColor;
+                            font-weight: 800;
+                        }
+                    }
                 }
-			}
+            }
+            fieldset.ques2{
+                grid-area: ques2;
+            }
+            fieldset.ques3{
+                grid-area: ques3;
+            }
             fieldset.ques2,
             fieldset.ques3 {
 				legend {
@@ -373,6 +492,10 @@ section.search {
 				
 			}
 			div.submit {
+                grid-area: submit;
+                @include tab{
+                    margin: auto;
+                }
 				input {
                     display: flex;
                     justify-content: center;
@@ -401,6 +524,10 @@ section.search {
 section.gallery {
     box-sizing: border-box;
     padding: 0 2em;
+    @include tab{
+        max-width: 500px;
+        margin: 0 auto;
+    }
 	h2 {
         font-size: 1.7em;
         text-align: center;

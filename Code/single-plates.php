@@ -24,7 +24,6 @@ if(isset($_SESSION['have_seen'])){
 ?>
 
 <?php get_header();?>
-
     <!--Googleから来た人にメッセージを出す-->
     <?php if($is_from_google):?>
     <div class="from_google_msg" v-show='view'>

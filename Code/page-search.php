@@ -22,33 +22,35 @@ include('mpa/match_plate_api.php');
     </div>
 
     <div class="sizes">
-        <h2>
-            <?php echo ($_GET['from'] == 'ar') ? '計測した段差の寸法' : '入力した段差の寸法';?>
-        </h2>
-        <dl>
-            <?php function displayNum($title,$key,$max_key = -1){?>
-            <dt>
-                <?php echo ($title == '傾斜' && $plate['max_height'] != -1 ? '平均' : '').$title;?>
-            </dt>
-            <dd>
-                <span class="num_int"><?php echo floor($key);?></span>
-                <?php if($key >= floor($key)+0.1):?>
-                    <span class="num_floot">.<?php echo substr($key-floor($key),2);?></span>
-                <?php endif;?>
-                <?php if($max_key != -1):?>
-                    <span class="kara">〜</span>
-                    <span class="num_int"><?php echo floor($max_key);?></span>
-                    <?php if($max_key >= floor($max_key)+0.1):?>
-                    .<span class="num_floot"><?php echo substr($max_key-floor($max_key),2);?></span>
-                <?php endif;?>
-                <?php endif;?>
-                <span class="tanni"><?php echo ($title == '傾斜' ? '度' : 'cm' );?></span>
-            </dd>
-            <?php };?>
-            <?php displayNum('高さ',$QUERY['HEIGHT']);?>
-            <?php displayNum('横幅',$QUERY['WIDTH']);?>
-            <?php displayNum('奥行き',$QUERY['MIN_DEPTH'],$QUERY['MAX_DEPTH']);?>
-        </dl>
+        <div class='sticky'>
+            <h2>
+                <?php echo ($_GET['from'] == 'ar') ? '計測した段差の寸法' : '入力した段差の寸法';?>
+            </h2>
+            <dl>
+                <?php function displayNum($title,$key,$max_key = -1){?>
+                <dt>
+                    <?php echo ($title == '傾斜' && $plate['max_height'] != -1 ? '平均' : '').$title;?>
+                </dt>
+                <dd>
+                    <span class="num_int"><?php echo floor($key);?></span>
+                    <?php if($key >= floor($key)+0.1):?>
+                        <span class="num_floot">.<?php echo substr($key-floor($key),2);?></span>
+                    <?php endif;?>
+                    <?php if($max_key != -1):?>
+                        <span class="kara">〜</span>
+                        <span class="num_int"><?php echo floor($max_key);?></span>
+                        <?php if($max_key >= floor($max_key)+0.1):?>
+                        .<span class="num_floot"><?php echo substr($max_key-floor($max_key),2);?></span>
+                    <?php endif;?>
+                    <?php endif;?>
+                    <span class="tanni"><?php echo ($title == '傾斜' ? '度' : 'cm' );?></span>
+                </dd>
+                <?php };?>
+                <?php displayNum('高さ',$QUERY['HEIGHT']);?>
+                <?php displayNum('横幅',$QUERY['WIDTH']);?>
+                <?php displayNum('奥行き',$QUERY['MIN_DEPTH'],$QUERY['MAX_DEPTH']);?>
+            </dl>
+        </div>
     </div>
     
     <?php if(count($PLATES) == 0):?>

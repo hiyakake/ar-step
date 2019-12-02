@@ -3,6 +3,13 @@ $teamaYellow : #E1E828;
 $teamaGray : #464646;
 $baseText:#454343;
 
+@mixin tab {
+    @media (min-width: (700px)) {
+        @content;
+    }
+}
+
+
 body{
     font-family: 'Noto Sans JP', sans-serif;
     font-feature-settings:'palt';
@@ -49,6 +56,10 @@ footer.basic {
         justify-content: center;
         align-items: center;
         padding: 4em 0;
+        @include tab{
+            max-width: 500px;
+            margin: 0 auto;
+        }
 		h4 {
             width: 80%;
             margin: initial auto;
@@ -88,10 +99,14 @@ footer.basic {
     }
     div.contents{
         display: flex;
+        justify-content: space-around;
         flex-direction: column;
         background-color: #106380;
         color: white;
         padding-bottom: 4rem;
+        @include tab{
+            flex-direction: row;
+        }
         section.kannrenn {
             padding: 2rem;
             box-sizing: border-box;
@@ -100,12 +115,23 @@ footer.basic {
                 text-align: center;
                 font-weight: bold;
                 font-size: 1.5em;
+                @include tab{
+                    text-align: left;
+                }
             }
             ul {
                 display: flex;
                 flex-direction: column;
+                @include tab{
+                    flex-direction: row;
+                }
                 li {
                     margin-top: 3rem;
+                    &:first-child{
+                        @include tab{
+                            margin-right: 1em;
+                        }
+                    }
                     a {
                         text-decoration: none;
                         color: white;
@@ -127,6 +153,10 @@ footer.basic {
             margin-top: 3rem;
             border-top: 2px solid;
             grid-area: credit;
+            @include tab{
+                border-top: none;
+                border-left: 2px solid;
+            }
             div.github {
                 margin-top: 1.5rem;
                 img {
@@ -137,7 +167,7 @@ footer.basic {
                 margin-top: 1.5rem;
                 text-align: justify;
                 text-align-last: left;
-                line-height: 1.5;
+                line-height: 0.8;
                 span:first-child {
                     font-weight: bold;
                     line-height: 1;

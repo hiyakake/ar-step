@@ -63,7 +63,7 @@ $_SESSION['have_seen'] = true;
     <section class="ar_scan pc">
         <div class="main">
             <!--スマホアイコンはCSSで-->
-            <img src="images/home/sp_icon.svg" alt="URL" class="qr">
+            <img src="images/home/QR.svg" alt="URL" class="qr">
             <p>ARで<br>段差の大きさを<br>計測しましょう。</p>
         </div>
     </section>
@@ -92,6 +92,7 @@ $_SESSION['have_seen'] = true;
                         </label>
                         <input require='require' type="radio" name="step_type" id="step_type_single" value='single' v-model='step_type' autofocus>
                     </div>
+                    <p class="or">OR</p>
                     <div :class='{ active : step_type == "multipul" }'>
                         <label for="step_type_multipul">
                             <img class='unselect' src="images/home/段差選択_階段.jpg" alt="多段型段差の例を紹介した画像です" v-show='step_type != "multipul"'>
@@ -149,7 +150,7 @@ $_SESSION['have_seen'] = true;
                     </p>
                 </video>
                 <div class='num_input'>
-                    <p class="error_msg">aaaaa<!--insert with Vue.js--></p>
+                    <p class="error_msg"><!--insert with Vue.js--></p>
                     <label for="min_depth">最短の奥行き</label>
                     <input require='require' type="number" pattern="[0-9]*" name="min_depth" id="min_depth" placeholder='入力'>
                     <span class="cm">cm</span>
