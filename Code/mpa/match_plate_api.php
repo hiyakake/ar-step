@@ -6,28 +6,28 @@ $SAFETY_MAX_SPACE_CM = 30; //プレートを設置した時の左右の最大の
 
 /*全てのパラメタがセットされていることを確認した上で、無毒化*/
 if(isset($_GET['width'])){
-    $_GET['width'] = htmlspecialchars($_GET['width']);
+    $_GET['width'] = floatval($_GET['width']);
     //var_dump($_GET['width']);
     $status[0] = 1;
 }else{
     $status[0] = 0;
 };
 if(isset($_GET['height'])){
-    $_GET['height'] = htmlspecialchars($_GET['height']);
+    $_GET['height'] = floatval($_GET['height']);
     //var_dump($_GET['height']);
     $status[1] = 1;
 }else{
     $status[1] = 0;
 };
 if(isset($_GET['min_depth'])){
-    $_GET['min_depth'] = htmlspecialchars($_GET['min_depth']);
+    $_GET['min_depth'] = floatval($_GET['min_depth']);
     //var_dump($_GET['min_depth']);
     $status[2] = 1;
 }else{
     $status[2] = 0;
 };
 if(isset($_GET['max_depth'])){
-    $_GET['max_depth'] = htmlspecialchars($_GET['max_depth']);
+    $_GET['max_depth'] = floatval($_GET['max_depth']);
     //var_dump($_GET['max_depth']);
     $status[3] = 1;
 }else{

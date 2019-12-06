@@ -6,8 +6,8 @@ $headerTitle = '投稿ページのタイトル';
 ?>
 <?php
     //GETの無毒化
-    $_GET['need_count'] = htmlspecialchars($_GET['ndde_count']);
-    $_GET['angle_when_used'] = htmlspecialchars($_GET['angle_when_used']);
+    $_GET['need_count'] = intval($_GET['need_count']);
+    $_GET['angle_when_used'] = floatval($_GET['angle_when_used']);
     $_GET['from'] = htmlspecialchars($_GET['form']);
 ?>
 <?php
