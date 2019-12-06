@@ -160,7 +160,7 @@ if(isset($_SESSION['have_seen'])){
                 <dl>
                     <?php displayNum('傾斜',$plate['angle_when_used']);?>
                 </dl>
-                <img src='images/single/angle-info-<?php echo $level;?>.svg"' alt="<?php echo $angle_msg;?>">
+                <img src='images/single/angle-info-<?php echo $level;?>.svg' alt="<?php echo $angle_msg;?>">
                 <p class="msg"><?php echo $angle_msg;?></p>
                 <p class="explanatory">
                     <?php echo $angle_explanatory;?>
