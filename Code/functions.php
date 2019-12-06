@@ -78,5 +78,28 @@ function add_files(){
             date('U')
         );
     };
+    //AR SCANに適用するもの
+    if($slug == 'ar'){
+        wp_enqueue_style(
+            'ar-style',
+            get_template_directory_uri().'/style/page-arscan.min.css',
+            ['global-style'],
+            date('U')
+        );
+        wp_enqueue_script(
+            'ar-script',
+            get_template_directory_uri().'/js/arscan.js',
+            ['vue','aframe'],
+            false,
+            true
+        );
+        wp_enqueue_script(
+            'aframe',
+            'https://aframe.io/releases/0.9.2/aframe.min.js',
+            [],
+            false,
+            true
+        );
+    }
 };
 add_action('wp_enqueue_scripts','add_files');
