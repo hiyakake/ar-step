@@ -98,7 +98,7 @@ function add_files(){
             'https://aframe.io/releases/0.9.2/aframe.min.js',
             [],
             false,
-            true
+            false
         );
     }
 };
