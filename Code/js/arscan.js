@@ -3,6 +3,7 @@ const ar_app = new Vue({
     data:{
         //ベースとなる入力値
         B:{
+            senens_scanned_size_at_3d_world:23.456, //千円を計測した時の3D空間上での大きさ
             pin_a_pos:{
                 x:-10,
                 y:0,
@@ -50,6 +51,11 @@ const ar_app = new Vue({
                 rote:{h:0,p:0,b:0},
                 height:30
             }
+        },
+        //千円の計測値
+        senen:{
+            first_point:{x:0,y:0,z:0},
+            last_point:{x:0,y:0,z:0}
         }
     },
     //各パーツの初期化を行う
@@ -136,6 +142,7 @@ const ar_app = new Vue({
     },
     //セットを行う
     methods:{
+        //A-Frameの形式にフォーマットして返す
         set_box_geometry:function(width,depth,height){
             return `primitive: box;width: ${width};depth: ${depth};height: ${height}`;
         },
@@ -147,6 +154,18 @@ const ar_app = new Vue({
         },
         set_rotation:function(h,p,b){
             return `${h} ${p} ${b}`;
+        },
+        //数値を千円札を基準に実寸に直す
+        covert_to_actual_size:function(target){
+            /*
+            千円札をスキャンした時の3D空間上のサイズ = SS(senens_scanned_size_at_3d_world)
+            千円札の実際の大きさ（15cm） = 15
+            対象物の3D上のサイズ = VS(target)
+            現実世界でのサイズ = RS(Anser)
+
+            「SS:15 = VS:RS」の比率関係を利用
+            */
+            return (15 * target) / this.B.senens_scanned_size_at_3d_world;
         }
     }
 });
