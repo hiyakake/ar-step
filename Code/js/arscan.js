@@ -54,7 +54,11 @@ const ar_app = new Vue({
     },
     //各パーツの初期化を行う
     mounted:function(){
-
+        this.get_width_length;
+        this.get_width_line_pos;
+        this.get_width_line_rote;
+        this.get_min_depth_guide_surface_paras;
+        this.get_max_depth_guide_surface_paras;
     },
     //計算をしないと求めらない数値
     computed:{
