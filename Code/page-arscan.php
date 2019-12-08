@@ -21,7 +21,7 @@ get_header();
                 <a-entity
                 id='height_surface'
                 :geometry='set_plane_geometry(B.width,40)'
-                :position='set_position(0,0,0)'
+                :position='set_position(0,B.height,0)'
                 :rotation='set_rotation(90,0,0)'
                 material='
                 side: double;
@@ -29,7 +29,7 @@ get_header();
                     <a-entity
                     id='depth_offset_line'
                     :geometry='set_box_geometry(B.width,0.5,0.5)'
-                    :position='set_position(0,-10,0)'
+                    :position='set_position(0,B.height_offset,0)'
                     :rotation='set_rotation(0,0,0)'
                     material='color: blue'></a-entity>
                 </a-entity>
@@ -37,14 +37,14 @@ get_header();
                 <a-entity
                 id='min_depth_line'
                 :geometry='set_box_geometry(B.width,0.5,0.5)'
-                :position='set_position(0,0,30)'
+                :position='set_position(0,0,B.min_depth)'
                 :rotation='set_rotation(0,0,0)'
                 material='color: yellow'></a-entity>
                 <a-entity
                 id='min_depth_guide_surface'
-                :geometry='set_plane_geometry(B.width,40)'
-                :position='set_position(0,4.75,10.45)'
-                :rotation='set_rotation(-77,0,0)'
+                :geometry='set_plane_geometry(B.width,P.min_depth_guide_surface.height)'
+                :position='set_position(0,P.min_depth_guide_surface.pos.y,P.min_depth_guide_surface.pos.z)'
+                :rotation='set_rotation(P.min_depth_guide_surface.rote.h,0,0)'
                 material='
                 side: double;
                 color: gray'></a-entity>
@@ -52,14 +52,14 @@ get_header();
                 <a-entity
                 id='max_depth_line'
                 :geometry='set_box_geometry(B.width,0.5,0.5)'
-                :position='set_position(0,0,70)'
+                :position='set_position(0,0,B.max_depth)'
                 :rotation='set_rotation(0,0,0)'
                 material='color: green'></a-entity>
                 <a-entity
                 id='max_depth_guide_surface'
-                :geometry='set_plane_geometry(B.width,82)'
-                :position='set_position(0,5.246,26.96)'
-                :rotation='set_rotation(-84,0,0)'
+                :geometry='set_plane_geometry(B.width,P.max_depth_guide_surface.height)'
+                :position='set_position(0,P.max_depth_guide_surface.pos.y,P.max_depth_guide_surface.pos.z)'
+                :rotation='set_rotation(P.max_depth_guide_surface.rote.h,0,0)'
                 material='
                 side: double;
                 color: gray'></a-entity>
