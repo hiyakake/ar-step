@@ -112,7 +112,7 @@ $_SESSION['have_seen'] = true;
                     <span class="num">2</span>
                     <span class='title'>段差の横幅と高さを<br>教えてください</span>
                 </legend>
-                <video src="images/home/how_to_width_and_height.mp4" controls repeat preload='metadata'>
+                <video src="images/home/how_to_width_and_height.mp4" playsinline controls repeat preload='metadata'>
                     <p>
                         横幅を測るときは、段差の一番手前の横幅を測ります。
                         測るのは、必要な長さだけで構いません。
@@ -139,7 +139,7 @@ $_SESSION['have_seen'] = true;
                     <span class="num">3</span>
                     <span class='title'>段差の奥行きについて<br>教えてください</span>
                 </legend>
-                <video src="images/home/how_to_width_and_height.mp4" controls repeat preload='metadata'>
+                <video src="images/home/how_to_width_and_height.mp4" playsinline controls repeat preload='metadata'>
                     <p>
                         奥行きを測るときは「最短」と「最長」を考えます。
                         プレートが階段の角にぶつからないようにするには、段差の奥行きよりも少し伸ばす必要があります。
