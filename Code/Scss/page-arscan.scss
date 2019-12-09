@@ -190,10 +190,7 @@ button{
         }
         .controller_container{
             bottom: 2em;
-            left: 0;
-            right: 0;
-            margin: auto;
-            width: 50%;
+            width: 100%;
             p.guide_msg{
                 background-color: $teamaColor;
                 color: white;
@@ -201,8 +198,10 @@ button{
                 text-align: center;
                 padding: 0.5em 1em;
                 border: 2px solid white;
+                margin: 0 auto;
                 position: relative;
                 margin-bottom: 2em;
+                width: max-content;
                 span{
                     position: relative;
                     z-index: 2;
