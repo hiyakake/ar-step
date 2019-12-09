@@ -3,7 +3,6 @@ const ar_app = new Vue({
     data:{
         //ベースとなる入力値
         B:{
-            
             senen:{
                 senens_scanned_size_at_3d_world:23.456, //千円を計測した時の3D空間上での大きさ
                 first_point:{x:0,y:0,z:0},
@@ -60,8 +59,7 @@ const ar_app = new Vue({
         //画面遷移の管理
         S:{
             info_box_msgs_cnt:0,
-            show_info:true,
-            show_ok:false,
+            show_ui:'ar',
             timeline_cnt:1, //全体の進捗を管理
             timeline:[
                 //ようこそ画面
@@ -421,6 +419,7 @@ const ar_app = new Vue({
         },
         //最短斜辺面の位置、角度、大きさを決める
         get_min_depth_guide_surface_paras:function(){
+            console.log('計算しました');
             //変数格納
             const min_max_depth = this.B.min_depth;
             const height = this.B.height;
@@ -478,6 +477,7 @@ const ar_app = new Vue({
             return `primitive: plane;width: ${width};height: ${height}`;
         },
         set_position:function(x,y,z){
+            console.log('change height!!');
             return `${x} ${y} ${z}`;
         },
         set_rotation:function(h,p,b){

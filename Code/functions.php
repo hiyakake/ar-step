@@ -80,18 +80,18 @@ function add_files(){
             date('U')
         );
         wp_enqueue_script(
-            'ar-script',
-            get_template_directory_uri().'/js/arscan.js',
-            ['vue','aframe'],
-            false,
-            true
-        );
-        wp_enqueue_script(
             'aframe',
             'https://aframe.io/releases/0.9.2/aframe.min.js',
             [],
             false,
             false
+        );
+        wp_enqueue_script(
+            'arscan_script',
+            get_template_directory_uri().'/js/arscan.js',
+            ['vue','aframe'],
+            false,
+            true
         );
     }
 };

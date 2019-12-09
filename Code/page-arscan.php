@@ -7,7 +7,8 @@ get_header();
 <main id="ar_app">
     <div id="ui_2d">
         <!--box-->
-        <div class="bg_gradient">
+        <div class="bg_gradient"
+        :class='{ bg_gradient_active : S.show_ui != "ar" }'>
             <!--info box-->
             <?php include('ar/info_box.php');?>
             <!--ok box-->
@@ -15,6 +16,20 @@ get_header();
         </div>
         <!--ar_ui_senen-->
         <?php include('ar/ar_ui_senen.php');?>
+        <!--デバッグ表示-->
+        <div class="debug_ui">
+            <h2>Base</h2>
+            <p>height: {{B.height}}</p>
+            <p>width: {{B.width}}</p>
+            <p>min_depth: {{B.min_depth}}</p>
+            <p>max_depth: {{B.max_depth}}</p>
+            <p>height_offset: {{B.height_offset}}</p>
+            <h2>min_depth_surface</h2>
+            <p>length: {{P.min_depth_guide_surface.height}}</p>
+            <p>posY: {{P.min_depth_guide_surface.pos.y}}</p>
+            <p>posZ: {{P.min_depth_guide_surface.pos.z}}</p>
+            <p>roteH: {{P.min_depth_guide_surface.rote.h}}</p>
+        </div>
     </div>
     <div id="stage">
         <a-scene> 
@@ -75,17 +90,11 @@ get_header();
     
             
             <a-camera
-            position='0 100 50'
-            rotation='-30 0 0'></a-camera>
+            position='0 30 100'
+            rotation='0 30 0'></a-camera>
         </a-scene>
     </div>
 </main>
-
-
-
-
-
-
 <?php wp_footer();?>
 </body>
 </html>
