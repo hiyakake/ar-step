@@ -5,8 +5,16 @@ Template Name:AR SCAN
 get_header();
 ?>
 <main id="ar_app">
-    <div class="ui_2d">
-    
+    <div id="ui_2d">
+        <!--box-->
+        <div class="bg_gradient">
+            <!--info box-->
+            <?php include('ar/info_box.php');?>
+            <!--ok box-->
+            <?php include('ar/ok_box.php');?>
+        </div>
+        <!--ar_ui_senen-->
+        <?php include('ar/ar_ui_senen.php');?>
     </div>
     <div id="stage">
         <a-scene> 
