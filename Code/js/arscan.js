@@ -60,7 +60,7 @@ const ar_app = new Vue({
         S:{
             info_box_msgs_cnt:0,
             show_ui:'ar',
-            timeline_cnt:1, //全体の進捗を管理
+            timeline_cnt:0, //全体の進捗を管理
             timeline:[
                 //ようこそ画面
                 {
@@ -419,7 +419,7 @@ const ar_app = new Vue({
         },
         //最短斜辺面の位置、角度、大きさを決める
         get_min_depth_guide_surface_paras:function(){
-            console.log('計算しました');
+            //console.log('計算しました');
             //変数格納
             const min_max_depth = this.B.min_depth;
             const height = this.B.height;
@@ -477,7 +477,6 @@ const ar_app = new Vue({
             return `primitive: plane;width: ${width};height: ${height}`;
         },
         set_position:function(x,y,z){
-            console.log('change height!!');
             return `${x} ${y} ${z}`;
         },
         set_rotation:function(h,p,b){

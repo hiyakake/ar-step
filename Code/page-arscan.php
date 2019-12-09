@@ -14,8 +14,8 @@ get_header();
             <!--ok box-->
             <?php include('ar/ok_box.php');?>
         </div>
-        <!--ar_ui_senen-->
-        <?php include('ar/ar_ui_senen.php');?>
+        <!--ar_ui-->
+        <?php include('ar/ar_ui.php');?>
         <!--デバッグ表示-->
         <div class="debug_ui">
             <h2>Base</h2>
