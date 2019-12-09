@@ -59,6 +59,7 @@ const ar_app = new Vue({
         //画面遷移の管理
         S:{
             info_box_msgs_cnt:0,
+            ar_ui_guide_msg_cnt:0,
             show_ui:'ar',
             timeline_cnt:3, //全体の進捗を管理
             timeline:[
@@ -392,7 +393,20 @@ const ar_app = new Vue({
         this.get_min_depth_guide_surface_paras;
         this.get_max_depth_guide_surface_paras;
 
-        this.set_display_text_in_order;
+        //テキストが2秒毎に丁寧丁寧丁寧に切り替わるように
+        setInterval(()=>{
+            //infobox内
+            let length = this.S.timeline[this.S.timeline_cnt].info_box.msgs.length;
+            //debugger;
+            let current = this.S.info_box_msgs_cnt;
+            if(current < length-1) this.S.info_box_msgs_cnt++;
+            else this.S.info_box_msgs_cnt = 0;
+            //ar_ui内
+            length = this.S.timeline[this.S.timeline_cnt].ar_ui.guide_msg.length;
+            current = this.S.ar_ui_guide_msg_cnt;
+            if(current < length-1) this.S.ar_ui_guide_msg_cnt++;
+            else this.S.ar_ui_guide_msg_cnt = 0;
+        },2000);
     },
     //計算をしないと求めらない数値
     computed:{
@@ -499,17 +513,6 @@ const ar_app = new Vue({
         //再生範囲をセット
         set_info_video:function(start,end){
             return `images/arscan/info.mp4#t=${start},${end}`;
-        },
-        //テキストを順に表示していく
-        set_display_text_in_order:function(){
-            //infobox内
-            debugger;
-            const length = this.S.timeline[this.S.timeline_cnt].info_box.msgs.length;
-            const change = function(){
-                if(length <= this.S.timeline_cnt) this.S.timeline_cnt = 0;
-                else this.S.timeline_cnt++;
-            }
-            window.setInterval(change,2000);
         }
     }
 });
