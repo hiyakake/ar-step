@@ -90,7 +90,7 @@ function add_files(){
             'arscan_script',
             get_template_directory_uri().'/js/arscan.js',
             ['vue','aframe'],
-            false,
+            date('U'),
             true
         );
     }
