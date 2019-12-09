@@ -60,7 +60,7 @@ const ar_app = new Vue({
         S:{
             info_box_msgs_cnt:0,
             show_ui:'ar',
-            timeline_cnt:0, //全体の進捗を管理
+            timeline_cnt:3, //全体の進捗を管理
             timeline:[
                 //ようこそ画面
                 {
@@ -125,9 +125,9 @@ const ar_app = new Vue({
                     //ARのUI表示を設定
                     ar_ui:{
                         guide_msg:[
-                            'お札を軽く手で抑えます',
-                            '千円の左上にピン',
-                            '千円の右上にピン'
+                            'お札を軽く手で抑えて',
+                            '千円の左上からピン',
+                            '次に千円の右上にピン'
                         ]
                     },
                     //OK BOXの設定
@@ -391,6 +391,8 @@ const ar_app = new Vue({
         this.get_width_line_rote;
         this.get_min_depth_guide_surface_paras;
         this.get_max_depth_guide_surface_paras;
+
+        this.set_display_text_in_order;
     },
     //計算をしないと求めらない数値
     computed:{
@@ -497,6 +499,17 @@ const ar_app = new Vue({
         //再生範囲をセット
         set_info_video:function(start,end){
             return `images/arscan/info.mp4#t=${start},${end}`;
+        },
+        //テキストを順に表示していく
+        set_display_text_in_order:function(){
+            //infobox内
+            debugger;
+            const length = this.S.timeline[this.S.timeline_cnt].info_box.msgs.length;
+            const change = function(){
+                if(length <= this.S.timeline_cnt) this.S.timeline_cnt = 0;
+                else this.S.timeline_cnt++;
+            }
+            window.setInterval(change,2000);
         }
     }
 });

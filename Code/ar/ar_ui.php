@@ -18,7 +18,7 @@ v-if='S.show_ui == "ar"'>
 
     <!--コントローラー-->
     <div class="controller_container">
-        <p class="guide_msg"><span>切り替わるメッセージ</span></p>
+        <p class="guide_msg"><span>{{ S.timeline[S.timeline_cnt].ar_ui.guide_msg[0] }}</span></p>
         <!--お札計測 1-->
         <div class="shutter"
         v-if='S.timeline_cnt == 1 && B.senen.first_point.x == 0'>
@@ -60,13 +60,13 @@ v-if='S.show_ui == "ar"'>
         v-if='S.timeline_cnt == 4'>
             <button class='plus'
             @click='[
-                B.height++,
+                B.height_offset--,
                 get_min_depth_guide_surface_paras,
                 get_max_depth_guide_surface_paras
             ]'>+</button>
             <button class='minus'
             @click='[
-                B.height--,
+                B.height_offset++,
                 get_min_depth_guide_surface_paras,
                 get_max_depth_guide_surface_paras
             ]'>-</button>
@@ -76,13 +76,13 @@ v-if='S.show_ui == "ar"'>
         v-if='S.timeline_cnt == 5'>
             <button class='plus'
             @click='[
-                B.height++,
+                B.min_depth++,
                 get_min_depth_guide_surface_paras,
                 get_max_depth_guide_surface_paras
             ]'>+</button>
             <button class='minus'
             @click='[
-                B.height--,
+                B.min_depth--,
                 get_min_depth_guide_surface_paras,
                 get_max_depth_guide_surface_paras
             ]'>-</button>
@@ -92,13 +92,13 @@ v-if='S.show_ui == "ar"'>
         v-if='S.timeline_cnt == 6'>
             <button class='plus'
             @click='[
-                B.height++,
+                B.max_depth++,
                 get_min_depth_guide_surface_paras,
                 get_max_depth_guide_surface_paras
             ]'>+</button>
             <button class='minus'
             @click='[
-                B.height--,
+                B.max_depth--,
                 get_min_depth_guide_surface_paras,
                 get_max_depth_guide_surface_paras
             ]'>-</button>
