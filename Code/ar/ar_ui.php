@@ -8,12 +8,12 @@ v-if='S.show_ui == "ar"'>
         S.show_ui = "info"
     ]'>
         <img src="images/arscan/back_scene.svg" alt="前に戻る">
-        <p>前に戻る</p>
+        <p><!--前に戻る--></p>
     </button>
     <button class="diside"
     @click='S.show_ui = "ok"'>
         <img src="images/arscan/diside.svg" alt="確定">
-        <p>確定</p>
+        <p><!--確定--></p>
     </button>
 
     <!--コントローラー-->

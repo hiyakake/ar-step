@@ -177,6 +177,9 @@ button,a{
             border-radius: 0 100px 100px 0;
             padding-left: 2.5em;
             padding-right: 2em;
+            p::before{
+                content: '前に戻る';
+            }
         }
         button.diside{
             bottom: 2em;
@@ -186,6 +189,9 @@ button,a{
             padding-right: 2.5em;
             img{
                 transform: scale(0.8);
+            }
+            p::before{
+                content: '確定';
             }
         }
         .controller_container{
