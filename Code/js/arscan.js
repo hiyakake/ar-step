@@ -62,7 +62,7 @@ const ar_app = new Vue({
             ar_ui_guide_msg_cnt:0,
             show_ui:'ar',
             contenu_interval:false,
-            timeline_cnt:7, //全体の進捗を管理
+            timeline_cnt:3, //全体の進捗を管理
             timeline:[
                 //ようこそ画面
                 {
@@ -536,24 +536,8 @@ const ar_app = new Vue({
            if(mode == 'start'){
                 if(!this.S.contenu_interval){
                     this.S.contenu_interval = setInterval(() => {
-                        switch(target){
-                            case 'height':
-                                if(vector == 1) this.B.height++;
-                                else this.B.height--;
-                            break;
-                            case 'height_offset':
-                                if(vector == 1) this.B.height_offset++;
-                                else this.B.height_offset--;
-                            break;
-                            case 'min_depth':
-                                if(vector == 1) this.B.min_depth++;
-                                else this.B.min_depth--;
-                            break;
-                            case 'max_depth':
-                                if(vector == 1) this.B.max_depth++;
-                                else this.B.max_depth--;
-                            break;
-                        };
+                        if(vector == 1) this.B[target]++;
+                        else this.B[target]--;
                         this.get_min_depth_guide_surface_paras;
                         this.get_max_depth_guide_surface_paras;
                     }, 80);
