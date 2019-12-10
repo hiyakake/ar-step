@@ -386,6 +386,21 @@ const ar_app = new Vue({
             ]
         }
     },
+    //Bの各値が許可された範囲内を動くように
+    watch:{
+        'B.height':function(val){
+            if(val < 0) this.B.height = 0;
+        },
+        'B.height_offset':function(val){
+            if(val > 0) this.B.height_offset = 0;
+        },
+        'B.min_depth':function(val){
+            if(val < 0) this.B.min_depth = 0;
+        },
+        'B.max_depth':function(val){
+            if(val < this.B.min_depth) this.B.max_depth = this.B.min_depth;
+        }
+    },
     //各パーツの初期化を行う
     mounted:function(){
         this.get_width_length;
