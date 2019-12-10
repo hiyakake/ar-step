@@ -18,7 +18,12 @@ v-if='S.show_ui == "ar"'>
 
     <!--コントローラー-->
     <div class="controller_container">
-        <p class="guide_msg"><span>{{ S.timeline[S.timeline_cnt].ar_ui.guide_msg[S.ar_ui_guide_msg_cnt] }}</span></p>
+
+        <p
+        v-show='S.timeline[S.timeline_cnt].ar_ui.guide_msg.length != 0'
+        class="guide_msg"><span>{{ S.timeline[S.timeline_cnt].ar_ui.guide_msg[S.ar_ui_guide_msg_cnt] }}</span></p>
+
+
         <!--お札計測 1-->
         <div class="shutter"
         v-if='S.timeline_cnt == 1 && B.senen.first_point.x == 0'>

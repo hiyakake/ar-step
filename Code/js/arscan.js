@@ -521,6 +521,7 @@ const ar_app = new Vue({
                     min_depth = Math.round(this.covert_to_actual_size(this.B.min_depth),2),
                     max_depth = Math.round(this.covert_to_actual_size(this.B.max_depth),2);
             return `/search/?height=${height}&width=${width}&min_depth=${min_depth}&max_depth=${max_depth}&from=ar`;
+            //TODO:四捨五入が正しくなるように、後で実装し直す。
         }
     }
 });
