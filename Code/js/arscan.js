@@ -27,30 +27,37 @@ const ar_app = new Vue({
         //各パーツの状態管理
         P:{
             width_line:{
-                show:true,
+                opacity:1,
+                color:'blue',
                 pos:{x:0,y:0,z:0},
                 rote:{h:0,p:0,b:0}
             },
             height_surface:{
-                show:true
+                opacity:1,
+                color:'red'
             },
             depth_offset_line:{
-                show:true
+                opacity:1,
+                color:'blue'
             },
             min_depth_line:{
-                show:true
+                opacity:1,
+                color:'yellow'
             },
             max_depth_line:{
-                show:true
+                opacity:1,
+                color:'green'
             },
             min_depth_guide_surface:{
-                show:true,
+                opacity:1,
+                color:'gray',
                 pos:{x:0,y:0,z:0},
                 rote:{h:0,p:0,b:0},
                 height:30
             },
             max_depth_guide_surface:{
-                show:true,
+                opacity:1,
+                color:'gray',
                 pos:{x:0,y:0,z:0},
                 rote:{h:0,p:0,b:0},
                 height:30
@@ -386,8 +393,8 @@ const ar_app = new Vue({
             ]
         }
     },
-    //Bの各値が許可された範囲内を動くように
     watch:{
+        //Bの各値が許可された範囲内を動くように
         'B.height':function(val){
             if(val < 0) this.B.height = 0;
         },
@@ -399,6 +406,41 @@ const ar_app = new Vue({
         },
         'B.max_depth':function(val){
             if(val < this.B.min_depth) this.B.max_depth = this.B.min_depth;
+        },
+        //3DUIの表示非表示
+        'S.timeline_cnt':function(val){
+            //debugger;
+            const changeShowHide = (
+                width_line,
+                height_surface,
+                depth_offset_line,
+                min_depth_line,
+                min_depth_guide_surface,
+                max_depth_line,
+                max_depth_guide_surface)=>{
+                //console.log('before');
+                //console.log(`${width_line},${height_surface},${depth_offset_line},${min_depth_line},${min_depth_guide_surface},${max_depth_line},${max_depth_guide_surface}`);
+                this.P.width_line.opacity = width_line;
+                this.P.height_surface.opacity = height_surface;
+                this.P.depth_offset_line.opacity = depth_offset_line;
+                this.P.min_depth_line.opacity = min_depth_line;
+                this.P.min_depth_guide_surface.opacity = min_depth_guide_surface;
+                this.P.max_depth_line.opacity = max_depth_line;
+                this.P.max_depth_guide_surface.opacity = max_depth_guide_surface;
+                //console.log('after');
+            };
+            //console.log(val);
+            switch(val){
+                case 0:changeShowHide(0,0,0,0,0,0,0);break;//ようこそ
+                case 1:changeShowHide(0,0,0,0,0,0,0);break;//千円計測
+                case 2:changeShowHide(1,0,0,0,0,0,0);break;//横幅計測
+                case 3:changeShowHide(1,1,0,0,0,0,0);break;//高さ計測
+                case 4:changeShowHide(1,1,1,0,0,0,0);break;//高さオフセット
+                case 5:changeShowHide(1,0,1,1,1,0,0);break;//最短奥行き
+                case 6:changeShowHide(1,0,1,1,1,1,1);break;//最長奥行き
+                case 7:changeShowHide(1,0,1,1,1,1,1);break;//プレビュー
+                
+            };
         }
     },
     //各パーツの初期化を行う
@@ -513,6 +555,9 @@ const ar_app = new Vue({
         },
         set_rotation:function(h,p,b){
             return `${h} ${p} ${b}`;
+        },
+        set_material:function(color,opacity,side = 'double'){
+            return `color:${color};opacity:${opacity};side:${side}`;
         },
         //数値を千円札を基準に実寸に直す
         covert_to_actual_size:function(target){
