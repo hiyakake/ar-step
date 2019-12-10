@@ -14,8 +14,12 @@ v-if='S.show_ui == "ok"'>
     :style='{ textAlign : S.timeline[S.timeline_cnt].ok_box.text_msg.align }'
     v-html='S.timeline[S.timeline_cnt].ok_box.text_msg.text'></p>
     <button
+    v-if='S.timeline_cnt != S.timeline.length-1'
     @click='[
         S.timeline_cnt++,
         S.show_ui = "info"
     ]'>{{ S.timeline[S.timeline_cnt].ok_box.btn }}</button>
+    <a
+    v-else
+    :href="set_query()">{{ S.timeline[S.timeline_cnt].ok_box.btn }}</a>
 </section>

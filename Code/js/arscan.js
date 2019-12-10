@@ -61,7 +61,7 @@ const ar_app = new Vue({
             info_box_msgs_cnt:0,
             ar_ui_guide_msg_cnt:0,
             show_ui:'ar',
-            timeline_cnt:3, //全体の進捗を管理
+            timeline_cnt:7, //全体の進捗を管理
             timeline:[
                 //ようこそ画面
                 {
@@ -513,6 +513,14 @@ const ar_app = new Vue({
         //再生範囲をセット
         set_info_video:function(start,end){
             return `images/arscan/info.mp4#t=${start},${end}`;
+        },
+        //検索クエリにしてセット
+        set_query:function(){
+            const   height = Math.round(this.covert_to_actual_size(this.B.height),2),
+                    width = Math.round(this.covert_to_actual_size(this.B.width),2),
+                    min_depth = Math.round(this.covert_to_actual_size(this.B.min_depth),2),
+                    max_depth = Math.round(this.covert_to_actual_size(this.B.max_depth),2);
+            return `/search/?height=${height}&width=${width}&min_depth=${min_depth}&max_depth=${max_depth}&from=ar`;
         }
     }
 });

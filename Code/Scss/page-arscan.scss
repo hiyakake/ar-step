@@ -18,7 +18,7 @@ $baseText:#454343;
 body{
     background-color: antiquewhite;
 }
-button{
+button,a{
     pointer-events: all;
     background: none;
     border: none;
@@ -123,7 +123,7 @@ button{
             font-size: 1.2em;
             margin: 1rem 0;
         }
-        button{
+        button,a{
             display: block;
             background-color: $teamaColor;
             color: white;
