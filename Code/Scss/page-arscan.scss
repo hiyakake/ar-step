@@ -260,10 +260,16 @@ button,a{
                 .plus{
                     border-radius: 25px 25px 0 0;
                     background-color: #C3746A;
+                    &::before{
+                        content: '+';
+                    }
                 }
                 .minus{
                     border-radius: 0 0 25px 25px;
                     background-color: #409FB5;
+                    &::before{
+                        content: '-';
+                    }
                 }
             }
         }
