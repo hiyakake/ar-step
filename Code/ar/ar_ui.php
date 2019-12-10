@@ -47,66 +47,82 @@ v-if='S.show_ui == "ar"'>
         <!--高さ計測-->
         <div class="volume"
         v-if='S.timeline_cnt == 3'>
-            <button class='plus'
-            @click='[
-                B.height++,
-                get_min_depth_guide_surface_paras,
-                get_max_depth_guide_surface_paras
-            ]'>+</button>
+        <button class='plus'
+            @mousedown='hold_up_down("height",1,"start")'
+            @mouseleave='hold_up_down("height",1,"end")'
+            @mouseup='hold_up_down("height",1,"end")'
+            @touchstart='hold_up_down("height",1,"start")'
+            @touchend='hold_up_down("height",1,"end")'
+            @touchcancel='hold_up_down("height",1,"end")'
+            ></button>
             <button class='minus'
-            @click='[
-                B.height--,
-                get_min_depth_guide_surface_paras,
-                get_max_depth_guide_surface_paras
-            ]'>-</button>
+            @mousedown='hold_up_down("height",0,"start")'
+            @mouseleave='hold_up_down("height",0,"end")'
+            @mouseup='hold_up_down("height",0,"end")'
+            @touchstart='hold_up_down("height",0,"start")'
+            @touchend='hold_up_down("height",0,"end")'
+            @touchcancel='hold_up_down("height",0,"end")'
+            ></button>
         </div>
         <!--高さオフセット-->
         <div class="volume"
         v-if='S.timeline_cnt == 4'>
-            <button class='plus'
-            @click='[
-                B.height_offset--,
-                get_min_depth_guide_surface_paras,
-                get_max_depth_guide_surface_paras
-            ]'>+</button>
+        <button class='plus'
+            @mousedown='hold_up_down("height_offset",0,"start")'
+            @mouseleave='hold_up_down("height_offset",0,"end")'
+            @mouseup='hold_up_down("height_offset",0,"end")'
+            @touchstart='hold_up_down("height_offset",0,"start")'
+            @touchend='hold_up_down("height_offset",0,"end")'
+            @touchcancel='hold_up_down("height_offset",0,"end")'
+            ></button>
             <button class='minus'
-            @click='[
-                B.height_offset++,
-                get_min_depth_guide_surface_paras,
-                get_max_depth_guide_surface_paras
-            ]'>-</button>
+            @mousedown='hold_up_down("height_offset",1,"start")'
+            @mouseleave='hold_up_down("height_offset",1,"end")'
+            @mouseup='hold_up_down("height_offset",1,"end")'
+            @touchstart='hold_up_down("height_offset",1,"start")'
+            @touchend='hold_up_down("height_offset",1,"end")'
+            @touchcancel='hold_up_down("height_offset",1,"end")'
+            ></button>
         </div>
         <!--最短奥行き-->
         <div class="volume"
         v-if='S.timeline_cnt == 5'>
-            <button class='plus'
-            @click='[
-                B.min_depth++,
-                get_min_depth_guide_surface_paras,
-                get_max_depth_guide_surface_paras
-            ]'>+</button>
+        <button class='plus'
+            @mousedown='hold_up_down("min_depth",1,"start")'
+            @mouseleave='hold_up_down("min_depth",1,"end")'
+            @mouseup='hold_up_down("min_depth",1,"end")'
+            @touchstart='hold_up_down("min_depth",1,"start")'
+            @touchend='hold_up_down("min_depth",1,"end")'
+            @touchcancel='hold_up_down("min_depth",1,"end")'
+            ></button>
             <button class='minus'
-            @click='[
-                B.min_depth--,
-                get_min_depth_guide_surface_paras,
-                get_max_depth_guide_surface_paras
-            ]'>-</button>
+            @mousedown='hold_up_down("min_depth",0,"start")'
+            @mouseleave='hold_up_down("min_depth",0,"end")'
+            @mouseup='hold_up_down("min_depth",0,"end")'
+            @touchstart='hold_up_down("min_depth",0,"start")'
+            @touchend='hold_up_down("min_depth",0,"end")'
+            @touchcancel='hold_up_down("min_depth",0,"end")'
+            ></button>
         </div>
         <!--最長奥行き-->
         <div class="volume"
         v-if='S.timeline_cnt == 6'>
             <button class='plus'
-            @click='[
-                B.max_depth++,
-                get_min_depth_guide_surface_paras,
-                get_max_depth_guide_surface_paras
-            ]'>+</button>
+            @mousedown='hold_up_down("max_depth",1,"start")'
+            @mouseleave='hold_up_down("max_depth",1,"end")'
+            @mouseup='hold_up_down("max_depth",1,"end")'
+            @touchstart='hold_up_down("max_depth",1,"start")'
+            @touchend='hold_up_down("max_depth",1,"end")'
+            @touchcancel='hold_up_down("max_depth",1,"end")'
+            ></button>
             <button class='minus'
-            @click='[
-                B.max_depth--,
-                get_min_depth_guide_surface_paras,
-                get_max_depth_guide_surface_paras
-            ]'>-</button>
+            @mousedown='hold_up_down("max_depth",0,"start")'
+            @mouseleave='hold_up_down("max_depth",0,"end")'
+            @mouseup='hold_up_down("max_depth",0,"end")'
+            @touchstart='hold_up_down("max_depth",0,"start")'
+            @touchend='hold_up_down("max_depth",0,"end")'
+            @touchcancel='hold_up_down("max_depth",0,"end")'
+            ></button>
         </div>
     </div>
 </div>

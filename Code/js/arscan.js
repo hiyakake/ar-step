@@ -61,6 +61,7 @@ const ar_app = new Vue({
             info_box_msgs_cnt:0,
             ar_ui_guide_msg_cnt:0,
             show_ui:'ar',
+            contenu_interval:false,
             timeline_cnt:7, //全体の進捗を管理
             timeline:[
                 //ようこそ画面
@@ -522,6 +523,46 @@ const ar_app = new Vue({
                     max_depth = Math.round(this.covert_to_actual_size(this.B.max_depth),2);
             return `/search/?height=${height}&width=${width}&min_depth=${min_depth}&max_depth=${max_depth}&from=ar`;
             //TODO:四捨五入が正しくなるように、後で実装し直す。
+        },
+        //volumeControllerが押している間増減するように
+        hold_up_down:function(target,vector,mode){
+            /*
+            vector 0 as Decrement
+            vector 1 as Increment
+            mode start is start hold function
+            mode end is end hold function
+            */
+           //debugger;
+           if(mode == 'start'){
+                if(!this.S.contenu_interval){
+                    this.S.contenu_interval = setInterval(() => {
+                        switch(target){
+                            case 'height':
+                                if(vector == 1) this.B.height++;
+                                else this.B.height--;
+                            break;
+                            case 'height_offset':
+                                if(vector == 1) this.B.height_offset++;
+                                else this.B.height_offset--;
+                            break;
+                            case 'min_depth':
+                                if(vector == 1) this.B.min_depth++;
+                                else this.B.min_depth--;
+                            break;
+                            case 'max_depth':
+                                if(vector == 1) this.B.max_depth++;
+                                else this.B.max_depth--;
+                            break;
+                        };
+                        this.get_min_depth_guide_surface_paras;
+                        this.get_max_depth_guide_surface_paras;
+                    }, 80);
+                }
+           }else{
+                clearInterval(this.S.contenu_interval)
+                this.S.contenu_interval = false;
+           }
+           
         }
     }
 });
