@@ -15,9 +15,17 @@ include('mpa/match_plate_api.php');
     <div class='header'>
         <h2>おすすめのステップ</h2>
         <p class="backToList">
+            <?php if($_GET['from'] != 'ar'):?>
+            <!--手入力検索から来た場合はトップへ-->
             <a href="<?php echo esc_url( home_url('/'));?>">
                 <img src="images/global/to-top.svg" alt="サイトのトップページヘ">
             </a>
+            <?php else:?>
+            <!--ARから着た人はARのトップへ-->
+            <a href="<?php echo esc_url( home_url('/')).'/ar';?>">
+                <img src="images/global/to-ar.svg" alt="ARスキャンに戻る">
+            </a>
+            <?php endif;?>
         </p>
     </div>
 
