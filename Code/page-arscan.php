@@ -32,7 +32,26 @@ get_header();
         </div>
     </div>
     <div id="stage">
+        <!--3Dアセット-->
+        <a-assets>
+            <a-asset-item id="pin-obj" src="ar/pin_model.obj"></a-asset-item>
+        </a-assets>
+        <!--キャンバス-->
         <a-scene> 
+            <!--Step Senen pointer-->
+            <!--Step width pointer-->
+            <a-entity
+            id='step_pin_a'
+            :position='set_position(B.pin_a_pos.x,B.pin_a_pos.y,B.pin_a_pos.z)'
+            scale='0.4 0.4 0.4'
+            obj-model="obj: #pin-obj;"
+            material='color:red;'></a-entity>
+            <a-entity
+            id='step_pin_b'
+            :position='set_position(B.pin_b_pos.x,B.pin_b_pos.y,B.pin_b_pos.z)'
+            scale='0.4 0.4 0.4'
+            obj-model="obj: #pin-obj;"
+            material='color:green;'></a-entity>
             <!--Tool Base-->
             <a-entity
             id='width_line'

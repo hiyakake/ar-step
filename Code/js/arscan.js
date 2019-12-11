@@ -487,9 +487,15 @@ const ar_app = new Vue({
         },
         //横幅線の角度を決める
         get_width_line_rote:function(){
-            const   a = this.P.width_line.pos.x,
-                    b = this.P.width_line.pos.z;
-            this.P.width_line.rote.p = (Math.atan(a/b)*(180 / Math.PI));
+            //情報格納
+            const   ax = this.B.pin_a_pos.x,
+                    az = this.B.pin_a_pos.z,
+                    bx = this.B.pin_b_pos.x,
+                    bz = this.B.pin_b_pos.z;
+            //角度を求める
+            let angle = Math.atan2(bx - ax,bz - az)*(180 / Math.PI);
+            //セット
+            this.P.width_line.rote.p = angle-90;
         },
         //最短斜辺面の位置、角度、大きさを決める
         get_min_depth_guide_surface_paras:function(){
