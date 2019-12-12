@@ -108,7 +108,7 @@ get_header();
             id='camera_rig'
             :position='set_position(P.camera_rig.pos.x,P.camera_rig.pos.y,P.camera_rig.pos.z)'
             :rotation='set_rotation(P.camera_rig.rote.h,P.camera_rig.rote.p,P.camera_rig.rote.b)'>
-                <a-camera></a-camera>
+                <a-camera look-controls-enabled='false'></a-camera>
             </a-entity>
         </a-scene>
     </div>
