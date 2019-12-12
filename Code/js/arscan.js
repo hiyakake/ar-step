@@ -67,7 +67,7 @@ const ar_app = new Vue({
         S:{
             info_box_msgs_cnt:0,
             ar_ui_guide_msg_cnt:0,
-            show_ui:'ar',
+            show_ui:'info',
             contenu_interval:false,
             timeline_cnt:3, //全体の進捗を管理
             timeline:[
@@ -200,8 +200,8 @@ const ar_app = new Vue({
                     //説明ボックス
                     info_box:{
                         video:{
-                            start:102,
-                            end:140
+                            start:3,
+                            end:5
                         },
                         msgs:[
                             {
@@ -465,6 +465,8 @@ const ar_app = new Vue({
             if(current < length-1) this.S.ar_ui_guide_msg_cnt++;
             else this.S.ar_ui_guide_msg_cnt = 0;
         },2000);
+
+        
     },
     //計算をしないと求めらない数値
     computed:{
@@ -577,10 +579,6 @@ const ar_app = new Vue({
             */
             return (15 * target) / this.B.senen.senens_scanned_size_at_3d_world;
         },
-        //再生範囲をセット
-        set_info_video:function(start,end){
-            return `images/arscan/info.mp4#t=${start},${end}`;
-        },
         //検索クエリにしてセット
         set_query:function(){
             const   height = Math.round(this.covert_to_actual_size(this.B.height),2),
@@ -613,6 +611,15 @@ const ar_app = new Vue({
                 this.S.contenu_interval = false;
            }
            
+        },
+        //動画のコントロール
+        video_cnt:function(event){
+            const start = this.S.timeline[this.S.timeline_cnt].info_box.video.start;
+            const end = this.S.timeline[this.S.timeline_cnt].info_box.video.end;
+            if(!(start <= event.target.currentTime && event.target.currentTime <= end)){
+                event.target.currentTime = start;
+            }
         }
     }
 });
+

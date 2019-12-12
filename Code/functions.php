@@ -1,5 +1,8 @@
 <?php
 
+//HTML5を有効化
+add_theme_support('html5');
+
 function add_files(){
     //現在のページのスラッグを取得
     $page = get_post( get_the_ID() ); 

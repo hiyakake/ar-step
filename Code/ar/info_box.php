@@ -6,7 +6,8 @@ v-if='S.show_ui == "info"'>
         <span class="total">{{ S.timeline.length }}</span>
     </p>
     <video id='info_video'
-    :src='set_info_video(S.timeline[S.timeline_cnt].info_box.video.start,S.timeline[S.timeline_cnt].info_box.video.end)'
+    src='images/arscan/info.mp4'
+    @timeupdate='video_cnt'
     muted autoplay loop preload='auto' playsinline></video>
     <div>
         <p
