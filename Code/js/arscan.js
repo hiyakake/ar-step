@@ -26,6 +26,20 @@ const ar_app = new Vue({
         },
         //各パーツの状態管理
         P:{
+            camera_rig:{
+                pos:{x:30,y:30,z:80},
+                rote:{h:0,p:30,b:0}
+            },
+            step_pin_a:{
+                opacity:1,
+                color:'blue',
+                rote:{h:0,p:0,b:0}
+            },
+            step_pin_b:{
+                opacity:1,
+                color:'blue',
+                rote:{h:0,p:0,b:0}
+            },
             width_line:{
                 opacity:1,
                 color:'blue',
@@ -67,17 +81,17 @@ const ar_app = new Vue({
         S:{
             info_box_msgs_cnt:0,
             ar_ui_guide_msg_cnt:0,
-            show_ui:'info',
+            show_ui:'ar',
             contenu_interval:false,
-            timeline_cnt:3, //全体の進捗を管理
+            timeline_cnt:2, //全体の進捗を管理
             timeline:[
                 //ようこそ画面
                 {
                     //説明ボックス
                     info_box:{
                         video:{
-                            start:0,
-                            end:3
+                            start:5,
+                            end:5
                         },
                         msgs:[
                             {
@@ -107,8 +121,8 @@ const ar_app = new Vue({
                     //説明ボックス
                     info_box:{
                         video:{
-                            start:34,
-                            end:72
+                            start:0,
+                            end:3
                         },
                         msgs:[
                             {
@@ -154,8 +168,8 @@ const ar_app = new Vue({
                     //説明ボックス
                     info_box:{
                         video:{
-                            start:72,
-                            end:102
+                            start:3,
+                            end:6
                         },
                         msgs:[
                             {
@@ -200,8 +214,8 @@ const ar_app = new Vue({
                     //説明ボックス
                     info_box:{
                         video:{
-                            start:3,
-                            end:5
+                            start:6,
+                            end:10
                         },
                         msgs:[
                             {
@@ -241,8 +255,8 @@ const ar_app = new Vue({
                     //説明ボックス
                     info_box:{
                         video:{
-                            start:140,
-                            end:178
+                            start:10,
+                            end:11
                         },
                         msgs:[
                             {
@@ -278,8 +292,8 @@ const ar_app = new Vue({
                     //説明ボックス
                     info_box:{
                         video:{
-                            start:140,
-                            end:178
+                            start:11,
+                            end:12
                         },
                         msgs:[
                             {
@@ -315,8 +329,8 @@ const ar_app = new Vue({
                     //説明ボックス
                     info_box:{
                         video:{
-                            start:140,
-                            end:178
+                            start:12,
+                            end:13
                         },
                         msgs:[
                             {
@@ -356,8 +370,8 @@ const ar_app = new Vue({
                     //説明ボックス
                     info_box:{
                         video:{
-                            start:140,
-                            end:178
+                            start:13,
+                            end:14
                         },
                         msgs:[
                             {

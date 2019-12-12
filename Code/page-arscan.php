@@ -43,12 +43,14 @@ get_header();
             <a-entity
             id='step_pin_a'
             :position='set_position(B.pin_a_pos.x,B.pin_a_pos.y,B.pin_a_pos.z)'
+            :rotation='set_rotation(0,P.camera_rig.rote.p,0)'
             scale='0.4 0.4 0.4'
             obj-model="obj: #pin-obj;"
             material='color:red;'></a-entity>
             <a-entity
             id='step_pin_b'
             :position='set_position(B.pin_b_pos.x,B.pin_b_pos.y,B.pin_b_pos.z)'
+            :rotation='set_rotation(0,P.camera_rig.rote.p,0)'
             scale='0.4 0.4 0.4'
             obj-model="obj: #pin-obj;"
             material='color:green;'></a-entity>
@@ -102,9 +104,12 @@ get_header();
             </a-entity>
     
             
-            <a-camera
-            position='0 30 100'
-            rotation='0 30 0'></a-camera>
+            <a-entity
+            id='camera_rig'
+            :position='set_position(P.camera_rig.pos.x,P.camera_rig.pos.y,P.camera_rig.pos.z)'
+            :rotation='set_rotation(P.camera_rig.rote.h,P.camera_rig.rote.p,P.camera_rig.rote.b)'>
+                <a-camera></a-camera>
+            </a-entity>
         </a-scene>
     </div>
 </main>
