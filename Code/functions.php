@@ -84,7 +84,15 @@ function add_files(){
         );
         wp_enqueue_script(
             'aframe',
-            'https://aframe.io/releases/0.9.2/aframe.min.js',
+            'https://cdn.8thwall.com/web/aframe/8frame-0.8.2.min.js',
+            [],
+            false,
+            false
+        );
+        $_8th_wall_api_key = 'uDTf8XBaSUdFebkZ5EVegGhaxTHxDX4KcEzM4Z1fIUddUfwuE7JRHuVFgK3kvaDUmz8cTO';
+        wp_enqueue_script(
+            '_8th_wall',
+            'https://apps.8thwall.com/xrweb?appKey='.$_8th_wall_api_key,
             [],
             false,
             false
@@ -99,3 +107,12 @@ function add_files(){
     }
 };
 add_action('wp_enqueue_scripts','add_files');
+
+//asyncを追加
+function addasync_enqueue_script( $tag, $handle ) {
+    if ( '_8th_wall' !== $handle ) {
+    return $tag;
+    }
+    return str_replace( ' src', ' async="async" src', $tag );
+   }
+   add_filter( 'script_loader_tag', 'addasync_enqueue_script', 10, 2);
