@@ -18,6 +18,11 @@ $baseText:#454343;
     }
 }
 
+#ui_2d img,
+#ui_2d video{
+    display: inherit;
+}
+
 button,a{
     pointer-events: all;
     background: none;

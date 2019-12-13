@@ -482,8 +482,6 @@ function run_after(){
                 if(current < length-1) this.S.ar_ui_guide_msg_cnt++;
                 else this.S.ar_ui_guide_msg_cnt = 0;
             },2000);
-    
-            
         },
         //計算をしないと求めらない数値
         computed:{
