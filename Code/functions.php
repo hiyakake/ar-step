@@ -84,8 +84,15 @@ function add_files(){
         );
         wp_enqueue_script(
             'aframe',
-            'https://cdn.8thwall.com/web/aframe/8frame-0.8.2.min.js',
+            'https://cdn.8thwall.com/web/aframe/8frame-0.9.0.min.js',
             [],
+            false,
+            false
+        );
+        wp_enqueue_script(
+            'xrextras',
+            'https://cdn.8thwall.com/web/xrextras/xrextras.js',
+            ['aframe'],
             false,
             false
         );
@@ -93,14 +100,14 @@ function add_files(){
         wp_enqueue_script(
             '_8th_wall',
             'https://apps.8thwall.com/xrweb?appKey='.$_8th_wall_api_key,
-            [],
+            ['xrextras'],
             false,
             false
         );
         wp_enqueue_script(
             'arscan_script',
             get_template_directory_uri().'/js/arscan.js',
-            ['vue','aframe'],
+            ['vue','xrextras'],
             date('U'),
             true
         );

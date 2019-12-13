@@ -10,14 +10,12 @@ $baseText:#454343;
     left: 0;
     background-color: #409fb566;
     color: black;
+    line-height: 1;
     h2{
         font-size: 2em;
     }
 }
 
-body{
-    background-color: antiquewhite;
-}
 button,a{
     pointer-events: all;
     background: none;

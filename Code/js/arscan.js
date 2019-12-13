@@ -1,3 +1,4 @@
+function run_after(){
 const ar_app = new Vue({
     el:'#ar_app',
     data:{
@@ -636,4 +637,4 @@ const ar_app = new Vue({
         }
     }
 });
-
+};
