@@ -6,7 +6,7 @@ v-if='S.show_ui == "info"'>
         <span class="total">{{ S.timeline.length }}</span>
     </p>
     <video id='info_video'
-    src='images/info.mp4'
+    src='assets/info.mp4'
     @timeupdate='video_cnt'
     muted autoplay loop preload='auto' playsinline></video>
     <div>

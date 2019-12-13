@@ -7,12 +7,12 @@ v-if='S.show_ui == "ar"'>
         S.timeline_cnt--,
         S.show_ui = "info"
     ]'>
-        <img src="images/back_scene.svg" alt="前に戻る">
+        <img src="assets/back_scene.svg" alt="前に戻る">
         <p><!--前に戻る--></p>
     </button>
     <button class="diside"
     @click='S.show_ui = "ok"'>
-        <img src="images/diside.svg" alt="確定">
+        <img src="assets/diside.svg" alt="確定">
         <p><!--確定--></p>
     </button>
 

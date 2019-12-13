@@ -6,7 +6,7 @@ v-if='S.show_ui == "ok"'>
     </p>
     <div class='icon'>
         <img
-        src="images/ok.svg"
+        src="assets/ok.svg"
         :alt="S.timeline[S.timeline_cnt].ok_box.icon_msg">
         <p class="icon_msg">{{ S.timeline[S.timeline_cnt].ok_box.icon_msg }}</p>
     </div>
