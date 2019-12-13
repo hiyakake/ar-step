@@ -10,7 +10,6 @@
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.26.7",
-    "ftp-deploy": "^2.3.6",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-concat": "^2.6.1",
@@ -25,7 +24,6 @@
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-sass-glob": "^1.1.0",
-    "gulp-sftp": "^0.1.5",
     "gulp-sftp-up4": "^0.1.8",
     "gulp-uglify": "^3.0.2",
     "jshint": "^2.10.3",
