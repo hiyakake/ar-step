@@ -33,12 +33,12 @@
         <div class="bg_gradient"
         :class='{ bg_gradient_active : S.show_ui != "ar" }'>
             <!--info box-->
-            <?php include('ar/info_box.php');?>
+            <?php include('ui_parts/info_box.php');?>
             <!--ok box-->
-            <?php include('ar/ok_box.php');?>
+            <?php include('ui_parts/ok_box.php');?>
         </div>
         <!--ar_ui-->
-        <?php include('ar/ar_ui.php');?>
+        <?php include('ui_parts/ar_ui.php');?>
         <!--デバッグ表示-->
         <div class="debug_ui">
             <h2>Base</h2>
