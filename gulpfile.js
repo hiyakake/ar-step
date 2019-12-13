@@ -118,7 +118,7 @@ function upload_ar_scan_app(){
 function watch() {
   //変換処理
   gulp.watch('./wp-theme/**/*',convert_wp_theme);
-  gulp.watch('./ar_scan_app//**/*',convert_ar_scan_app);
+  gulp.watch('./ar_scan_app/**/*',convert_ar_scan_app);
   //アップロード
   gulp.watch('./Dist/wp-theme/**/*',upload_wp_theme);
   gulp.watch('./Dist/ar/**/*',upload_ar_scan_app);

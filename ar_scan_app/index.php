@@ -15,16 +15,8 @@
     <script async src="https://apps.8thwall.com/xrweb?appKey=uDTf8XBaSUdFebkZ5EVegGhaxTHxDX4KcEzM4Z1fIUddUfwuE7JRHuVFgK3kvaDUmz8cTO"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="arscan.js"></script>
-    <link rel="stylesheet" href="page-arscan.min.css">
-    <style>
-      #ui_2d{
-        z-index:100;
-        position:fixed;
-        width:100%;
-        height:100%;
-      }
-    </style>
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="style/page-arscan.css">
   </head>
 
   <body>
@@ -65,7 +57,7 @@
 
       <!--3Dアセット-->
       <a-assets>
-          <a-asset-item id="pin-obj" src="ar/pin_model.obj"></a-asset-item>
+          <a-asset-item id="pin-obj" src="assets/pin_model.obj"></a-asset-item>
       </a-assets>
 
       <!-- The raycaster will emit mouse events on scene objects specified with the cantap class -->
