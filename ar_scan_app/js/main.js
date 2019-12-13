@@ -1,4 +1,4 @@
-function after_run(){
+function run_after(){
     const ar_app = new Vue({
         el:'#ar_app',
         data:{
@@ -80,6 +80,7 @@ function after_run(){
             },
             //画面遷移の管理
             S:{
+                show_2d_ui:"display",
                 info_box_msgs_cnt:0,
                 ar_ui_guide_msg_cnt:0,
                 show_ui:'ar',

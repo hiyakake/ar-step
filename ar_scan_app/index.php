@@ -16,11 +16,10 @@
     
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="js/main.js"></script>
-    <link rel="stylesheet" href="style/page-arscan.css">
+    <link rel="stylesheet" href="style/main.css">
   </head>
 
   <body>
-    <!-- We must add the tap-place component to the scene so it has an effect -->
     <a-scene id='ar_app'
       xrweb
       tap-place
@@ -28,7 +27,10 @@
       xrextras-loading
       xrextras-runtime-error>
       <!--html elemnt-->
-      <a-entity id='ui_2d' position='0 0 0'>
+      <a-entity id='ui_2d'
+      position='0 0 0'
+      style='display:none;'
+      :style='{ display : S.show_2d_ui }'>
         <!--box-->
         <div class="bg_gradient"
         :class='{ bg_gradient_active : S.show_ui != "ar" }'>
