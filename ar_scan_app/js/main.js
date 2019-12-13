@@ -1,3 +1,4 @@
+//Vue.js
 function run_after(){
     const ar_app = new Vue({
         el:'#ar_app',
@@ -641,3 +642,32 @@ function run_after(){
     
     
 };
+
+window.addEventListener('load',(event)=>{
+    //bodyの監視
+    //debugger;
+    const target = document.body;
+    let _8th_wall_is_show = false; //一度登場したらtrueに
+    const observer = new MutationObserver(records => {
+        console.log('実行');
+        //要素が登場した
+        if(_8th_wall_is_show == false && document.getElementById("loadingContainer") != null){
+            _8th_wall_is_show = true;
+            console.log('登場');
+        }else{
+            console.log('未登場');
+        }
+        //要素が消滅した
+        if(_8th_wall_is_show == true && document.getElementById("loadingContainer") == null){
+            console.log('消滅');
+            observer.disconnect();//bodyの監視を終了
+            run_after(); //Vueを実行
+        }else{
+            console.log('登場中');
+        }
+    });
+    observer.observe(target, {
+        childList: true
+    });
+});
+
