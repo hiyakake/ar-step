@@ -44,6 +44,10 @@ function run_vue(){
             },
             //各パーツの状態管理
             P:{
+                camera_rig:{
+                    pos:{x:30,y:30,z:80},
+                    rote:{h:0,p:30,b:0}
+                },
                 step_pin_a:{
                     opacity:1,
                     color:'blue',
@@ -96,7 +100,7 @@ function run_vue(){
                 show_2d_ui:"block",
                 info_box_msgs_cnt:0,
                 ar_ui_guide_msg_cnt:0,
-                show_ui:'ar',
+                show_ui:'info',
                 contenu_interval:false,
                 timeline_cnt:0, //全体の進捗を管理
                 now_active_pin:0, //4種類のピンのうち現在はどれか
@@ -498,19 +502,18 @@ function run_vue(){
             this.get_min_depth_guide_surface_paras;
             this.get_max_depth_guide_surface_paras;
 
-            //実験
-            /*
-            function get_ray(){
-                const ray = window.XR8.XrController.hitTest(0.5,0.5)[0].position;
-                ar_app.__vue__.$data.B.pins[ar_app.__vue__.$data.S.now_active_pin].x = ray.x;
-                ar_app.__vue__.$data.B.pins[ar_app.__vue__.$data.S.now_active_pin].y = ray.y;
-                ar_app.__vue__.$data.B.pins[ar_app.__vue__.$data.S.now_active_pin].z = ray.z;
-            }
-            setInterval(get_ray,100);
-            */
 
-            //aframe-crawling-cursor.jsを実行
-            //run_cursor();
+            //実験
+            setTimeout(()=>{
+                setInterval(()=>{
+                    console.log('Interval');
+                    this.set_pin_by_camera_ray();
+                    //ar_app.__vue__.set_pin_by_camera_ray();
+                },150);
+            },10000);
+            
+            
+            
     
             //テキストが2秒毎に丁寧丁寧丁寧に切り替わるように
             setInterval(()=>{
@@ -649,6 +652,18 @@ function run_vue(){
                 if(!(start <= event.target.currentTime && event.target.currentTime <= end)){ 
                     event.target.currentTime = start;
                 }
+            },
+            //実験
+            set_pin_by_camera_ray:function(){
+                console.log('呼び出されました');
+                //debugger;
+                const ray_pos = window.XR8.XrController.hitTest.apply(window,[0.5,0.5,['FEATURE_POINT']])[0].position;
+                this.B.pins[this.S.now_active_pin].x = ray_pos.x;
+                this.B.pins[this.S.now_active_pin].y = ray_pos.y;
+                this.B.pins[this.S.now_active_pin].z = ray_pos.z;
+                //ar_app.__vue__.$data.B.pins[ar_app.__vue__.$data.S.now_active_pin].x = ray_pos.x;
+                //ar_app.__vue__.$data.B.pins[ar_app.__vue__.$data.S.now_active_pin].y = ray_pos.y;
+                //ar_app.__vue__.$data.B.pins[ar_app.__vue__.$data.S.now_active_pin].z = ray_pos.z;
             }
         }
     });
@@ -661,22 +676,21 @@ window.addEventListener('load',(event)=>{
     const target = document.body;
     let _8th_wall_is_show = false; //一度登場したらtrueに
     const observer = new MutationObserver(records => {
-        //console.log('実行');
+        console.log('実行');
         //要素が登場した
         if(_8th_wall_is_show == false && document.getElementById("loadingContainer") != null){
             _8th_wall_is_show = true;
-            //console.log('登場');
+            console.log('登場');
         }else{
-            //console.log('未登場');
+            console.log('未登場');
         }
         //要素が消滅した
         if(_8th_wall_is_show == true && document.getElementById("loadingContainer") == null){
-            //console.log('消滅');
+            console.log('消滅');
             observer.disconnect();//bodyの監視を終了
             run_vue(); //Vueを実行
-            //run_cursor();
         }else{
-            //console.log('登場中');
+            console.log('登場中');
         }
     });
     observer.observe(target, {
@@ -684,10 +698,3 @@ window.addEventListener('load',(event)=>{
     });
 });
 
-/*
-const get_camera_ray = ()=>{
-    return window.XR8.XrController.hitTest(0.5,0.5)[0].position;
-}
-*/
-
-//run_cursor();
