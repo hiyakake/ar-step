@@ -49,11 +49,9 @@
             <p>min_depth: {{B.min_depth}}</p>
             <p>max_depth: {{B.max_depth}}</p>
             <p>height_offset: {{B.height_offset}}</p>
-            <h2>min_depth_surface</h2>
-            <p>length: {{P.min_depth_guide_surface.height}}</p>
-            <p>posY: {{P.min_depth_guide_surface.pos.y}}</p>
-            <p>posZ: {{P.min_depth_guide_surface.pos.z}}</p>
-            <p>roteH: {{P.min_depth_guide_surface.rote.h}}</p>
+            <h2>DEBUG</h2>
+            <p>timeline_cnt:{{S.timeline_cnt}}</p>
+            <p>now_active_pin:{{S.now_active_pin}}</p>
         </div>
       </a-entity>
 
@@ -65,11 +63,10 @@
       <!-- The raycaster will emit mouse events on scene objects specified with the cantap class -->
       <a-camera
         position="0 8 0"
-        raycaster="objects: .cantap"
-        cursor="
-          fuse: false;
-          rayOrigin: mouse;">
+        @raycaster-intersection='change_pin_pos'
+        camera look-controls wasd-controls raycaster>
       </a-camera>
+      <!--ライト-->
       <a-entity
         light="type: directional;
                intensity: 0.8;"
@@ -77,19 +74,43 @@
       </a-entity>
       <a-light type="ambient" intensity="1"></a-light>
 
-      <!--ここから下がもともと作ってたやつ-->
+      <!--地面を制作-->
+      <a-entity 
+        id="ground"
+        class="cantap"
+        geometry="primitive: box; width: 1000; height: 0.2; depth: 1000"
+        material="color: #ffffff; transparent: true; opacity: 0.3"
+        position='0 0 0'>
+      </a-entity>
+
+      <!--千円ピン-->
+      <a-entity
+      id='senen_pin_a'
+      :position='set_position(B.pins[0].x,B.pins[0].y,B.pins[0].z)'
+      :rotation='set_rotation(0,P.camera_rig.rote.p,0)'
+      scale='0.1 0.1 0.1'
+      obj-model="obj: #pin-obj;"
+      material='color:yellow;'></a-entity>
+      <a-entity
+      id='senen_pin_b'
+      :position='set_position(B.pins[1].x,B.pins[1].y,B.pins[1].z)'
+      :rotation='set_rotation(0,P.camera_rig.rote.p,0)'
+      scale='0.1 0.1 0.1'
+      obj-model="obj: #pin-obj;"
+      material='color:blue;'></a-entity>
+      <!--横幅ピン-->
       <a-entity
       id='step_pin_a'
-      :position='set_position(B.pin_a_pos.x,B.pin_a_pos.y,B.pin_a_pos.z)'
+      :position='set_position(B.pins[2].x,B.pins[2].y,B.pins[2].z)'
       :rotation='set_rotation(0,P.camera_rig.rote.p,0)'
-      scale='0.4 0.4 0.4'
+      scale='0.1 0.1 0.1'
       obj-model="obj: #pin-obj;"
       material='color:red;'></a-entity>
       <a-entity
       id='step_pin_b'
-      :position='set_position(B.pin_b_pos.x,B.pin_b_pos.y,B.pin_b_pos.z)'
+      :position='set_position(B.pins[3].x,B.pins[3].y,B.pins[3].z)'
       :rotation='set_rotation(0,P.camera_rig.rote.p,0)'
-      scale='0.4 0.4 0.4'
+      scale='0.1 0.1 0.1'
       obj-model="obj: #pin-obj;"
       material='color:green;'></a-entity>
       <!--Tool Base-->

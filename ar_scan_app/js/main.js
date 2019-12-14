@@ -1,5 +1,5 @@
 //Vue.js
-function run_after(){
+function run_vue(){
     const ar_app = new Vue({
         el:'#ar_app',
         data:{
@@ -10,21 +10,37 @@ function run_after(){
                     first_point:{x:0,y:0,z:0},
                     last_point:{x:0,y:0,z:0}
                 },
-                pin_a_pos:{
-                    x:-10,
-                    y:0,
-                    z:0
-                },
-                pin_b_pos:{
-                    x:5,
-                    y:0,
-                    z:0
-                },
+                pins:[
+                    //千円ピンA
+                    {
+                        x:-4,
+                        y:0,
+                        z:0
+                    },
+                    //千円ピンB
+                    {
+                        x:5,
+                        y:0,
+                        z:0
+                    },
+                    //横幅ピンA
+                    {
+                        x:-4,
+                        y:0,
+                        z:0
+                    },
+                    //横幅ピンB
+                    {
+                        x:5,
+                        y:0,
+                        z:0
+                    }
+                ],
                 width:null,
-                height:20,
-                height_offset:-10,
-                min_depth:30,
-                max_depth:50
+                height:1,
+                height_offset:-4,
+                min_depth:4,
+                max_depth:5
             },
             //各パーツの状態管理
             P:{
@@ -86,7 +102,8 @@ function run_after(){
                 ar_ui_guide_msg_cnt:0,
                 show_ui:'ar',
                 contenu_interval:false,
-                timeline_cnt:2, //全体の進捗を管理
+                timeline_cnt:0, //全体の進捗を管理
+                now_active_pin:0, //4種類のピンのうち現在はどれか
                 timeline:[
                     //ようこそ画面
                     {
@@ -411,6 +428,24 @@ function run_after(){
             }
         },
         watch:{
+            'B.pins':{
+                handler:function(){
+                    const   x1 = this.B.pins[2].x,
+                            x2 = this.B.pins[3].x,
+                            z1 = this.B.pins[2].z,
+                            z2 = this.B.pins[3].z;
+                    //２点のピンから横幅の長さを返す
+                    this.B.width = Math.sqrt((x1-x2)**2+(z1-z2)**2);
+                    //横幅線の位置を求める
+                    this.P.width_line.pos.x = (x1+x2)/2;
+                    this.P.width_line.pos.z = (z1+z2)/2;
+                    //角度を求める
+                    let angle = Math.atan2(x2 - x1,z2 - z1)*(180 / Math.PI);
+                    //セット
+                    this.P.width_line.rote.p = angle-90;
+                },
+                deep: true
+            },
             //Bの各値が許可された範囲内を動くように
             'B.height':function(val){
                 if(val < 0) this.B.height = 0;
@@ -462,11 +497,24 @@ function run_after(){
         },
         //各パーツの初期化を行う
         mounted:function(){
-            this.get_width_length;
-            this.get_width_line_pos;
-            this.get_width_line_rote;
+            this.S.timeline_cnt = 0;
+
             this.get_min_depth_guide_surface_paras;
             this.get_max_depth_guide_surface_paras;
+
+            //実験
+            /*
+            function get_ray(){
+                const ray = window.XR8.XrController.hitTest(0.5,0.5)[0].position;
+                ar_app.__vue__.$data.B.pins[ar_app.__vue__.$data.S.now_active_pin].x = ray.x;
+                ar_app.__vue__.$data.B.pins[ar_app.__vue__.$data.S.now_active_pin].y = ray.y;
+                ar_app.__vue__.$data.B.pins[ar_app.__vue__.$data.S.now_active_pin].z = ray.z;
+            }
+            setInterval(get_ray,100);
+            */
+
+            //aframe-crawling-cursor.jsを実行
+            //run_cursor();
     
             //テキストが2秒毎に丁寧丁寧丁寧に切り替わるように
             setInterval(()=>{
@@ -485,35 +533,6 @@ function run_after(){
         },
         //計算をしないと求めらない数値
         computed:{
-            //２点のピンから横幅の長さを返す
-            get_width_length:function(){
-                const   x1 = this.B.pin_a_pos.x,
-                        x2 = this.B.pin_b_pos.x,
-                        z1 = this.B.pin_a_pos.z,
-                        z2 = this.B.pin_b_pos.z;
-                this.B.width = Math.sqrt((x1-x2)**2+(z1-z2)**2);
-            },
-            //横幅線の位置を求める
-            get_width_line_pos:function(){
-                const   x1 = this.B.pin_a_pos.x,
-                        x2 = this.B.pin_b_pos.x,
-                        z1 = this.B.pin_a_pos.z,
-                        z2 = this.B.pin_b_pos.z;
-                this.P.width_line.pos.x = (x1+x2)/2;
-                this.P.width_line.pos.z = (z1+z2)/2;
-            },
-            //横幅線の角度を決める
-            get_width_line_rote:function(){
-                //情報格納
-                const   ax = this.B.pin_a_pos.x,
-                        az = this.B.pin_a_pos.z,
-                        bx = this.B.pin_b_pos.x,
-                        bz = this.B.pin_b_pos.z;
-                //角度を求める
-                let angle = Math.atan2(bx - ax,bz - az)*(180 / Math.PI);
-                //セット
-                this.P.width_line.rote.p = angle-90;
-            },
             //最短斜辺面の位置、角度、大きさを決める
             get_min_depth_guide_surface_paras:function(){
                 //console.log('計算しました');
@@ -631,9 +650,18 @@ function run_after(){
             video_cnt:function(event){
                 const start = this.S.timeline[this.S.timeline_cnt].info_box.video.start;
                 const end = this.S.timeline[this.S.timeline_cnt].info_box.video.end;
-                if(!(start <= event.target.currentTime && event.target.currentTime <= end)){
+                if(!(start <= event.target.currentTime && event.target.currentTime <= end)){ 
                     event.target.currentTime = start;
                 }
+            },
+            //ピンの位置を変更
+            change_pin_pos:function(){
+                //debugger;
+                //console.log(window.XR8.XrController.hitTest(0.5,0.5)[0].position);
+                //window.XR8.XrController.hitTest(0.5,0.5)[0].position
+                //this.B.pins[2].x = ray_pos.x;
+                //this.B.pins[2].y = ray_pos.y;
+                //this.B.pins[2].z = ray_pos.z;
             }
         }
     });
@@ -643,25 +671,25 @@ function run_after(){
 
 window.addEventListener('load',(event)=>{
     //bodyの監視
-    //debugger;
     const target = document.body;
     let _8th_wall_is_show = false; //一度登場したらtrueに
     const observer = new MutationObserver(records => {
-        console.log('実行');
+        //console.log('実行');
         //要素が登場した
         if(_8th_wall_is_show == false && document.getElementById("loadingContainer") != null){
             _8th_wall_is_show = true;
-            console.log('登場');
+            //console.log('登場');
         }else{
-            console.log('未登場');
+            //console.log('未登場');
         }
         //要素が消滅した
         if(_8th_wall_is_show == true && document.getElementById("loadingContainer") == null){
-            console.log('消滅');
+            //console.log('消滅');
             observer.disconnect();//bodyの監視を終了
-            run_after(); //Vueを実行
+            run_vue(); //Vueを実行
+            //run_cursor();
         }else{
-            console.log('登場中');
+            //console.log('登場中');
         }
     });
     observer.observe(target, {
@@ -669,3 +697,10 @@ window.addEventListener('load',(event)=>{
     });
 });
 
+/*
+const get_camera_ray = ()=>{
+    return window.XR8.XrController.hitTest(0.5,0.5)[0].position;
+}
+*/
+
+//run_cursor();
