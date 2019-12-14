@@ -22,15 +22,16 @@ const changed = require('gulp-changed');
 function convert_wp_theme() {
 	const in_dir = './wp-theme/';
   const out_dir = './Dist/wp-theme/';
-  const options = {
-		host: 'www6.conoha.ne.jp',
-		port: 8022,
-		user: 'c0704253',
-		remotePlatform: 'unix',
-		remotePath:
-			'/home/c0704253/public_html/step.nextlav.xyz/wp-content/themes/match_plate',
-		key: '/Users/lavp/.ssh/key-2019-12-13-14-19.pem'
-	};
+  const options = (dist_path = '') => {
+		return {
+      host: 'www6.conoha.ne.jp',
+      port: 8022,
+      user: 'c0704253',
+      remotePlatform: 'unix',
+      remotePath: '/home/c0704253/public_html/step.nextlav.xyz/wp-content/themes/match_plate/'+dist_path,
+      key: '/Users/lavp/.ssh/key-2019-12-13-14-19.pem'
+    }
+  }
 	return mergeStream(
 		// in style css
 		gulp
@@ -45,7 +46,7 @@ function convert_wp_theme() {
       .pipe(cssmin())
       .pipe(sourcemaps.write())
       .pipe(gulp.dest(out_dir + 'style'))
-      .pipe(sftp(options)),
+      .pipe(options('style')),
 		// in root css
 		gulp
       .src(in_dir + 'style.css')
@@ -58,7 +59,7 @@ function convert_wp_theme() {
       .pipe(autoprefixer({ grid: 'autoplace' }))
       .pipe(sourcemaps.write())
       .pipe(gulp.dest(out_dir))
-      .pipe(sftp(options)),
+      .pipe(options('')),
 		//js
 		gulp
       .src(in_dir + '/js/**/*.js')
@@ -71,28 +72,28 @@ function convert_wp_theme() {
       .pipe(uglify())
       .pipe(sourcemaps.write())
       .pipe(gulp.dest(out_dir + 'js'))
-      .pipe(sftp(options)),
+      .pipe(options('js')),
 		// images
 		gulp
       .src(in_dir + '/images/**/*')
       .pipe(changed(out_dir + 'images'))
 			.pipe(imagemin())
       .pipe(gulp.dest(out_dir + 'images'))
-      .pipe(sftp(options)),
+      .pipe(options('images')),
 		//root php
     gulp.src(in_dir + '*.php')
     .pipe(changed(out_dir))
     .pipe(sourcemaps.init())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(out_dir))
-    .pipe(sftp(options)),
+    .pipe(options('')),
 		//mpa parts
     gulp.src(in_dir + '/mpa/*.php')
     .pipe(changed(out_dir + '/mpa'))
     .pipe(sourcemaps.init())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(out_dir + '/mpa'))
-    .pipe(sftp(options))
+    .pipe(options('mpa'))
 	);
 }
 
@@ -100,13 +101,15 @@ function convert_wp_theme() {
 function convert_ar_scan_app() {
 	const in_dir = './ar_scan_app/';
   const out_dir = './Dist/ar/';
-  const options = {
-		host: 'www6.conoha.ne.jp',
-		port: 8022,
-		user: 'c0704253',
-		remotePlatform: 'unix',
-		remotePath: '/home/c0704253/public_html/step.nextlav.xyz/ar',
-		key: '/Users/lavp/.ssh/key-2019-12-13-14-19.pem'
+  const options = (dist_path = '') => {
+		return {
+      host: 'www6.conoha.ne.jp',
+      port: 8022,
+      user: 'c0704253',
+      remotePlatform: 'unix',
+      remotePath: '/home/c0704253/public_html/step.nextlav.xyz/ar/'+dist_path,
+      key: '/Users/lavp/.ssh/key-2019-12-13-14-19.pem'
+    }
 	};
 	return mergeStream(
 		// style
@@ -122,7 +125,7 @@ function convert_ar_scan_app() {
       .pipe(cssmin())
       .pipe(sourcemaps.write())
       .pipe(gulp.dest(out_dir + 'style'))
-      .pipe(sftp(options)),
+      .pipe(sftp(options('style'))),
 		//js
 		gulp
       .src(in_dir + '/js/**/*.js')
@@ -132,29 +135,29 @@ function convert_ar_scan_app() {
       .pipe(babel({
         "presets": ["@babel/preset-env"]
       }))
-      .pipe(uglify())
+      //.pipe(uglify())
       .pipe(sourcemaps.write())
       .pipe(gulp.dest(out_dir + 'js'))
-      .pipe(sftp(options)),
+      .pipe(sftp(options('js'))),
 		// assets
     gulp.src(in_dir + '/assets/**/*')
     .pipe(changed(out_dir + 'assets'))
     .pipe(gulp.dest(out_dir + 'assets'))
-    .pipe(sftp(options)),
+    .pipe(sftp(options('assets'))),
 		//root php
     gulp.src(in_dir + '*.php')
     .pipe(changed(out_dir))
     .pipe(sourcemaps.init())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(out_dir))
-    .pipe(sftp(options)),
+    .pipe(sftp(options(''))),
 		//ui parts
     gulp.src(in_dir + '/ui_parts/*.php')
     .pipe(changed(out_dir + '/ui_parts'))
     .pipe(sourcemaps.init())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(out_dir + '/ui_parts'))
-    .pipe(sftp(options))
+    .pipe(sftp(options('ui_parts')))
 	);
 }
 
