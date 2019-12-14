@@ -44,10 +44,6 @@ function run_vue(){
             },
             //各パーツの状態管理
             P:{
-                camera_rig:{
-                    pos:{x:30,y:30,z:80},
-                    rote:{h:0,p:30,b:0}
-                },
                 step_pin_a:{
                     opacity:1,
                     color:'blue',
@@ -65,7 +61,7 @@ function run_vue(){
                     rote:{h:0,p:0,b:0}
                 },
                 height_surface:{
-                    opacity:1,
+                    opacity:0.5,
                     color:'red'
                 },
                 depth_offset_line:{
@@ -81,23 +77,23 @@ function run_vue(){
                     color:'green'
                 },
                 min_depth_guide_surface:{
-                    opacity:1,
-                    color:'gray',
+                    opacity:0.5,
+                    color:'green',
                     pos:{x:0,y:0,z:0},
                     rote:{h:0,p:0,b:0},
-                    height:30
+                    height:15
                 },
                 max_depth_guide_surface:{
-                    opacity:1,
-                    color:'gray',
+                    opacity:0.5,
+                    color:'blue',
                     pos:{x:0,y:0,z:0},
                     rote:{h:0,p:0,b:0},
-                    height:30
+                    height:17
                 }
             },
             //画面遷移の管理
             S:{
-                show_2d_ui:"display",
+                show_2d_ui:"block",
                 info_box_msgs_cnt:0,
                 ar_ui_guide_msg_cnt:0,
                 show_ui:'ar',
@@ -653,15 +649,6 @@ function run_vue(){
                 if(!(start <= event.target.currentTime && event.target.currentTime <= end)){ 
                     event.target.currentTime = start;
                 }
-            },
-            //ピンの位置を変更
-            change_pin_pos:function(){
-                //debugger;
-                //console.log(window.XR8.XrController.hitTest(0.5,0.5)[0].position);
-                //window.XR8.XrController.hitTest(0.5,0.5)[0].position
-                //this.B.pins[2].x = ray_pos.x;
-                //this.B.pins[2].y = ray_pos.y;
-                //this.B.pins[2].z = ray_pos.z;
             }
         }
     });
