@@ -108,7 +108,7 @@ function run_vue(){
                         info_box:{
                             video:{
                                 start:5,
-                                end:5
+                                end:15
                             },
                             msgs:[
                                 {
@@ -128,7 +128,7 @@ function run_vue(){
                         info_box:{
                             video:{
                                 start:0,
-                                end:3
+                                end:4.5
                             },
                             msgs:[
                                 {
@@ -149,7 +149,7 @@ function run_vue(){
                                 }
                             ],
                             btn:'OK',
-                            bg_color:'#F3F3F3'
+                            bg_color:'#FFF'
                         },
                         //ARのUI表示を設定
                         ar_ui:{
@@ -175,8 +175,8 @@ function run_vue(){
                         //説明ボックス
                         info_box:{
                             video:{
-                                start:3,
-                                end:6
+                                start:5,
+                                end:10
                             },
                             msgs:[
                                 {
@@ -197,7 +197,7 @@ function run_vue(){
                                 }
                             ],
                             btn:'OK',
-                            bg_color:'#F3F3F3'
+                            bg_color:'#e5e2e3'
                         },
                         //ARのUI表示を設定
                         ar_ui:{
@@ -222,8 +222,8 @@ function run_vue(){
                         //説明ボックス
                         info_box:{
                             video:{
-                                start:6,
-                                end:10
+                                start:10,
+                                end:12
                             },
                             msgs:[
                                 {
@@ -240,7 +240,7 @@ function run_vue(){
                                 }
                             ],
                             btn:'OK',
-                            bg_color:'#EDEBEA'
+                            bg_color:'#e6e4e6'
                         },
                         //ARのUI表示を設定
                         ar_ui:{
@@ -254,8 +254,8 @@ function run_vue(){
                         //説明ボックス
                         info_box:{
                             video:{
-                                start:10,
-                                end:11
+                                start:12,
+                                end:13
                             },
                             msgs:[
                                 {
@@ -282,8 +282,8 @@ function run_vue(){
                         //説明ボックス
                         info_box:{
                             video:{
-                                start:11,
-                                end:12
+                                start:13,
+                                end:16
                             },
                             msgs:[
                                 {
@@ -296,7 +296,7 @@ function run_vue(){
                                 }
                             ],
                             btn:'OK',
-                            bg_color:'#F3F3F3'
+                            bg_color:'#e6e4e6'
                         },
                         //ARのUI表示を設定
                         ar_ui:{
@@ -310,8 +310,8 @@ function run_vue(){
                         //説明ボックス
                         info_box:{
                             video:{
-                                start:12,
-                                end:13
+                                start:16,
+                                end:18
                             },
                             msgs:[
                                 {
@@ -328,7 +328,7 @@ function run_vue(){
                                 }
                             ],
                             btn:'OK',
-                            bg_color:'#E9E6E8'
+                            bg_color:'#e3e2e3'
                         },
                         //ARのUI表示を設定
                         ar_ui:{
@@ -342,8 +342,8 @@ function run_vue(){
                         //説明ボックス
                         info_box:{
                             video:{
-                                start:13,
-                                end:14
+                                start:5,
+                                end:20
                             },
                             msgs:[
                                 {
@@ -360,7 +360,7 @@ function run_vue(){
                                 }
                             ],
                             btn:'OK',
-                            bg_color:'#E9E6E8'
+                            bg_color:'#e3e2e3'
                         },
                         //ARのUI表示を設定
                         ar_ui:null
@@ -650,6 +650,7 @@ function run_vue(){
             set_pin_by_camera_ray:function(){
                 //reyposの取得
                 const ray_pos = window.XR8.XrController.hitTest.apply(window,[0.5,0.5,['FEATURE_POINT']])[0].position;
+                const ray_rote = window.XR8.XrController.hitTest.apply(window,[0.5,0.5,['FEATURE_POINT']])[0].rotetion;
                 //既にピンされているか
                 if(this.P.pins[this.S.now_active_pin].seted  == false){//いいえ
                     //active_pinへセット
@@ -675,15 +676,6 @@ function run_vue(){
                     this.P.preview_pin.pos.z = ray_pos.z;
                 }
             }
-            //ピンのraycast
-            /*
-            set_pin_by_camera_ray:function(){
-                const ray_pos = window.XR8.XrController.hitTest.apply(window,[0.5,0.5,['FEATURE_POINT']])[0].position;
-                this.B.pins[this.S.now_active_pin].x = ray_pos.x;
-                this.B.pins[this.S.now_active_pin].y = ray_pos.y;
-                this.B.pins[this.S.now_active_pin].z = ray_pos.z;
-            }
-            */
         }
     });
     

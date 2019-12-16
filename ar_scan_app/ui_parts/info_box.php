@@ -1,12 +1,12 @@
 <section class="info card"
 :style='{ backgroundColor : S.timeline[S.timeline_cnt].info_box.bg_color }'
-v-if='S.show_ui == "info"'>
+v-show='S.show_ui == "info"'>
     <p class="phase">
         <span class="now">{{ S.timeline_cnt+1 }}</span>
         <span class="total">{{ S.timeline.length }}</span>
     </p>
     <video id='info_video'
-    src='assets/info.mp4'
+    src='assets/info.mp4?ver=2'
     @timeupdate='video_cnt'
     muted autoplay loop preload='auto' playsinline></video>
     <div>
