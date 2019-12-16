@@ -149,7 +149,7 @@ function run_vue(){
                                 }
                             ],
                             btn:'OK',
-                            bg_color:'#FFF'
+                            bg_color:'#FFFFFF'
                         },
                         //ARのUI表示を設定
                         ar_ui:{
@@ -162,7 +162,32 @@ function run_vue(){
                     //千円計測2
                     {
                         //説明ボックス
-                        info_box:null,
+                        info_box:{
+                            video:{
+                                start:0,
+                                end:4.5
+                            },
+                            msgs:[
+                                {
+                                    align:'justify',
+                                    text:'まずはじめに、千円札の大きさを計測します。'
+                                },
+                                {
+                                    align:'justify',
+                                    text:'この作業は、ARアプリがカメラに映る段差が'
+                                },
+                                {
+                                    align:'justify',
+                                    text:'何cmなのかを正確に把握するために必要です。'
+                                },
+                                {
+                                    align:'justify',
+                                    text:'机の上に千円札を置き、上の辺をピンしましょう'
+                                }
+                            ],
+                            btn:'OK',
+                            bg_color:'#FFFFFF'
+                        },
                         //ARのUI表示を設定
                         ar_ui:{
                             guide_msg:[
@@ -209,7 +234,32 @@ function run_vue(){
                     //横幅計測2
                     {
                         //説明ボックス
-                        info_box:null,
+                        info_box:{
+                            video:{
+                                start:5,
+                                end:10
+                            },
+                            msgs:[
+                                {
+                                    align:'justify',
+                                    text:'それでは、段差の横幅を計測していきます。'
+                                },
+                                {
+                                    align:'justify',
+                                    text:'千円札を計測したときと同じ要領で行いましょう。'
+                                },
+                                {
+                                    align:'justify',
+                                    text:'横幅は、すべての基準になりますのでご慎重に。'
+                                },
+                                {
+                                    align:'justify',
+                                    text:'図のように、段差の横幅の両端2点をピンしましょう'
+                                }
+                            ],
+                            btn:'OK',
+                            bg_color:'#e5e2e3'
+                        },
                         //ARのUI表示を設定
                         ar_ui:{
                             guide_msg:[
@@ -352,14 +402,14 @@ function run_vue(){
                                 },
                                 {
                                     align:'justify',
-                                    text:'試し置きしながら、ズレがないか確認しましょう。'
+                                    text:'次のページで、段差の寸法にあった'
                                 },
                                 {
                                     align:'center',
-                                    text:'ズレがある場合は<br>もう一度やり直せます。'
+                                    text:'プレートをご確認いただけます。'
                                 }
                             ],
-                            btn:'OK',
+                            btn:'見に行く',
                             bg_color:'#e3e2e3'
                         },
                         //ARのUI表示を設定
@@ -403,6 +453,11 @@ function run_vue(){
             },
             'B.max_depth':function(val){
                 if(val < this.B.min_depth) this.B.max_depth = this.B.min_depth;
+            },
+            //display:none中にtimeupdateが発生してエラーが出てしまうのを防ぐために、ar表示中は再生を停止する
+            'S.show_ui':function(val){
+                if(val == 'ar') this.$el.querySelector('#info_video').pause();
+                if(val == 'info') this.$el.querySelector('#info_video').play();
             },
             //timeline_cntによる画面遷移及び機能変更
             'S.timeline_cnt':function(val){
