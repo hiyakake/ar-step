@@ -443,6 +443,10 @@ function run_vue(){
                     let angle = Math.atan2(x2 - x1,z2 - z1)*(180 / Math.PI);
                     //セット
                     this.P.width_line.rote.p = angle-90;
+
+
+                    //千円の3D空間上での大きさをセット
+                    this.senens_scanned_size_at_3d_world = Math.sqrt((this.B.pins[0].x-this.B.pins[1].x)**2+(this.B.pins[0].y-this.B.pins[1].y)**2+(this.B.pins[0].z-this.B.pins[1].z)**2);
                 },
                 deep: true
             },
@@ -459,9 +463,9 @@ function run_vue(){
             'B.max_depth':function(val){
                 if(val < this.B.min_depth) this.B.max_depth = this.B.min_depth;
             },
-            //3DUIの表示非表示
+            //timeline_cntによる画面遷移及び機能変更
             'S.timeline_cnt':function(val){
-                //debugger;
+                //3Dオブジェクトの表示非表示
                 const changeShowHide = (
                     width_line,
                     height_surface,
@@ -478,16 +482,22 @@ function run_vue(){
                     this.P.max_depth_line.opacity = max_depth_line;
                     this.P.max_depth_guide_surface.opacity = max_depth_guide_surface;
                 };
+                //ARでの2DUIの
+                
+                
+                
+                //切り替え実行
                 switch(val){
                     case 0:changeShowHide(0.0,0.0,0.0,0.0,0.0,0.0,0.0);break;//ようこそ
                     case 1:changeShowHide(0.0,0.0,0.0,0.0,0.0,0.0,0.0);break;//千円計測
+                    case 1:changeShowHide(0.0,0.0,0.0,0.0,0.0,0.0,0.0);break;//千円計測
                     case 2:changeShowHide(1.0,0.0,0.0,0.0,0.0,0.0,0.0);break;//横幅計測
+                    case 1:changeShowHide(0.0,0.0,0.0,0.0,0.0,0.0,0.0);break;//千円計測
                     case 3:changeShowHide(1.0,0.5,0.0,0.0,0.0,0.0,0.0);break;//高さ計測
                     case 4:changeShowHide(1.0,0.5,1.0,0.0,0.0,0.0,0.0);break;//高さオフセット
                     case 5:changeShowHide(1.0,0.0,1.0,1.0,0.5,0.0,0.0);break;//最短奥行き
                     case 6:changeShowHide(1.0,0.0,1.0,1.0,0.5,1.0,0.5);break;//最長奥行き
                     case 7:changeShowHide(1.0,0.2,1.0,1.0,0.5,1.0,0.5);break;//プレビュー
-                    
                 };
             }
         },
@@ -651,17 +661,12 @@ function run_vue(){
                     event.target.currentTime = start;
                 }
             },
-            //実験
+            //ピンのraycast
             set_pin_by_camera_ray:function(){
-                //console.log('呼び出されました');
-                //debugger;
                 const ray_pos = window.XR8.XrController.hitTest.apply(window,[0.5,0.5,['FEATURE_POINT']])[0].position;
                 this.B.pins[this.S.now_active_pin].x = ray_pos.x;
                 this.B.pins[this.S.now_active_pin].y = ray_pos.y;
                 this.B.pins[this.S.now_active_pin].z = ray_pos.z;
-                //ar_app.__vue__.$data.B.pins[ar_app.__vue__.$data.S.now_active_pin].x = ray_pos.x;
-                //ar_app.__vue__.$data.B.pins[ar_app.__vue__.$data.S.now_active_pin].y = ray_pos.y;
-                //ar_app.__vue__.$data.B.pins[ar_app.__vue__.$data.S.now_active_pin].z = ray_pos.z;
             }
         }
     });
