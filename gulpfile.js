@@ -46,7 +46,7 @@ function convert_wp_theme() {
       .pipe(cssmin())
       .pipe(sourcemaps.write())
       .pipe(gulp.dest(out_dir + 'style'))
-      .pipe(options('style')),
+      .pipe(sftp(options('style'))),
 		// in root css
 		gulp
       .src(in_dir + 'style.css')
@@ -59,7 +59,7 @@ function convert_wp_theme() {
       .pipe(autoprefixer({ grid: 'autoplace' }))
       .pipe(sourcemaps.write())
       .pipe(gulp.dest(out_dir))
-      .pipe(options('')),
+      .pipe(sftp(options(''))),
 		//js
 		gulp
       .src(in_dir + '/js/**/*.js')
@@ -72,28 +72,28 @@ function convert_wp_theme() {
       .pipe(uglify())
       .pipe(sourcemaps.write())
       .pipe(gulp.dest(out_dir + 'js'))
-      .pipe(options('js')),
+      .pipe(sftp(options('js'))),
 		// images
 		gulp
       .src(in_dir + '/images/**/*')
       .pipe(changed(out_dir + 'images'))
 			.pipe(imagemin())
       .pipe(gulp.dest(out_dir + 'images'))
-      .pipe(options('images')),
+      .pipe(sftp(options('images'))),
 		//root php
     gulp.src(in_dir + '*.php')
     .pipe(changed(out_dir))
     .pipe(sourcemaps.init())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(out_dir))
-    .pipe(options('')),
+    .pipe(sftp(options(''))),
 		//mpa parts
     gulp.src(in_dir + '/mpa/*.php')
     .pipe(changed(out_dir + '/mpa'))
     .pipe(sourcemaps.init())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(out_dir + '/mpa'))
-    .pipe(options('mpa'))
+    .pipe(sftp(options('mpa')))
 	);
 }
 
