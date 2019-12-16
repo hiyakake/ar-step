@@ -25,13 +25,21 @@ v-if='S.show_ui == "ar"'>
         class="guide_msg"><span>{{ S.timeline[S.timeline_cnt].ar_ui.guide_msg[S.ar_ui_guide_msg_cnt] }}</span></p>
 
 
-        <!--ピンシャッターボタン-->
+        <!--ピンシャッターボタン　未ピン-->
         <div class="shutter"
-        v-if='S.timeline_cnt >= 1 && S.timeline_cnt <= 4'
+        v-if='S.timeline_cnt >= 1 && S.timeline_cnt <= 4 && P.pins[S.now_active_pin].seted == false'
         @click='[
-            
+            P.pins[S.now_active_pin].seted = true
         ]'>
-            <button><span>お札1</span></button>
+            <button><span></span></button>
+        </div>
+        <!--ピンシャッターボタン　ピン済み上書き用-->
+        <div class="shutter"
+        v-if='S.timeline_cnt >= 1 && S.timeline_cnt <= 4 && P.pins[S.now_active_pin].seted == true'
+        @click='[
+            P.pins[S.now_active_pin].seted = "resetrequest"
+        ]'>
+            <button><span></span></button>
         </div>
         <!--高さ計測-->
         <div class="volume"

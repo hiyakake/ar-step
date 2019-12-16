@@ -24,22 +24,37 @@ function run_vue(){
             },
             //各パーツの状態管理
             P:{
-                senen_pin_a:{
+                preview_pin:{
                     opacity:1,
-                    color:'yellow'
+                    color:'gray',
+                    pos:{
+                        x:0,
+                        y:0,
+                        z:0
+                    }
                 },
-                senen_pin_b:{
-                    opacity:1,
-                    color:'blue'
-                },
-                step_pin_a:{
-                    opacity:1,
-                    color:'red'
-                },
-                step_pin_b:{
-                    opacity:1,
-                    color:'green'
-                },
+                pins:[
+                    {
+                        opacity:1,
+                        color:'yellow',
+                        seted:false
+                    },
+                    {
+                        opacity:1,
+                        color:'blue',
+                        seted:false
+                    },
+                    {
+                        opacity:1,
+                        color:'red',
+                        seted:false
+                    },
+                    {
+                        opacity:1,
+                        color:'green',
+                        seted:false
+                    }
+                ],
                 width_line:{
                     opacity:1,
                     color:'blue',
@@ -348,9 +363,7 @@ function run_vue(){
                             bg_color:'#E9E6E8'
                         },
                         //ARのUI表示を設定
-                        ar_ui:{
-                            guide_msg:null
-                        }
+                        ar_ui:null
                     }
                 ]
             }
@@ -394,16 +407,17 @@ function run_vue(){
             //timeline_cntによる画面遷移及び機能変更
             'S.timeline_cnt':function(val){
                 //3Dオブジェクトの表示非表示
-                const changeShowHide = (pin0,pin1,pin2,pin3,width_line,height_surface,depth_offset_line,min_depth_line,min_depth_guide_surface,max_depth_line,max_depth_guide_surface)=>{
+                const changeShowHide = (preview_pin,pin0,pin1,pin2,pin3,width_line,height_surface,depth_offset_line,min_depth_line,min_depth_guide_surface,max_depth_line,max_depth_guide_surface)=>{
                     const keyToOpacity = (key)=>{
                         if(key == 'H') return 0.0; //Hide
                         if(key == 'S') return 1.0; //Show
                         if(key == 'A') return 0.5; //Alpha
                     };
-                    this.P.senen_pin_a.opacity = keyToOpacity(pin0);
-                    this.P.senen_pin_b.opacity = keyToOpacity(pin1);
-                    this.P.step_pin_a.opacity = keyToOpacity(pin2);
-                    this.P.step_pin_b.opacity = keyToOpacity(pin3);
+                    this.P.preview_pin.opacity = keyToOpacity(preview_pin);
+                    this.P.pins[0].opacity = keyToOpacity(pin0);
+                    this.P.pins[1].opacity = keyToOpacity(pin1);
+                    this.P.pins[2].opacity = keyToOpacity(pin2);
+                    this.P.pins[3].opacity = keyToOpacity(pin3);
                     this.P.width_line.opacity = keyToOpacity(width_line);
                     this.P.height_surface.opacity = keyToOpacity(height_surface);
                     this.P.depth_offset_line.opacity = keyToOpacity(depth_offset_line);
@@ -417,56 +431,56 @@ function run_vue(){
                     //ようこそ
                     case 0:
                         this.S.show_ui = 'info';
-                        changeShowHide('H','H','H','H','H','H','H','H','H','H','H');
+                        changeShowHide('H','H','H','H','H','H','H','H','H','H','H','H');
                     break;
                     //千円1
                     case 1:
                         this.S.show_ui = 'info';
                         this.S.now_active_pin = 0;
-                        changeShowHide('S','H','H','H','H','H','H','H','H','H','H')
+                        changeShowHide('S','S','H','H','H','H','H','H','H','H','H','H')
                     ;break;
                     //千円2
                     case 2:
                         this.S.show_ui = 'ar';
                         this.S.now_active_pin = 1;
-                        changeShowHide('S','S','H','H','H','H','H','H','H','H','H');
+                        changeShowHide('S','S','S','H','H','H','H','H','H','H','H','H');
                     break;
                     //横幅1
                     case 3:
                         this.S.show_ui = 'info';
                         this.S.now_active_pin = 2;
-                        changeShowHide('H','H','S','H','S','H','H','H','H','H','H');
+                        changeShowHide('S','H','H','S','H','S','H','H','H','H','H','H');
                     break;
                     //横幅2
                     case 4:
                         this.S.show_ui = 'ar';
                         this.S.now_active_pin = 3;
-                        changeShowHide('H','H','S','S','S','H','H','H','H','H','H');
+                        changeShowHide('S','H','H','S','S','S','H','H','H','H','H','H');
                     break;
                     //高さ計測
                     case 5:
                         this.S.show_ui = 'info';
-                        changeShowHide('H','H','S','S','S','A','H','H','H','H','H');
+                        changeShowHide('H','H','H','S','S','S','A','H','H','H','H','H');
                     break;
                     //高さオフセット
                     case 6:
                         this.S.show_ui = 'info';
-                        changeShowHide('H','H','S','S','S','A','S','H','H','H','H');
+                        changeShowHide('H','H','H','S','S','S','A','S','H','H','H','H');
                     break;
                     //最短奥行き
                     case 7:
                         this.S.show_ui = 'info';
-                        changeShowHide('H','H','S','S','S','H','S','S','A','H','H');
+                        changeShowHide('H','H','H','S','S','S','H','S','S','A','H','H');
                     break;
                     //最長奥行き
                     case 8:
                         this.S.show_ui = 'info';
-                        changeShowHide('H','H','S','S','S','H','S','S','A','S','A');
+                        changeShowHide('H','H','H','S','S','S','H','S','S','A','S','A');
                     break;
                     //プレビュー
                     case 9:
                         this.S.show_ui = 'info';
-                        changeShowHide('H','H','S','S','S','A','S','S','A','S','A');
+                        changeShowHide('H','H','H','S','S','S','A','S','S','A','S','A');
                     break;
                 };
             }
@@ -479,26 +493,34 @@ function run_vue(){
             this.get_max_depth_guide_surface_paras;
 
 
-            //レイキャストの開始
+            //レイキャストのループ
             setTimeout(()=>{
                 setInterval(()=>{
-                    this.set_pin_by_camera_ray();
+                    if(this.S.timeline_cnt < 5){
+                        this.set_pin_by_camera_ray();
+                    }else{
+                        this.P.preview_pin.pos.y = 1000;
+                    }
                 },50);
             },6000);
 
             //テキストが2秒毎に丁寧丁寧丁寧に切り替わるように
             setInterval(()=>{
+                let length = 0,current = 0;
                 //infobox内
-                let length = this.S.timeline[this.S.timeline_cnt].info_box.msgs.length;
-                //debugger;
-                let current = this.S.info_box_msgs_cnt;
-                if(current < length-1) this.S.info_box_msgs_cnt++;
-                else this.S.info_box_msgs_cnt = 0;
+                if(this.S.timeline[this.S.timeline_cnt].info_box != null){
+                    length = this.S.timeline[this.S.timeline_cnt].info_box.msgs.length;
+                    current = this.S.info_box_msgs_cnt;
+                    if(current < length-1) this.S.info_box_msgs_cnt++;
+                    else this.S.info_box_msgs_cnt = 0;
+                }
                 //ar_ui内
-                length = this.S.timeline[this.S.timeline_cnt].ar_ui.guide_msg.length;
-                current = this.S.ar_ui_guide_msg_cnt;
-                if(current < length-1) this.S.ar_ui_guide_msg_cnt++;
-                else this.S.ar_ui_guide_msg_cnt = 0;
+                if(this.S.timeline[this.S.timeline_cnt].ar_ui != null){
+                    length = this.S.timeline[this.S.timeline_cnt].ar_ui.guide_msg.length;
+                    current = this.S.ar_ui_guide_msg_cnt;
+                    if(current < length-1) this.S.ar_ui_guide_msg_cnt++;
+                    else this.S.ar_ui_guide_msg_cnt = 0;
+                }
             },2000);
         },
         //計算をしないと求めらない数値
@@ -569,13 +591,7 @@ function run_vue(){
                 return `${h} ${p} ${b}`;
             },
             set_material:function(color,opacity,blend = 'normal',side = 'double'){
-                console.log(`color:${color};opacity:${opacity};side:${side};`);
-                if(opacity == 0){
-                    return `color:${color};opacity:${opacity};side:${side};blending:${blend};shader:flat`;
-                }else{
-                    return `color:${color};opacity:${opacity}:${side};blending:${blend};shader:flat`;
-                }
-                
+                return `color:${color};opacity:${opacity};side:${side};blending:${blend}`;
             },
             //数値を千円札を基準に実寸に直す
             covert_to_actual_size:function(target){
@@ -632,11 +648,42 @@ function run_vue(){
             },
             //ピンのraycast
             set_pin_by_camera_ray:function(){
+                //reyposの取得
+                const ray_pos = window.XR8.XrController.hitTest.apply(window,[0.5,0.5,['FEATURE_POINT']])[0].position;
+                //既にピンされているか
+                if(this.P.pins[this.S.now_active_pin].seted  == false){//いいえ
+                    //active_pinへセット
+                    this.B.pins[this.S.now_active_pin].x = ray_pos.x;
+                    this.B.pins[this.S.now_active_pin].y = ray_pos.y;
+                    this.B.pins[this.S.now_active_pin].z = ray_pos.z;
+                    //プレビューピンへセット
+                    this.P.preview_pin.pos.x = 0;
+                    this.P.preview_pin.pos.y = 1000;
+                    this.P.preview_pin.pos.z = 0;
+                }else{//はい
+                    //再セットrequestを持っているか
+                    if(this.P.pins[this.S.now_active_pin].seted == 'resetrequest'){//はい
+                        //active_pinへの再セット
+                        this.B.pins[this.S.now_active_pin].x = ray_pos.x;
+                        this.B.pins[this.S.now_active_pin].y = ray_pos.y;
+                        this.B.pins[this.S.now_active_pin].z = ray_pos.z;
+                        this.P.pins[this.S.now_active_pin].seted = true;
+                    }
+                    //プレビューピンへセット
+                    this.P.preview_pin.pos.x = ray_pos.x;
+                    this.P.preview_pin.pos.y = ray_pos.y;
+                    this.P.preview_pin.pos.z = ray_pos.z;
+                }
+            }
+            //ピンのraycast
+            /*
+            set_pin_by_camera_ray:function(){
                 const ray_pos = window.XR8.XrController.hitTest.apply(window,[0.5,0.5,['FEATURE_POINT']])[0].position;
                 this.B.pins[this.S.now_active_pin].x = ray_pos.x;
                 this.B.pins[this.S.now_active_pin].y = ray_pos.y;
                 this.B.pins[this.S.now_active_pin].z = ray_pos.z;
             }
+            */
         }
     });
     

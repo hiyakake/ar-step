@@ -82,6 +82,14 @@
         position='0 0 0'>
       </a-entity>
 
+      <!--プレビュー用-->
+      <a-entity
+      id='preview_pin'
+      :position='set_position(P.preview_pin.pos.x,P.preview_pin.pos.y,P.preview_pin.pos.z)'
+      :rotation='set_rotation(0,0,0)'
+      scale='0.1 0.1 0.1'
+      obj-model="obj: #pin-obj;"
+      :material='set_material(P.preview_pin.color,P.preview_pin.opacity)'></a-entity>
       <!--千円ピン-->
       <a-entity
       id='senen_pin_a'
@@ -89,14 +97,14 @@
       :rotation='set_rotation(0,0,0)'
       scale='0.1 0.1 0.1'
       obj-model="obj: #pin-obj;"
-      :material='set_material(P.senen_pin_a.color,P.senen_pin_a.opacity)'></a-entity>
+      :material='set_material(P.pins[0].color,P.pins[0].opacity)'></a-entity>
       <a-entity
       id='senen_pin_b'
       :position='set_position(B.pins[1].x,B.pins[1].y,B.pins[1].z)'
       :rotation='set_rotation(0,0,0)'
       scale='0.1 0.1 0.1'
       obj-model="obj: #pin-obj;"
-      :material='set_material(P.senen_pin_b.color,P.senen_pin_b.opacity)'></a-entity>
+      :material='set_material(P.pins[1].color,P.pins[1].opacity)'></a-entity>
       <!--横幅ピン-->
       <a-entity
       id='step_pin_a'
@@ -104,14 +112,14 @@
       :rotation='set_rotation(0,0,0)'
       scale='0.1 0.1 0.1'
       obj-model="obj: #pin-obj;"
-      :material='set_material(P.step_pin_a.color,P.step_pin_a.opacity)'></a-entity>
+      :material='set_material(P.pins[2].color,P.pins[2].opacity)'></a-entity>
       <a-entity
       id='step_pin_b'
       :position='set_position(B.pins[3].x,B.pins[3].y,B.pins[3].z)'
       :rotation='set_rotation(0,0,0)'
       scale='0.1 0.1 0.1'
       obj-model="obj: #pin-obj;"
-      :material='set_material(P.step_pin_b.color,P.step_pin_b.opacity)'></a-entity>
+      :material='set_material(P.pins[3].color,P.pins[3].opacity)'></a-entity>
       <!--Tool Base-->
       <a-entity
       id='width_line'
