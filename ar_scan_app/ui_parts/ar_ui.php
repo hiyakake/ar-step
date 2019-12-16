@@ -12,6 +12,7 @@ v-if='S.show_ui == "ar"'>
     </button>
     <!--決定ボタン-->
     <button class="diside"
+    :class='{ disable : P.pins[S.now_active_pin].seted == false }'
     @click='S.timeline_cnt++'>
         <img src="assets/diside.svg" alt="確定">
         <p><!--確定--></p>

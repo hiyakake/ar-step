@@ -164,6 +164,10 @@ button,a{
             border-radius: 100px 0 0 100px;
             padding-left: 2em;
             padding-right: 2.5em;
+            &.disable{
+                pointer-events: none;
+                filter: grayscale(1);
+            }
             img{
                 transform: scale(0.8);
             }
