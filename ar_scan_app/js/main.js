@@ -405,7 +405,7 @@ function run_vue(){
                                     text:'次のページで、段差の寸法にあった'
                                 },
                                 {
-                                    align:'center',
+                                    align:'justify',
                                     text:'プレートをご確認いただけます。'
                                 }
                             ],

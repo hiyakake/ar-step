@@ -15,16 +15,20 @@ v-show='S.show_ui == "info"'>
         :style='{ textAlign : S.timeline[S.timeline_cnt].info_box.msgs[S.info_box_msgs_cnt].align }'
         v-html='S.timeline[S.timeline_cnt].info_box.msgs[S.info_box_msgs_cnt].text'></p>
         <button
-        v-if='S.timeline[S.timeline_cnt].ar_ui != null'
+        v-if='S.timeline[S.timeline_cnt].ar_ui != null && S.timeline_cnt != 9'
         @click='[
         S.show_ui = "ar"
         ]'
         >{{ S.timeline[S.timeline_cnt].info_box.btn }}</button>
         <button
-        v-else
+        v-if='S.timeline[S.timeline_cnt].ar_ui == null && S.timeline_cnt != 9'
         @click='[
             S.timeline_cnt++
         ]'
         >{{ S.timeline[S.timeline_cnt].info_box.btn }}</button>
+        <a
+        v-if='S.timeline_cnt == 9'
+        :href='set_query()'
+        >{{ S.timeline[S.timeline_cnt].info_box.btn }}</a>
     </div>
 </section>
