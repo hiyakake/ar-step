@@ -119,20 +119,6 @@
       :position='set_position(P.width_line.pos.x,P.width_line.pos.y,P.width_line.pos.z)'
       :rotation='set_rotation(0,P.width_line.rote.p,0)'
       :material='set_material(P.width_line.color,P.width_line.opacity)'>
-          <!--高さ-->
-          <a-entity
-          id='height_surface'
-          :geometry='set_plane_geometry(B.width,40)'
-          :position='set_position(0,B.height,0)'
-          :rotation='set_rotation(90,0,0)'
-          :material='set_material(P.height_surface.color,P.height_surface.opacity)'>
-              <a-entity
-              id='depth_offset_line'
-              :geometry='set_box_geometry(B.width,0.05,0.05)'
-              :position='set_position(0,B.height_offset,0)'
-              :rotation='set_rotation(0,0,0)'
-              :material='set_material(P.depth_offset_line.color,P.depth_offset_line.opacity)'></a-entity>
-          </a-entity>
           <!--最短底辺-->
           <a-entity
           id='min_depth_line'
@@ -159,6 +145,20 @@
           :position='set_position(0,P.max_depth_guide_surface.pos.y,P.max_depth_guide_surface.pos.z)'
           :rotation='set_rotation(P.max_depth_guide_surface.rote.h,0,0)'
           :material='set_material(P.max_depth_guide_surface.color,P.max_depth_guide_surface.opacity)'></a-entity>
+          <!--高さ-->
+          <a-entity
+          id='height_surface'
+          :geometry='set_plane_geometry(B.width,40)'
+          :position='set_position(0,B.height,0)'
+          :rotation='set_rotation(90,0,0)'
+          :material='set_material(P.height_surface.color,P.height_surface.opacity)'>
+              <a-entity
+              id='depth_offset_line'
+              :geometry='set_box_geometry(B.width,0.05,0.05)'
+              :position='set_position(0,B.height_offset,0)'
+              :rotation='set_rotation(0,0,0)'
+              :material='set_material(P.depth_offset_line.color,P.depth_offset_line.opacity)'></a-entity>
+          </a-entity>
       </a-entity>
     </a-scene>
   </body>
