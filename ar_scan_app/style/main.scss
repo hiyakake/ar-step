@@ -105,40 +105,12 @@ button,a{
         }
     }
     .ok{
-        background-color: #fefefe;
-        .icon{
-            width: 40%;
-            margin: 2em auto;
-            margin-top: 3.5em;
-            img{
-
-            }
-            .icon_msg{
-                margin-top: 0.5em;
-                color: $teamaColor;
-                font-size: 2em;
-                text-align: center;
-            }
-        }
-        .msg{
-            color: $teamaColor;
-            line-height: 1.8;
-            padding: 0 10%;
-            box-sizing: border-box;
-            font-size: 1.2em;
-            margin: 1rem 0;
-        }
-        button,a{
-            display: block;
-            background-color: $teamaColor;
-            color: white;
-            text-align: center;
-            font-size: 1.4em;
-            padding: 0.5em 0;
-            width: 80%;
-            margin: 0 auto;
-            margin-bottom: 1.5rem;
-            border-radius: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 30%;
+            height: auto;
         }
     }
     //ARのUI

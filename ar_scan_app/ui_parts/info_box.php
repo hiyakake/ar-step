@@ -15,7 +15,7 @@ v-if='S.show_ui == "info"'>
         :style='{ textAlign : S.timeline[S.timeline_cnt].info_box.msgs[S.info_box_msgs_cnt].align }'
         v-html='S.timeline[S.timeline_cnt].info_box.msgs[S.info_box_msgs_cnt].text'></p>
         <button
-        v-if='S.timeline_cnt != 0'
+        v-if='S.timeline[S.timeline_cnt].ar_ui != null'
         @click='[
         S.show_ui = "ar"
         ]'
@@ -23,7 +23,7 @@ v-if='S.show_ui == "info"'>
         <button
         v-else
         @click='[
-            S.timeline_cnt = 1
+            S.timeline_cnt++
         ]'
         >{{ S.timeline[S.timeline_cnt].info_box.btn }}</button>
     </div>

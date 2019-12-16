@@ -5,36 +5,16 @@ function run_vue(){
         data:{
             //ベースとなる入力値
             B:{
-                senen:{
-                    senens_scanned_size_at_3d_world:23.456, //千円を計測した時の3D空間上での大きさ
-                    first_point:{x:0,y:0,z:0},
-                    last_point:{x:0,y:0,z:0}
-                },
+                senens_scanned_size_at_3d_world:23.456, //千円を計測した時の3D空間上での大きさ
                 pins:[
                     //千円ピンA
-                    {
-                        x:-4,
-                        y:0,
-                        z:0
-                    },
+                    {x:-4,y:0,z:100},
                     //千円ピンB
-                    {
-                        x:5,
-                        y:0,
-                        z:0
-                    },
+                    {x:5,y:0,z:100},
                     //横幅ピンA
-                    {
-                        x:-4,
-                        y:0,
-                        z:0
-                    },
+                    {x:-4,y:0,z:100},
                     //横幅ピンB
-                    {
-                        x:5,
-                        y:0,
-                        z:0
-                    }
+                    {x:5,y:0,z:100}
                 ],
                 width:null,
                 height:1,
@@ -44,19 +24,21 @@ function run_vue(){
             },
             //各パーツの状態管理
             P:{
-                camera_rig:{
-                    pos:{x:30,y:30,z:80},
-                    rote:{h:0,p:30,b:0}
+                senen_pin_a:{
+                    opacity:1,
+                    color:'yellow'
+                },
+                senen_pin_b:{
+                    opacity:1,
+                    color:'blue'
                 },
                 step_pin_a:{
                     opacity:1,
-                    color:'blue',
-                    rote:{h:0,p:0,b:0}
+                    color:'red'
                 },
                 step_pin_b:{
                     opacity:1,
-                    color:'blue',
-                    rote:{h:0,p:0,b:0}
+                    color:'green'
                 },
                 width_line:{
                     opacity:1,
@@ -123,20 +105,9 @@ function run_vue(){
                             bg_color:'#F3F3F3'
                         },
                         //ARのUI表示を設定
-                        ar_ui:{
-                            guide_msg:[]
-                        },
-                        //OK BOXの設定
-                        ok_box:{
-                            icon_msg:'',
-                            text_msg:{
-                                align:'',
-                                text:''
-                            },
-                            btn:''
-                        }
+                        ar_ui:null
                     },
-                    //千円計測フェーズ
+                    //千円計測1
                     {
                         //説明ボックス
                         info_box:{
@@ -169,21 +140,22 @@ function run_vue(){
                         ar_ui:{
                             guide_msg:[
                                 'お札を軽く手で抑えて',
-                                '千円の左上からピン',
-                                '次に千円の右上にピン'
+                                '千円の左上からピン'
                             ]
-                        },
-                        //OK BOXの設定
-                        ok_box:{
-                            icon_msg:'OK',
-                            text_msg:{
-                                align:'center',
-                                text:'すばらしい!<br>この要領で進めましょう'
-                            },
-                            btn:'NEXT'
                         }
                     },
-                    //横幅計測フェーズ
+                    //千円計測2
+                    {
+                        //説明ボックス
+                        info_box:null,
+                        //ARのUI表示を設定
+                        ar_ui:{
+                            guide_msg:[
+                                '千円の右上にピン'
+                            ]
+                        }
+                    },
+                    //横幅計測1
                     {
                         //説明ボックス
                         info_box:{
@@ -215,18 +187,19 @@ function run_vue(){
                         //ARのUI表示を設定
                         ar_ui:{
                             guide_msg:[
-                                '左手前の角にピン',
+                                '左手前の角にピン'
+                            ]
+                        }
+                    },
+                    //横幅計測2
+                    {
+                        //説明ボックス
+                        info_box:null,
+                        //ARのUI表示を設定
+                        ar_ui:{
+                            guide_msg:[
                                 '次に右手前の角にピン'
                             ]
-                        },
-                        //OK BOXの設定
-                        ok_box:{
-                            icon_msg:'OK',
-                            text_msg:{
-                                align:'center',
-                                text:'いいですね！<br>その調子で進めましょう'
-                            },
-                            btn:'NEXT'
                         }
                     },
                     //高さ計測フェーズ
@@ -259,15 +232,6 @@ function run_vue(){
                             guide_msg:[
                                 '段差の上に面を合わせる'
                             ]
-                        },
-                        //OK BOXの設定
-                        ok_box:{
-                            icon_msg:'OK',
-                            text_msg:{
-                                align:'justify',
-                                text:'いいですね！段差の高さがわかりましたよ！'
-                            },
-                            btn:'NEXT'
                         }
                     },
                     //奥行きオフセット計測フェーズ
@@ -296,15 +260,6 @@ function run_vue(){
                             guide_msg:[
                                 '赤線を上の角に合わせる'
                             ]
-                        },
-                        //OK BOXの設定
-                        ok_box:{
-                            icon_msg:'OK',
-                            text_msg:{
-                                align:'justify',
-                                text:'この段差の奥行きがわかってきましたよ！'
-                            },
-                            btn:'NEXT'
                         }
                     },
                     //最短奥行き計測フェーズ
@@ -333,15 +288,6 @@ function run_vue(){
                             guide_msg:[
                                 '面が段差の角にぶつからない'
                             ]
-                        },
-                        //OK BOXの設定
-                        ok_box:{
-                            icon_msg:'OK',
-                            text_msg:{
-                                align:'center',
-                                text:'いいですね！'
-                            },
-                            btn:'NEXT'
                         }
                     },
                     //最長奥行き計測フェーズ
@@ -374,15 +320,6 @@ function run_vue(){
                             guide_msg:[
                                 'どこまで伸ばせますか？'
                             ]
-                        },
-                        //OK BOXの設定
-                        ok_box:{
-                            icon_msg:'OK',
-                            text_msg:{
-                                align:'center',
-                                text:'段差の寸法が<br>よくわかりました！'
-                            },
-                            btn:'NEXT'
                         }
                     },
                     //プレビュー計測フェーズ
@@ -412,16 +349,7 @@ function run_vue(){
                         },
                         //ARのUI表示を設定
                         ar_ui:{
-                            guide_msg:[]
-                        },
-                        //OK BOXの設定
-                        ok_box:{
-                            icon_msg:'Complete!',
-                            text_msg:{
-                                align:'justify',
-                                text:'次のページで、あなたの設置場所にぴったりなプレートをご覧いただけます。'
-                            },
-                            btn:'見に行く'
+                            guide_msg:null
                         }
                     }
                 ]
@@ -466,38 +394,80 @@ function run_vue(){
             //timeline_cntによる画面遷移及び機能変更
             'S.timeline_cnt':function(val){
                 //3Dオブジェクトの表示非表示
-                const changeShowHide = (
-                    width_line,
-                    height_surface,
-                    depth_offset_line,
-                    min_depth_line,
-                    min_depth_guide_surface,
-                    max_depth_line,
-                    max_depth_guide_surface)=>{
-                    this.P.width_line.opacity = width_line;
-                    this.P.height_surface.opacity = height_surface;
-                    this.P.depth_offset_line.opacity = depth_offset_line;
-                    this.P.min_depth_line.opacity = min_depth_line;
-                    this.P.min_depth_guide_surface.opacity = min_depth_guide_surface;
-                    this.P.max_depth_line.opacity = max_depth_line;
-                    this.P.max_depth_guide_surface.opacity = max_depth_guide_surface;
+                const changeShowHide = (pin0,pin1,pin2,pin3,width_line,height_surface,depth_offset_line,min_depth_line,min_depth_guide_surface,max_depth_line,max_depth_guide_surface)=>{
+                    const keyToOpacity = (key)=>{
+                        if(key == 'H') return 0.0; //Hide
+                        if(key == 'S') return 1.0; //Show
+                        if(key == 'A') return 0.5; //Alpha
+                    };
+                    this.P.senen_pin_a.opacity = keyToOpacity(pin0);
+                    this.P.senen_pin_b.opacity = keyToOpacity(pin1);
+                    this.P.step_pin_a.opacity = keyToOpacity(pin2);
+                    this.P.step_pin_b.opacity = keyToOpacity(pin3);
+                    this.P.width_line.opacity = keyToOpacity(width_line);
+                    this.P.height_surface.opacity = keyToOpacity(height_surface);
+                    this.P.depth_offset_line.opacity = keyToOpacity(depth_offset_line);
+                    this.P.min_depth_line.opacity = keyToOpacity(min_depth_line);
+                    this.P.min_depth_guide_surface.opacity = keyToOpacity(min_depth_guide_surface);
+                    this.P.max_depth_line.opacity = keyToOpacity(max_depth_line);
+                    this.P.max_depth_guide_surface.opacity = keyToOpacity(max_depth_guide_surface);
                 };
-                //ARでの2DUIの
-                
-                
-                
                 //切り替え実行
                 switch(val){
-                    case 0:changeShowHide(0.0,0.0,0.0,0.0,0.0,0.0,0.0);break;//ようこそ
-                    case 1:changeShowHide(0.0,0.0,0.0,0.0,0.0,0.0,0.0);break;//千円計測
-                    case 1:changeShowHide(0.0,0.0,0.0,0.0,0.0,0.0,0.0);break;//千円計測
-                    case 2:changeShowHide(1.0,0.0,0.0,0.0,0.0,0.0,0.0);break;//横幅計測
-                    case 1:changeShowHide(0.0,0.0,0.0,0.0,0.0,0.0,0.0);break;//千円計測
-                    case 3:changeShowHide(1.0,0.5,0.0,0.0,0.0,0.0,0.0);break;//高さ計測
-                    case 4:changeShowHide(1.0,0.5,1.0,0.0,0.0,0.0,0.0);break;//高さオフセット
-                    case 5:changeShowHide(1.0,0.0,1.0,1.0,0.5,0.0,0.0);break;//最短奥行き
-                    case 6:changeShowHide(1.0,0.0,1.0,1.0,0.5,1.0,0.5);break;//最長奥行き
-                    case 7:changeShowHide(1.0,0.2,1.0,1.0,0.5,1.0,0.5);break;//プレビュー
+                    //ようこそ
+                    case 0:
+                        this.S.show_ui = 'info';
+                        changeShowHide('H','H','H','H','H','H','H','H','H','H','H');
+                    break;
+                    //千円1
+                    case 1:
+                        this.S.show_ui = 'info';
+                        this.S.now_active_pin = 0;
+                        changeShowHide('S','H','H','H','H','H','H','H','H','H','H')
+                    ;break;
+                    //千円2
+                    case 2:
+                        this.S.show_ui = 'ar';
+                        this.S.now_active_pin = 1;
+                        changeShowHide('S','S','H','H','H','H','H','H','H','H','H');
+                    break;
+                    //横幅1
+                    case 3:
+                        this.S.show_ui = 'info';
+                        this.S.now_active_pin = 2;
+                        changeShowHide('H','H','S','H','S','H','H','H','H','H','H');
+                    break;
+                    //横幅2
+                    case 4:
+                        this.S.show_ui = 'ar';
+                        this.S.now_active_pin = 3;
+                        changeShowHide('H','H','S','S','S','H','H','H','H','H','H');
+                    break;
+                    //高さ計測
+                    case 5:
+                        this.S.show_ui = 'info';
+                        changeShowHide('H','H','S','S','S','A','H','H','H','H','H');
+                    break;
+                    //高さオフセット
+                    case 6:
+                        this.S.show_ui = 'info';
+                        changeShowHide('H','H','S','S','S','A','S','H','H','H','H');
+                    break;
+                    //最短奥行き
+                    case 7:
+                        this.S.show_ui = 'info';
+                        changeShowHide('H','H','S','S','S','H','S','S','A','H','H');
+                    break;
+                    //最長奥行き
+                    case 8:
+                        this.S.show_ui = 'info';
+                        changeShowHide('H','H','S','S','S','H','S','S','A','S','A');
+                    break;
+                    //プレビュー
+                    case 9:
+                        this.S.show_ui = 'info';
+                        changeShowHide('H','H','S','S','S','A','S','S','A','S','A');
+                    break;
                 };
             }
         },
@@ -509,13 +479,12 @@ function run_vue(){
             this.get_max_depth_guide_surface_paras;
 
 
-            //実験
+            //レイキャストの開始
             setTimeout(()=>{
                 setInterval(()=>{
-                    //console.log('Interval');
                     this.set_pin_by_camera_ray();
                 },50);
-            },10000);
+            },6000);
 
             //テキストが2秒毎に丁寧丁寧丁寧に切り替わるように
             setInterval(()=>{
@@ -618,7 +587,7 @@ function run_vue(){
     
                 「SS:15 = VS:RS」の比率関係を利用
                 */
-                return (15 * target) / this.B.senen.senens_scanned_size_at_3d_world;
+                return (15 * target) / this.B.senens_scanned_size_at_3d_world;
             },
             //検索クエリにしてセット
             set_query:function(){

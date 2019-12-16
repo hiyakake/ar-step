@@ -86,32 +86,32 @@
       <a-entity
       id='senen_pin_a'
       :position='set_position(B.pins[0].x,B.pins[0].y,B.pins[0].z)'
-      :rotation='set_rotation(0,P.camera_rig.rote.p,0)'
+      :rotation='set_rotation(0,0,0)'
       scale='0.1 0.1 0.1'
       obj-model="obj: #pin-obj;"
-      material='color:yellow;'></a-entity>
+      :material='set_material(P.senen_pin_a.color,P.senen_pin_a.opacity)'></a-entity>
       <a-entity
       id='senen_pin_b'
       :position='set_position(B.pins[1].x,B.pins[1].y,B.pins[1].z)'
-      :rotation='set_rotation(0,P.camera_rig.rote.p,0)'
+      :rotation='set_rotation(0,0,0)'
       scale='0.1 0.1 0.1'
       obj-model="obj: #pin-obj;"
-      material='color:blue;'></a-entity>
+      :material='set_material(P.senen_pin_b.color,P.senen_pin_b.opacity)'></a-entity>
       <!--横幅ピン-->
       <a-entity
       id='step_pin_a'
       :position='set_position(B.pins[2].x,B.pins[2].y,B.pins[2].z)'
-      :rotation='set_rotation(0,P.camera_rig.rote.p,0)'
+      :rotation='set_rotation(0,0,0)'
       scale='0.1 0.1 0.1'
       obj-model="obj: #pin-obj;"
-      material='color:red;'></a-entity>
+      :material='set_material(P.step_pin_a.color,P.step_pin_a.opacity)'></a-entity>
       <a-entity
       id='step_pin_b'
       :position='set_position(B.pins[3].x,B.pins[3].y,B.pins[3].z)'
-      :rotation='set_rotation(0,P.camera_rig.rote.p,0)'
+      :rotation='set_rotation(0,0,0)'
       scale='0.1 0.1 0.1'
       obj-model="obj: #pin-obj;"
-      material='color:green;'></a-entity>
+      :material='set_material(P.step_pin_b.color,P.step_pin_b.opacity)'></a-entity>
       <!--Tool Base-->
       <a-entity
       id='width_line'

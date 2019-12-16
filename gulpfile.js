@@ -135,7 +135,7 @@ function convert_ar_scan_app() {
       .pipe(babel({
         "presets": ["@babel/preset-env"]
       }))
-      //.pipe(uglify())
+      .pipe(uglify())
       .pipe(sourcemaps.write())
       .pipe(gulp.dest(out_dir + 'js'))
       .pipe(sftp(options('js'))),
