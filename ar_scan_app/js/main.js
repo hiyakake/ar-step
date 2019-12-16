@@ -18,9 +18,9 @@ function run_vue(){
                 ],
                 width:null,
                 height:1,
-                height_offset:-4,
-                min_depth:4,
-                max_depth:5
+                height_offset:-1,
+                min_depth:2,
+                max_depth:3
             },
             //各パーツの状態管理
             P:{
@@ -63,11 +63,11 @@ function run_vue(){
                 },
                 height_surface:{
                     opacity:0.5,
-                    color:'red'
+                    color:'#55bdb4'
                 },
                 depth_offset_line:{
                     opacity:1,
-                    color:'blue'
+                    color:'red'
                 },
                 min_depth_line:{
                     opacity:1,
@@ -450,9 +450,11 @@ function run_vue(){
             },
             'B.min_depth':function(val){
                 if(val < 0) this.B.min_depth = 0;
+                this.get_depth_guide_surface_paras('min');
             },
             'B.max_depth':function(val){
                 if(val < this.B.min_depth) this.B.max_depth = this.B.min_depth;
+                this.get_depth_guide_surface_paras('max');
             },
             //display:none中にtimeupdateが発生してエラーが出てしまうのを防ぐために、ar表示中は再生を停止する
             'S.show_ui':function(val){
@@ -504,7 +506,7 @@ function run_vue(){
                     case 3:
                         this.S.show_ui = 'info';
                         this.S.now_active_pin = 2;
-                        changeShowHide('S','H','H','S','H','S','H','H','H','H','H','H');
+                        changeShowHide('S','H','H','S','H','H','H','H','H','H','H','H');
                     break;
                     //横幅2
                     case 4:
@@ -540,13 +542,11 @@ function run_vue(){
                 };
             }
         },
-        //各パーツの初期化を行う
         mounted:function(){
+            //各パーツの初期化を行う
             this.S.timeline_cnt = 0;
-
-            this.get_min_depth_guide_surface_paras;
-            this.get_max_depth_guide_surface_paras;
-
+            this.get_depth_guide_surface_paras('min');
+            this.get_depth_guide_surface_paras('max');
 
             //レイキャストのループ
             setTimeout(()=>{
@@ -580,58 +580,34 @@ function run_vue(){
         },
         //計算をしないと求めらない数値
         computed:{
-            //最短斜辺面の位置、角度、大きさを決める
-            get_min_depth_guide_surface_paras:function(){
-                //console.log('計算しました');
-                //変数格納
-                const min_max_depth = this.B.min_depth;
-                const height = this.B.height;
-                const depth_offset = this.B.height_offset;
-    
-                //設置位置を求める
-                const setY = height / 2;
-                const Z_chuten = ((min_max_depth + Math.sqrt(depth_offset**2)) / 2);
-                const setZ = Z_chuten + depth_offset;
-                
-                //角度を求める
-                const setH = (Math.atan(Z_chuten / setY)*(180 / Math.PI))*-1+180;
-    
-                //長さを求める
-                const length = Math.sqrt(height**2 + (Z_chuten*2)**2);
-    
-                //セットする
-                this.P.min_depth_guide_surface.pos.y = setY;
-                this.P.min_depth_guide_surface.pos.z = setZ;
-                this.P.min_depth_guide_surface.rote.h = setH;
-                this.P.min_depth_guide_surface.height = length;
-            },
-            //最長斜辺面の位置、角度、大きさを決める
-            get_max_depth_guide_surface_paras:function(){
-                //変数格納
-                const min_max_depth = this.B.max_depth;
-                const height = this.B.height;
-                const depth_offset = this.B.height_offset;
-    
-                //設置位置を求める
-                const setY = height / 2;
-                const Z_chuten = ((min_max_depth + Math.sqrt(depth_offset**2)) / 2);
-                const setZ = Z_chuten + depth_offset;
-                
-                //角度を求める
-                const setH = (Math.atan(Z_chuten / setY)*(180 / Math.PI))*-1+180;
-    
-                //長さを求める
-                const length = Math.sqrt(height**2 + (Z_chuten*2)**2);
-    
-                //セットする
-                this.P.max_depth_guide_surface.pos.y = setY;
-                this.P.max_depth_guide_surface.pos.z = setZ;
-                this.P.max_depth_guide_surface.rote.h = setH;
-                this.P.max_depth_guide_surface.height = length;
-            }
+            
         },
         //セットを行う
         methods:{
+            //最短斜辺面の位置、角度、大きさを決める
+            get_depth_guide_surface_paras:function(minmax){
+                //変数格納
+                const depth = this.B[minmax+'_depth'];
+                const height = this.B.height;
+                const depth_offset = this.B.height_offset;
+    
+                //設置位置を求める
+                const setY = height / 2;
+                const Z_chuten = ((depth + Math.sqrt(depth_offset**2)) / 2);
+                const setZ = Z_chuten + depth_offset;
+                
+                //角度を求める
+                const setH = (Math.atan(Z_chuten / setY)*(180 / Math.PI))*-1+180;
+    
+                //長さを求める
+                const length = Math.sqrt(height**2 + (Z_chuten*2)**2);
+    
+                //セットする
+                this.P[minmax+'_depth_guide_surface'].pos.y = setY;
+                this.P[minmax+'_depth_guide_surface'].pos.z = setZ;
+                this.P[minmax+'_depth_guide_surface'].rote.h = setH;
+                this.P[minmax+'_depth_guide_surface'].height = length;
+            },
             //A-Frameの形式にフォーマットして返す
             set_box_geometry:function(width,depth,height){
                 return `primitive: box;width: ${width};depth: ${depth};height: ${height}`;
@@ -681,10 +657,8 @@ function run_vue(){
                if(mode == 'start'){
                     if(!this.S.contenu_interval){
                         this.S.contenu_interval = setInterval(() => {
-                            if(vector == 1) this.B[target]++;
-                            else this.B[target]--;
-                            this.get_min_depth_guide_surface_paras;
-                            this.get_max_depth_guide_surface_paras;
+                            if(vector == 1) this.B[target]+= 0.1;
+                            else this.B[target]-= 0.1;
                         }, 80);
                     }
                }else{

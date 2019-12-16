@@ -46,7 +46,7 @@ v-if='S.show_ui == "ar"'>
         <div class="volume"
         v-if='S.timeline_cnt == 5'>
         <button class='plus'
-            @click='B.height+=0.5'
+            @click='B.height+=0.1'
             @mousedown='hold_up_down("height",1,"start")'
             @mouseleave='hold_up_down("height",1,"end")'
             @mouseup='hold_up_down("height",1,"end")'
@@ -55,7 +55,7 @@ v-if='S.show_ui == "ar"'>
             @touchcancel='hold_up_down("height",1,"end")'
             ></button>
             <button class='minus'
-            @click='B.height-=0.5'
+            @click='B.height-=0.1'
             @mousedown='hold_up_down("height",0,"start")'
             @mouseleave='hold_up_down("height",0,"end")'
             @mouseup='hold_up_down("height",0,"end")'
@@ -68,7 +68,7 @@ v-if='S.show_ui == "ar"'>
         <div class="volume"
         v-if='S.timeline_cnt == 6'>
         <button class='plus'
-            @click='B.height_offset-=0.5'
+            @click='B.height_offset-=0.1'
             @mousedown='hold_up_down("height_offset",0,"start")'
             @mouseleave='hold_up_down("height_offset",0,"end")'
             @mouseup='hold_up_down("height_offset",0,"end")'
@@ -77,7 +77,7 @@ v-if='S.show_ui == "ar"'>
             @touchcancel='hold_up_down("height_offset",0,"end")'
             ></button>
             <button class='minus'
-            @click='B.height_offset+=0.5'
+            @click='B.height_offset+=0.1'
             @mousedown='hold_up_down("height_offset",1,"start")'
             @mouseleave='hold_up_down("height_offset",1,"end")'
             @mouseup='hold_up_down("height_offset",1,"end")'
@@ -90,7 +90,7 @@ v-if='S.show_ui == "ar"'>
         <div class="volume"
         v-if='S.timeline_cnt == 7'>
         <button class='plus'
-            @click='B.min_depth+=0.5'
+            @click='B.min_depth+=0.1'
             @mousedown='hold_up_down("min_depth",1,"start")'
             @mouseleave='hold_up_down("min_depth",1,"end")'
             @mouseup='hold_up_down("min_depth",1,"end")'
@@ -99,7 +99,7 @@ v-if='S.show_ui == "ar"'>
             @touchcancel='hold_up_down("min_depth",1,"end")'
             ></button>
             <button class='minus'
-            @click='B.min_depth-=0.5'
+            @click='B.min_depth-=0.1'
             @mousedown='hold_up_down("min_depth",0,"start")'
             @mouseleave='hold_up_down("min_depth",0,"end")'
             @mouseup='hold_up_down("min_depth",0,"end")'
@@ -112,7 +112,7 @@ v-if='S.show_ui == "ar"'>
         <div class="volume"
         v-if='S.timeline_cnt == 8'>
             <button class='plus'
-            @click='B.max_depth+=0.5'
+            @click='B.max_depth+=0.1'
             @mousedown='hold_up_down("max_depth",1,"start")'
             @mouseleave='hold_up_down("max_depth",1,"end")'
             @mouseup='hold_up_down("max_depth",1,"end")'
@@ -121,7 +121,7 @@ v-if='S.show_ui == "ar"'>
             @touchcancel='hold_up_down("max_depth",1,"end")'
             ></button>
             <button class='minus'
-            @click='B.max_depth-=0.5'
+            @click='B.max_depth-=0.1'
             @mousedown='hold_up_down("max_depth",0,"start")'
             @mouseleave='hold_up_down("max_depth",0,"end")'
             @mouseup='hold_up_down("max_depth",0,"end")'
