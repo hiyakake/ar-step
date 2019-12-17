@@ -5,7 +5,7 @@ function run_vue(){
         data:{
             //ベースとなる入力値
             B:{
-                senens_scanned_size_at_3d_world:23.456, //千円を計測した時の3D空間上での大きさ
+                senens_scanned_size_at_3d_world:null, //千円を計測した時の3D空間上での大きさ
                 pins:[
                     //千円ピンA
                     {x:-4,y:0,z:100},
@@ -437,7 +437,8 @@ function run_vue(){
 
 
                     //千円の3D空間上での大きさをセット
-                    this.senens_scanned_size_at_3d_world = Math.sqrt((this.B.pins[0].x-this.B.pins[1].x)**2+(this.B.pins[0].y-this.B.pins[1].y)**2+(this.B.pins[0].z-this.B.pins[1].z)**2);
+                    this.B.senens_scanned_size_at_3d_world = Math.sqrt((this.B.pins[0].x - this.B.pins[1].x)**2+(this.B.pins[0].y-this.B.pins[1].y)**2+(this.B.pins[0].z-this.B.pins[1].z)**2);
+                    //console.log(this.senens_scanned_size_at_3d_world);
                 },
                 deep: true
             },
@@ -537,6 +538,7 @@ function run_vue(){
                     //プレビュー
                     case 9:
                         this.S.show_ui = 'info';
+                        this.set_query();
                         changeShowHide('H','H','H','S','S','S','A','S','S','A','S','A');
                     break;
                 };
@@ -627,21 +629,28 @@ function run_vue(){
             //数値を千円札を基準に実寸に直す
             covert_to_actual_size:function(target){
                 /*
-                千円札をスキャンした時の3D空間上のサイズ = SS(senens_scanned_size_at_3d_world)
+                千円札をスキャンした時の3D空間上のサイズ(m) = SS(senens_scanned_size_at_3d_world)
                 千円札の実際の大きさ（15cm） = 15
-                対象物の3D上のサイズ = VS(target)
-                現実世界でのサイズ = RS(Anser)
+                対象物の3D上のサイズ(m) = VS(target)
+                現実世界でのサイズ(cm) = RS(Anser)
     
                 「SS:15 = VS:RS」の比率関係を利用
                 */
-                return (15 * target) / this.B.senens_scanned_size_at_3d_world;
+               console.log(((15 * target*100) / (this.B.senens_scanned_size_at_3d_world*100)));
+                return ((15 * target*100) / (this.B.senens_scanned_size_at_3d_world*100));
             },
             //検索クエリにしてセット
             set_query:function(){
-                const   height = Math.round(this.covert_to_actual_size(this.B.height),2),
+                //四捨五入あり
+                let   height = Math.round(this.covert_to_actual_size(this.B.height),2),
                         width = Math.round(this.covert_to_actual_size(this.B.width),2),
                         min_depth = Math.round(this.covert_to_actual_size(this.B.min_depth),2),
                         max_depth = Math.round(this.covert_to_actual_size(this.B.max_depth),2);
+                //四捨五入なし
+                        height = this.covert_to_actual_size(this.B.height);
+                        width = this.covert_to_actual_size(this.B.width);
+                        min_depth = this.covert_to_actual_size(this.B.min_depth);
+                        max_depth = this.covert_to_actual_size(this.B.max_depth);
                 return `/search/?height=${height}&width=${width}&min_depth=${min_depth}&max_depth=${max_depth}&from=ar`;
                 //TODO:四捨五入が正しくなるように、後で実装し直す。
             },
