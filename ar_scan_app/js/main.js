@@ -636,21 +636,16 @@ function run_vue(){
     
                 「SS:15 = VS:RS」の比率関係を利用
                 */
-               console.log(((15 * target*100) / (this.B.senens_scanned_size_at_3d_world*100)));
+               //console.log(((15 * target*100) / (this.B.senens_scanned_size_at_3d_world*100)));
                 return ((15 * target*100) / (this.B.senens_scanned_size_at_3d_world*100));
             },
             //検索クエリにしてセット
             set_query:function(){
                 //四捨五入あり
-                let   height = Math.round(this.covert_to_actual_size(this.B.height),2),
+                const   height = Math.round(this.covert_to_actual_size(this.B.height),2),
                         width = Math.round(this.covert_to_actual_size(this.B.width),2),
                         min_depth = Math.round(this.covert_to_actual_size(this.B.min_depth),2),
                         max_depth = Math.round(this.covert_to_actual_size(this.B.max_depth),2);
-                //四捨五入なし
-                        height = this.covert_to_actual_size(this.B.height);
-                        width = this.covert_to_actual_size(this.B.width);
-                        min_depth = this.covert_to_actual_size(this.B.min_depth);
-                        max_depth = this.covert_to_actual_size(this.B.max_depth);
                 return `/search/?height=${height}&width=${width}&min_depth=${min_depth}&max_depth=${max_depth}&from=ar`;
                 //TODO:四捨五入が正しくなるように、後で実装し直す。
             },
