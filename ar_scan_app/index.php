@@ -2,30 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>TEST2</title>
+    <title>AR SCAN work by AR Core</title>
 
-    <!-- We've included a slightly modified version of A-Frame, which fixes some polish concerns -->
-    <script src="https://cdn.8thwall.com/web/aframe/8frame-0.8.2.min.js"></script>
-
-    <!-- XR Extras - provides utilities like load screen, almost there, and error handling.
-         See github.com/8thwall/web/xrextras -->
-    <script defer src="https://cdn.8thwall.com/web/xrextras/xrextras.js"></script>
-
-    <!-- 8thWall Web - Replace the app key here with your own app key -->
-    <script async src="https://apps.8thwall.com/xrweb?appKey=uDTf8XBaSUdFebkZ5EVegGhaxTHxDX4KcEzM4Z1fIUddUfwuE7JRHuVFgK3kvaDUmz8cTO"></script>
+    <!-- A-Frame 1.0.3 -->
+    <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="js/main.js"></script>
+    <script async src="js/main.js"></script>
     <link rel="stylesheet" href="style/main.css">
   </head>
 
   <body>
     <a-scene id='ar_app'
       xrweb
-      tap-place
-      xrextras-almost-there
-      xrextras-loading
-      xrextras-runtime-error>
+      tap-place>
       <!--html elemnt-->
       <a-entity id='ui_2d'
       position='0 0 0'
