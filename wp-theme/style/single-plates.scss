@@ -84,7 +84,8 @@ main {
         align-items: stretch;
         justify-content: space-between;
 		h2 {
-            flex: 70% 0 0;
+            flex: auto 0 0;
+            min-width: 250px;
             background-color: $teamaColor;
             color: white;
             border-radius: 0 100px 100px 0;
@@ -107,8 +108,8 @@ main {
 		}
 	}
 	article {
+        padding: 3em calc((100% - 1200px) / 2);
         box-sizing: border-box;
-        padding: 0 1em;
         margin-top: 2rem;
         display: grid;
         grid-template: 
