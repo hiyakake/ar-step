@@ -29,7 +29,7 @@ function convert_wp_theme() {
       user: 'c0704253',
       remotePlatform: 'unix',
       remotePath: '/home/c0704253/public_html/step.nextlav.xyz/wp-content/themes/match_plate/'+dist_path,
-      key: '/Users/lavp/.ssh/key-2019-12-13-14-19.pem'
+      key: '/Users/lavp/.ssh/conoha.pem'
     }
   }
 	return mergeStream(
@@ -108,7 +108,7 @@ function convert_ar_scan_app() {
       user: 'c0704253',
       remotePlatform: 'unix',
       remotePath: '/home/c0704253/public_html/step.nextlav.xyz/ar/'+dist_path,
-      key: '/Users/lavp/.ssh/key-2019-12-13-14-19.pem'
+      key: '/Users/lavp/.ssh/conoha.pem'
     }
 	};
 	return mergeStream(

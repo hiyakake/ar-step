@@ -10,9 +10,7 @@ include('mpa/match_plate_api.php');
 ?>
 
 <?php get_header();?>
-
-<main>
-    <div class='header'>
+<div class='header'>
         <h2>おすすめのステップ</h2>
         <p class="backToList">
             <?php if($_GET['from'] != 'ar'):?>
@@ -27,8 +25,8 @@ include('mpa/match_plate_api.php');
             </a>
             <?php endif;?>
         </p>
-    </div>
-
+</div>
+<main>
     <div class="sizes">
         <div class='sticky'>
             <h2>

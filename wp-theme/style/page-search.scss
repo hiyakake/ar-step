@@ -10,34 +10,43 @@ $baseText:#454343;
 }
 
 
-header {
-	div.titles {
-		h1 {
-			a {
-				img {
-				}
-			}
-		}
-		span {
-		}
-		h2 {
-		}
-	}
-	nav {
-		p {
-		}
-	}
+div.header {
+    margin-top: 2rem;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    h2 {
+        flex: auto 0 0;
+        background-color: $teamaColor;
+        color: white;
+        border-radius: 0 100px 100px 0;
+        box-sizing: border-box;
+        padding: 0 1em;
+        display: flex;
+        align-items: center;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    p.backToList {
+        padding-right: 1em;
+        a {
+            text-decoration: none;
+            display: inline-block;
+            img {
+                display: block;
+            }
+        }
+    }
 }
 main {
     display: grid;
     grid-template: 
-    "header" auto
     "sizes" auto
     "list" auto
     /1fr;
+    padding: 3em calc((100% - 1200px) / 2);
     @include tab{
         grid-template: 
-        "header header" auto
         "sizes list" auto
         /40% 1fr;
     }
@@ -45,35 +54,6 @@ main {
         box-sizing: border-box;
         padding: 0 1rem;
     }
-	div.header {
-        grid-area: header;
-        margin-top: 2rem;
-        display: flex;
-        align-items: stretch;
-        justify-content: space-between;
-		h2 {
-            flex: 75% 0 0;
-            background-color: $teamaColor;
-            color: white;
-            border-radius: 0 100px 100px 0;
-            box-sizing: border-box;
-            padding: 0 1em;
-            display: flex;
-            align-items: center;
-            font-size: 1.5em;
-            font-weight: bold;
-		}
-		p.backToList {
-            padding-right: 1em;
-			a {
-                text-decoration: none;
-                display: inline-block;
-				img {
-                    display: block;
-				}
-			}
-		}
-	}
     div.sizes {
         grid-area: sizes;
         margin-top: 2rem;
