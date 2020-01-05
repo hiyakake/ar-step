@@ -427,35 +427,36 @@ function run_vue(){
         watch:{
             'B.pins':{
                 handler:function(){
-                    /*--横幅ピン--*/
-                    let     x1 = this.B.pins[2].x,
-                            x2 = this.B.pins[3].x,
-                            z1 = this.B.pins[2].z,
-                            z2 = this.B.pins[3].z;
-                    //２点のピンから横幅の長さを返す
-                    this.B.width = Math.sqrt((x1-x2)**2+(z1-z2)**2);
-                    //横幅線の位置を求める
-                    this.P.width_line.pos.x = (x1+x2)/2;
-                    this.P.width_line.pos.z = (z1+z2)/2;
-                    //角度を求める
-                    let angle = Math.atan2(x2 - x1,z2 - z1)*(180 / Math.PI);
-                    //セット
-                    this.P.width_line.rote.p = angle-90;
-
                     /*--千円ピン--*/ 
-                    x1 = this.B.pins[0].x;
-                    x2 = this.B.pins[1].x;
-                    z1 = this.B.pins[0].z;
-                    z2 = this.B.pins[1].z;
+                    const   senen_x1 = this.B.pins[0].x,
+                            senen_x2 = this.B.pins[1].x,
+                            senen_z1 = this.B.pins[0].z,
+                            senen_z2 = this.B.pins[1].z;
                     //２点のピンから横幅の長さを返す
-                    this.B.senen_width = Math.sqrt((x1-x2)**2+(z1-z2)**2);
+                    this.B.senen_width = Math.sqrt((senen_x1-senen_x2)**2+(senen_z1-senen_z2)**2);
                     //横幅線の位置を求める
-                    this.P.senen_line.pos.x = (x1+x2)/2;
-                    this.P.senen_line.pos.z = (z1+z2)/2;
+                    this.P.senen_line.pos.x = (senen_x1+senen_x2)/2;
+                    this.P.senen_line.pos.z = (senen_z1+senen_z2)/2;
                     //角度を求める
-                    angle = Math.atan2(x2 - x1,z2 - z1)*(180 / Math.PI);
+                    const senen_angle = Math.atan2(senen_x2 - senen_x1,senen_z2 - senen_z1)*(180 / Math.PI);
                     //セット
-                    this.P.senen_line.rote.p = angle-90;
+                    this.P.senen_line.rote.p = senen_angle-90;
+
+
+                    /*--横幅ピン--*/
+                    const   yoko_x1 = this.B.pins[2].x,
+                            yoko_x2 = this.B.pins[3].x,
+                            yoko_z1 = this.B.pins[2].z,
+                            yoko_z2 = this.B.pins[3].z;
+                    //２点のピンから横幅の長さを返す
+                    this.B.width = Math.sqrt((yoko_x1-yoko_x2)**2+(yoko_z1-yoko_z2)**2);
+                    //横幅線の位置を求める
+                    this.P.width_line.pos.x = (yoko_x1+yoko_x2)/2;
+                    this.P.width_line.pos.z = (yoko_z1+yoko_z2)/2;
+                    //角度を求める
+                    const yoko_angle = Math.atan2(yoko_x2 - yoko_x1,yoko_z2 - yoko_z1)*(180 / Math.PI);
+                    //セット
+                    this.P.width_line.rote.p = yoko_angle-90;
                 },
                 deep: true
             },
