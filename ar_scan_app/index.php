@@ -169,6 +169,12 @@
               :material='set_material(P.depth_offset_line.color,P.depth_offset_line.opacity)'></a-entity>
           </a-entity>
       </a-entity>
+      <a-entity
+      id='senen_line'
+      :geometry='set_box_geometry(B.senen_width,0.05,0.05)'
+      :position='set_position(P.senen_line.pos.x,P.senen_line.pos.y,P.senen_line.pos.z)'
+      :rotation='set_rotation(0,P.senen_line.rote.p,0)'
+      :material='set_material(P.senen_line.color,P.senen_line.opacity)'></a-antity>
     </a-scene>
   </body>
 </html>
