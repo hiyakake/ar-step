@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>TEST2</title>
+    <title>TEST3</title>
 
     <!-- We've included a slightly modified version of A-Frame, which fixes some polish concerns -->
     <script src="https://cdn.8thwall.com/web/aframe/8frame-0.8.2.min.js"></script>
