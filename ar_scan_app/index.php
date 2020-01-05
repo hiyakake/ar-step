@@ -7,7 +7,7 @@
     <!-- A-Frame 1.0.3 -->
     <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
     
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
     <script async src="js/main.js"></script>
     <link rel="stylesheet" href="style/main.css">
     <!-- Global site tag (gtag.js) - Google Analytics -->
