@@ -57,7 +57,7 @@ function run_vue(){
                 ],
                 senen_line:{
                     opacity:1,
-                    color:'blue',
+                    color:'green',
                     pos:{x:0,y:0,z:0},
                     rote:{h:0,p:0,b:0}
                 },
