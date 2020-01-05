@@ -5,7 +5,6 @@ function run_vue(){
         data:{
             //ベースとなる入力値
             B:{
-                senens_scanned_size_at_3d_world:null, //千円を計測した時の3D空間上での大きさ
                 pins:[
                     //千円ピンA
                     {x:-4,y:0,z:100},
@@ -16,6 +15,7 @@ function run_vue(){
                     //横幅ピンB
                     {x:5,y:0,z:100}
                 ],
+                senen_width:null, //千円を計測した時の3D空間上での大きさ
                 width:null,
                 height:1,
                 height_offset:-1,
@@ -55,6 +55,12 @@ function run_vue(){
                         seted:false
                     }
                 ],
+                senen_line:{
+                    opacity:1,
+                    color:'blue',
+                    pos:{x:0,y:0,z:0},
+                    rote:{h:0,p:0,b:0}
+                },
                 width_line:{
                     opacity:1,
                     color:'blue',
@@ -421,7 +427,8 @@ function run_vue(){
         watch:{
             'B.pins':{
                 handler:function(){
-                    const   x1 = this.B.pins[2].x,
+                    /*--横幅ピン--*/
+                    let     x1 = this.B.pins[2].x,
                             x2 = this.B.pins[3].x,
                             z1 = this.B.pins[2].z,
                             z2 = this.B.pins[3].z;
@@ -435,10 +442,20 @@ function run_vue(){
                     //セット
                     this.P.width_line.rote.p = angle-90;
 
-
-                    //千円の3D空間上での大きさをセット
-                    this.B.senens_scanned_size_at_3d_world = Math.sqrt((this.B.pins[0].x - this.B.pins[1].x)**2+(this.B.pins[0].y-this.B.pins[1].y)**2+(this.B.pins[0].z-this.B.pins[1].z)**2);
-                    //console.log(this.senens_scanned_size_at_3d_world);
+                    /*--千円ピン--*/ 
+                    x1 = this.B.pins[0].x;
+                    x2 = this.B.pins[1].x;
+                    z1 = this.B.pins[0].z;
+                    z2 = this.B.pins[1].z;
+                    //２点のピンから横幅の長さを返す
+                    this.B.senen_width = Math.sqrt((x1-x2)**2+(z1-z2)**2);
+                    //横幅線の位置を求める
+                    this.P.senen_line.pos.x = (x1+x2)/2;
+                    this.P.senen_line.pos.z = (z1+z2)/2;
+                    //角度を求める
+                    angle = Math.atan2(x2 - x1,z2 - z1)*(180 / Math.PI);
+                    //セット
+                    this.P.senen_line.rote.p = angle-90;
                 },
                 deep: true
             },
@@ -465,7 +482,7 @@ function run_vue(){
             //timeline_cntによる画面遷移及び機能変更
             'S.timeline_cnt':function(val){
                 //3Dオブジェクトの表示非表示
-                const changeShowHide = (preview_pin,pin0,pin1,pin2,pin3,width_line,height_surface,depth_offset_line,min_depth_line,min_depth_guide_surface,max_depth_line,max_depth_guide_surface)=>{
+                const changeShowHide = (preview_pin,pin0,pin1,pin2,pin3,senen_line,width_line,height_surface,depth_offset_line,min_depth_line,min_depth_guide_surface,max_depth_line,max_depth_guide_surface)=>{
                     const keyToOpacity = (key)=>{
                         if(key == 'H') return 0.0; //Hide
                         if(key == 'S') return 1.0; //Show
@@ -476,6 +493,7 @@ function run_vue(){
                     this.P.pins[1].opacity = keyToOpacity(pin1);
                     this.P.pins[2].opacity = keyToOpacity(pin2);
                     this.P.pins[3].opacity = keyToOpacity(pin3);
+                    this.P.senen_line.opacity = keyToOpacity(senen_line);
                     this.P.width_line.opacity = keyToOpacity(width_line);
                     this.P.height_surface.opacity = keyToOpacity(height_surface);
                     this.P.depth_offset_line.opacity = keyToOpacity(depth_offset_line);
@@ -489,59 +507,59 @@ function run_vue(){
                     //ようこそ
                     case 0:
                         this.S.show_ui = 'info';
-                        changeShowHide('H','H','H','H','H','H','H','H','H','H','H','H');
+                        changeShowHide('H','H','H','H','H','H','H','H','H','H','H','H','H');
                     break;
                     //千円1
                     case 1:
                         this.S.show_ui = 'info';
                         this.S.now_active_pin = 0;
-                        changeShowHide('S','S','H','H','H','H','H','H','H','H','H','H')
+                        changeShowHide('S','S','H','H','H','H','H','H','H','H','H','H','H')
                     ;break;
                     //千円2
                     case 2:
                         this.S.show_ui = 'ar';
                         this.S.now_active_pin = 1;
-                        changeShowHide('S','S','S','H','H','H','H','H','H','H','H','H');
+                        changeShowHide('S','S','S','H','H','S','H','H','H','H','H','H','H');
                     break;
                     //横幅1
                     case 3:
                         this.S.show_ui = 'info';
                         this.S.now_active_pin = 2;
-                        changeShowHide('S','H','H','S','H','H','H','H','H','H','H','H');
+                        changeShowHide('S','H','H','S','H','H','H','H','H','H','H','H','H');
                     break;
                     //横幅2
                     case 4:
                         this.S.show_ui = 'ar';
                         this.S.now_active_pin = 3;
-                        changeShowHide('S','H','H','S','S','S','H','H','H','H','H','H');
+                        changeShowHide('S','H','H','S','S','H','S','H','H','H','H','H','H');
                     break;
                     //高さ計測
                     case 5:
                         this.S.show_ui = 'info';
-                        changeShowHide('H','H','H','S','S','S','A','H','H','H','H','H');
+                        changeShowHide('H','H','H','S','S','H','S','A','H','H','H','H','H');
                     break;
                     //高さオフセット
                     case 6:
                         this.S.show_ui = 'info';
-                        changeShowHide('H','H','H','S','S','S','A','S','H','H','H','H');
+                        changeShowHide('H','H','H','S','S','H','S','A','S','H','H','H','H');
                     break;
                     //最短奥行き
                     case 7:
                         this.S.show_ui = 'info';
                         this.get_depth_guide_surface_paras('min');
-                        changeShowHide('H','H','H','S','S','S','H','S','S','A','H','H');
+                        changeShowHide('H','H','H','S','S','H','S','H','S','S','A','H','H');
                     break;
                     //最長奥行き
                     case 8:
                         this.S.show_ui = 'info';
                         this.get_depth_guide_surface_paras('max');
-                        changeShowHide('H','H','H','S','S','S','H','S','S','A','S','A');
+                        changeShowHide('H','H','H','S','S','H','S','H','S','S','A','S','A');
                     break;
                     //プレビュー
                     case 9:
                         this.S.show_ui = 'info';
                         this.set_query();
-                        changeShowHide('H','H','H','S','S','S','A','S','S','A','S','A');
+                        changeShowHide('H','H','H','S','S','H','S','A','S','S','A','S','A');
                     break;
                 };
             }
@@ -629,15 +647,15 @@ function run_vue(){
             //数値を千円札を基準に実寸に直す
             covert_to_actual_size:function(target){
                 /*
-                千円札をスキャンした時の3D空間上のサイズ(m) = SS(senens_scanned_size_at_3d_world)
+                千円札をスキャンした時の3D空間上のサイズ(m) = SS(senen_width)
                 千円札の実際の大きさ（15cm） = 15
                 対象物の3D上のサイズ(m) = VS(target)
                 現実世界でのサイズ(cm) = RS(Anser)
     
                 「SS:15 = VS:RS」の比率関係を利用
                 */
-               //console.log(((15 * target*100) / (this.B.senens_scanned_size_at_3d_world*100)));
-                return ((15 * target*100) / (this.B.senens_scanned_size_at_3d_world*100));
+               //console.log(((15 * target*100) / (this.B.senen_width*100)));
+                return ((15 * target*100) / (this.B.senen_width*100));
             },
             //検索クエリにしてセット
             set_query:function(){
