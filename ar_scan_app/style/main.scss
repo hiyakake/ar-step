@@ -5,6 +5,10 @@ $teamaYellow : #E1E828;
 $teamaGray : #464646;
 $baseText:#454343;
 
+body{
+    touch-action: none; //ズームなどのジェスチャー禁止
+}
+
 .debug_ui{
     position: fixed;
     z-index: 1000;
@@ -13,6 +17,7 @@ $baseText:#454343;
     background-color: #409fb566;
     color: black;
     line-height: 1;
+    display: none;
     h2{
         font-size: 2em;
     }
