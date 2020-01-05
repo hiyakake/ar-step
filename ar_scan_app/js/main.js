@@ -528,11 +528,13 @@ function run_vue(){
                     //最短奥行き
                     case 7:
                         this.S.show_ui = 'info';
+                        this.get_depth_guide_surface_paras('min');
                         changeShowHide('H','H','H','S','S','S','H','S','S','A','H','H');
                     break;
                     //最長奥行き
                     case 8:
                         this.S.show_ui = 'info';
+                        this.get_depth_guide_surface_paras('max');
                         changeShowHide('H','H','H','S','S','S','H','S','S','A','S','A');
                     break;
                     //プレビュー
@@ -547,8 +549,6 @@ function run_vue(){
         mounted:function(){
             //各パーツの初期化を行う
             this.S.timeline_cnt = 0;
-            this.get_depth_guide_surface_paras('min');
-            this.get_depth_guide_surface_paras('max');
 
             //レイキャストのループ
             setTimeout(()=>{
