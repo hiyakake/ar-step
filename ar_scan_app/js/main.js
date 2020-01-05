@@ -444,8 +444,6 @@ function run_vue(){
                     this.P.senen_line.rote.p = Math.atan2(senen_x2 - senen_x1,senen_z2 - senen_z1)*(180 / Math.PI)-90;
                     this.P.senen_line.rote.b = Math.atan2(senen_y2 - senen_y1,senen_z2 - senen_z1)*(180 / Math.PI)-90;
                     
-
-
                     /*--横幅ピン--*/
                     const   yoko_x1 = this.B.pins[2].x,
                             yoko_x2 = this.B.pins[3].x,
@@ -707,7 +705,6 @@ function run_vue(){
             set_pin_by_camera_ray:function(){
                 //reyposの取得
                 const ray_pos = window.XR8.XrController.hitTest.apply(window,[0.5,0.5,['FEATURE_POINT']])[0].position;
-                const ray_rote = window.XR8.XrController.hitTest.apply(window,[0.5,0.5,['FEATURE_POINT']])[0].rotetion;
                 //既にピンされているか
                 if(this.P.pins[this.S.now_active_pin].seted  == false){//いいえ
                     //active_pinへセット
@@ -735,8 +732,6 @@ function run_vue(){
             }
         }
     });
-    
-    
 };
 
 window.addEventListener('load',(event)=>{
