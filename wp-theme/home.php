@@ -201,7 +201,7 @@ $_SESSION['have_seen'] = true;
         <li>
             <h3><?php echo '# '.$title;?></h3>
             <div class="youtube">
-                <iframe src="" frameborder="0"></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $youtubeID;?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <p class="twitter">
                 <a href="">
@@ -211,8 +211,7 @@ $_SESSION['have_seen'] = true;
         </li>
         <?php };?>
         <?php
-        gallery_component('ほにゃにゃら編','youtubeID');
-        gallery_component('ほにゃにゃら編','youtubeID');
+        gallery_component('なおっちゃさん','h8tB5BCWMQY');
         ?>
     </ol>
 </section>
