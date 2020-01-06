@@ -28,7 +28,7 @@ function add_files(){
     );
     wp_enqueue_script(
         'vue',
-        'https://cdn.jsdelivr.net/npm/vue/dist/vue.js',
+        'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js',
         [],
         false,
         true
