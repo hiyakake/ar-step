@@ -90,7 +90,7 @@ $_SESSION['have_seen'] = true;
                                 <span class='text'>段差が１段だけのシンプルな段差です</span>
                             </p>
                         </label>
-                        <input require='require' type="radio" name="step_type" id="step_type_single" value='single' v-model='step_type' autofocus>
+                        <input required type="radio" name="step_type" id="step_type_single" value='single' v-model='step_type' autofocus>
                     </div>
                     <p class="or">OR</p>
                     <div :class='{ active : step_type == "multipul" }'>
@@ -102,7 +102,7 @@ $_SESSION['have_seen'] = true;
                                 <span class='text'>階段状の段差や、岡山でよく見られる側溝をまたぐ段差などです</span>
                             </p>
                         </label>
-                        <input require='require' type="radio" name="step_type" id="step_type_multipul" value='multipul' v-model='step_type'>
+                        <input required type="radio" name="step_type" id="step_type_multipul" value='multipul' v-model='step_type'>
                     </div>
                 </div>
             </fieldset>
@@ -124,13 +124,13 @@ $_SESSION['have_seen'] = true;
                 <div class='num_input' amp-fx="fade-in">
                     <p class="error_msg"><!--insert with Vue.js--></p>
                     <label for="width">横幅</label>
-                    <input require='require' type="number" pattern="[0-9]*" name="width" id="width" placeholder='入力'>
+                    <input required type="number" pattern="[0-9]*" name="width" id="width" placeholder='入力'>
                     <span class="cm">cm</span>
                 </div>
                 <div class='num_input' amp-fx="fade-in">
                     <p class="error_msg"><!--insert with Vue.js--></p>
                     <label for="height">高さ</label>
-                    <input require='require' type="number" pattern="[0-9]*" name="height" id="height" placeholder='入力'>
+                    <input required type="number" pattern="[0-9]*" name="height" id="height" placeholder='入力'>
                     <span class="cm">cm</span>
                 </div>
             </fieldset>
@@ -154,13 +154,13 @@ $_SESSION['have_seen'] = true;
                 <div class='num_input' amp-fx="fade-in">
                     <p class="error_msg"><!--insert with Vue.js--></p>
                     <label for="min_depth">最短の奥行き</label>
-                    <input require='require' type="number" pattern="[0-9]*" name="min_depth" id="min_depth" placeholder='入力'>
+                    <input required type="number" pattern="[0-9]*" name="min_depth" id="min_depth" placeholder='入力'>
                     <span class="cm">cm</span>
                 </div>
                 <div class='num_input' amp-fx="fade-in">
                     <p class="error_msg"><!--insert with Vue.js--></p>
                     <label for="max_depth">最長の奥行き</label>
-                    <input require='require' type="number" pattern="[0-9]*" name="max_depth" id="max_depth" placeholder='入力'>
+                    <input required type="number" pattern="[0-9]*" name="max_depth" id="max_depth" placeholder='入力'>
                     <span class="cm">cm</span>
                 </div>
             </fieldset>
@@ -176,7 +176,7 @@ $_SESSION['have_seen'] = true;
                 <div class='num_input' amp-fx="fade-in">
                     <p class="error_msg"><!--insert with Vue.js--></p>
                     <label for="max_depth">最大の奥行き</label>
-                    <input require='require' type="number" pattern="[0-9]*" name="max_depth" id="max_depth" placeholder='入力' v-bind:disabled='step_type != "single"'>
+                    <input required type="number" pattern="[0-9]*" name="max_depth" id="max_depth" placeholder='入力' v-bind:disabled='step_type != "single"'>
                     <span class="cm">cm</span>
                 </div>
             </fieldset>
