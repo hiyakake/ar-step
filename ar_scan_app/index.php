@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>TEST3</title>
+    <title>MATCH STEP | ARで段差の寸法をかんたん計測・ピッタリ合うステップを提案</title>
 
     <!-- We've included a slightly modified version of A-Frame, which fixes some polish concerns -->
     <script src="https://cdn.8thwall.com/web/aframe/8frame-0.8.2.min.js"></script>
@@ -14,11 +14,11 @@
     <!-- 8thWall Web - Replace the app key here with your own app key -->
     <script async src="https://apps.8thwall.com/xrweb?appKey=uDTf8XBaSUdFebkZ5EVegGhaxTHxDX4KcEzM4Z1fIUddUfwuE7JRHuVFgK3kvaDUmz8cTO"></script>
     
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
-    <script src="js/main.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700,900&display=swap&subset=japanese">
-    
     <link rel="stylesheet" href="style/main.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700,900&display=swap&subset=japanese">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-153180197-1"></script>
@@ -151,7 +151,7 @@
           :geometry='set_plane_geometry(B.width,P.min_depth_guide_surface.height)'
           :position='set_position(0,P.min_depth_guide_surface.pos.y,P.min_depth_guide_surface.pos.z)'
           :rotation='set_rotation(P.min_depth_guide_surface.rote.h,0,0)'
-          :material='set_material(P.min_depth_guide_surface.color,P.min_depth_guide_surface.opacity)'></a-entity>
+          :material='set_material(P.min_depth_guide_surface.color,P.min_depth_guide_surface.opacity,"src:assets/solid_tex.png;repeat:100 100;")'></a-entity>
           <!--最長底辺-->
           <a-entity
           id='max_depth_line'
@@ -164,14 +164,14 @@
           :geometry='set_plane_geometry(B.width,P.max_depth_guide_surface.height)'
           :position='set_position(0,P.max_depth_guide_surface.pos.y,P.max_depth_guide_surface.pos.z)'
           :rotation='set_rotation(P.max_depth_guide_surface.rote.h,0,0)'
-          :material='set_material(P.max_depth_guide_surface.color,P.max_depth_guide_surface.opacity)'></a-entity>
+          :material='set_material(P.max_depth_guide_surface.color,P.max_depth_guide_surface.opacity,"src:assets/solid_tex.png;repeat:100 100;")'></a-entity>
           <!--高さ-->
           <a-entity
           id='height_surface'
           :geometry='set_plane_geometry(B.width,40)'
           :position='set_position(0,B.height,0)'
           :rotation='set_rotation(90,0,0)'
-          :material='set_material(P.height_surface.color,P.height_surface.opacity)'>
+          :material='set_material(P.height_surface.color,P.height_surface.opacity,"src:assets/solid_tex.png;repeat:100 100;")'>
               <a-entity
               id='depth_offset_line'
               :geometry='set_box_geometry(B.width,0.05,0.05)'

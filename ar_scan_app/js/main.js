@@ -36,34 +36,34 @@ function run_vue(){
                 pins:[
                     {
                         opacity:1,
-                        color:'yellow',
+                        color:'#46AFC2',
                         seted:false
                     },
                     {
                         opacity:1,
-                        color:'blue',
+                        color:'#46AFC2',
                         seted:false
                     },
                     {
                         opacity:1,
-                        color:'red',
+                        color:'#46AFC2',
                         seted:false
                     },
                     {
                         opacity:1,
-                        color:'green',
+                        color:'#46AFC2',
                         seted:false
                     }
                 ],
                 senen_line:{
                     opacity:1,
-                    color:'green',
+                    color:'#46AFC2',
                     pos:{x:0,y:0,z:0},
                     rote:{h:0,p:0,b:0}
                 },
                 width_line:{
                     opacity:1,
-                    color:'blue',
+                    color:'#46AFC2',
                     pos:{x:0,y:0,z:0},
                     rote:{h:0,p:0,b:0}
                 },
@@ -85,14 +85,14 @@ function run_vue(){
                 },
                 min_depth_guide_surface:{
                     opacity:0.5,
-                    color:'green',
+                    color:'#55bdb4',
                     pos:{x:0,y:0,z:0},
                     rote:{h:0,p:0,b:0},
                     height:15
                 },
                 max_depth_guide_surface:{
                     opacity:0.5,
-                    color:'blue',
+                    color:'#55bdb4',
                     pos:{x:0,y:0,z:0},
                     rote:{h:0,p:0,b:0},
                     height:17
@@ -645,8 +645,8 @@ function run_vue(){
             set_rotation:function(h,p,b){
                 return `${h} ${p} ${b}`;
             },
-            set_material:function(color,opacity,blend = 'normal',side = 'double'){
-                return `color:${color};opacity:${opacity};side:${side};blending:${blend}`;
+            set_material:function(color,opacity,option = ''){
+                return `color:${color};opacity:${opacity};metalness:0.3;roughness:0.5;side:double;blending:normal;${option}`;
             },
             //数値を千円札を基準に実寸に直す
             covert_to_actual_size:function(target){
