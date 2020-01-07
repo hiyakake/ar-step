@@ -8,6 +8,8 @@
     <title>Document</title>
     <?php wp_head();?>
     <base href="<?php echo get_template_directory_uri();?>/">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-fx-collection" src="https://cdn.ampproject.org/v0/amp-fx-collection-0.1.js"></script>
 
 </head>
 <body <?php body_class();?>>

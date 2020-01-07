@@ -48,6 +48,12 @@ function add_files(){
             ['global-style'],
             date('U')
         );
+        wp_enqueue_style(
+            'search-style',
+            get_template_directory_uri().'/style/page-search.css',
+            ['global-style'],
+            date('U')
+        );
     };
     //TOPページに適用するもの
     if($slug == 'home'){
@@ -63,15 +69,6 @@ function add_files(){
             ['vue'],
             false,
             true
-        );
-    };
-    //検索ページに適用するもの
-    if($slug == 'search'){
-        wp_enqueue_style(
-            'search-style',
-            get_template_directory_uri().'/style/page-search.css',
-            ['global-style'],
-            date('U')
         );
     };
 };
