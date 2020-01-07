@@ -109,7 +109,12 @@
       :rotation='set_rotation(0,0,0)'
       scale='0.1 0.1 0.1'
       obj-model="obj: #pin-obj;"
-      :material='set_material(P.pins[0].color,P.pins[0].opacity)'></a-entity>
+      :material='set_material(P.pins[0].color,P.pins[0].opacity)'>
+        <a-text
+        value="A"
+        position='0 1 0'
+        color='white'></a-text>
+      </a-entity>
       <a-entity
       id='senen_pin_b'
       :position='set_position(B.pins[1].x,B.pins[1].y,B.pins[1].z)'
