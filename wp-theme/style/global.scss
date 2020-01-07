@@ -150,7 +150,8 @@ footer.basic {
         section.credit {
             padding: 2rem;
             box-sizing: border-box;
-            margin-top: 3rem;
+            //margin-top: 3rem;
+            margin: auto 0;
             border-top: 2px solid;
             grid-area: credit;
             @include tab{
@@ -169,6 +170,7 @@ footer.basic {
                 text-align-last: left;
                 line-height: 0.8;
                 line-height: 1.5;
+                display: none;
                 span:first-child {
                     font-weight: bold;
                     line-height: 1;
@@ -179,6 +181,7 @@ footer.basic {
             }
             p.copy {
                 margin-top: 1.5rem;
+                line-height: 1.5;
                 small {
                 }
             }

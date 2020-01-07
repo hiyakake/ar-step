@@ -32,10 +32,10 @@
                 <img src="images/global/dev-in-github.svg" alt="Development on GitHub">
             </div>
             <p class="collaborators">
-                <span>Collaborators :</span><br>
-                <span>Jiei Kusuhara  / comame / Cre-noa</span>
+                <span>製作 :</span><br>
+                <span>Jiei Kusuhara</span>
             </p>
-            <p class="copy"><small>© 2019 nextlav.xyz</small></p>
+            <p class="copy"><small>©Copyright <?php echo date('Y');?><br>Jiei Kusuhara nextlav.xyz.</small></p>
         </section>
     </div>
 </footer>
