@@ -20,14 +20,14 @@ $_SESSION['have_seen'] = true;
 <!--サイト紹介エリア-->
 <section class='PR'>
     <div class="arde">
-        <div class="text">
+        <div class="text" amp-fx="fade-in">
             <p class='big'>ARで簡単に<br>段差を<br>計測できます</p>
             <p class='small'><small>※手入力もできます</small></p>
         </div>
         <img src="images/home/home_arde.jpg" alt="" class="visual">
     </div>
     <div class="keisokusita">
-        <div class="text">
+        <div class="text" amp-fx="fade-in">
             <p>
                 <span>
                     <span>計</span><span>測</span><span>し</span><span>た</span><span>寸</span><span>法</span><span>に</span>
@@ -48,8 +48,8 @@ $_SESSION['have_seen'] = true;
 <section class="search">
     <!--AR SCANの導線エリア-->
     <section class="ar_scan sp">
-        <h2 class='big'>段差を<br>なくしましょう</h2>
-        <p class="button">
+        <h2 class='big' amp-fx="fade-in">段差を<br>なくしましょう</h2>
+        <p class="button" amp-fx="fade-in">
             <a href="/ar">
                 <span class="main">
                     ARで計測する
@@ -64,7 +64,7 @@ $_SESSION['have_seen'] = true;
         <div class="main">
             <!--スマホアイコンはCSSで-->
             <img src="images/home/QR.svg" alt="URL" class="qr">
-            <p>ARで<br>段差の大きさを<br>計測しましょう。</p>
+            <p amp-fx="fade-in">ARで<br>段差の大きさを<br>計測しましょう。</p>
         </div>
     </section>
     <!--手入力検索のエリア-->
@@ -73,14 +73,14 @@ $_SESSION['have_seen'] = true;
             <!--アイコンはCSSで-->
             手入力でも<br>検索できます
         </h2>
-        <form action="/search" method="get">
+        <form action="/plates" method="get">
             <!--1.段差の形状はどちらですか？-->
             <fieldset class="ques1">
                 <legend>
                     <span class="num">1</span>
                     <span class='title'>段差の形状は<br>どちらですか？</span>
                 </legend>
-                <div class='contents'>
+                <div class='contents' amp-fx="fade-in">
                     <div :class='{ active : step_type == "single" }'>
                         <label for="step_type_single">
                             <img class='unselect' src="images/home/段差選択_1段.jpg" alt="1段型段差の例を紹介した画像です" v-show='step_type != "single"'>
@@ -112,7 +112,8 @@ $_SESSION['have_seen'] = true;
                     <span class="num">2</span>
                     <span class='title'>段差の横幅と高さを<br>教えてください</span>
                 </legend>
-                <video src="images/home/how_to_width_and_height.mp4" playsinline controls repeat preload='metadata'>
+                <video src="images/home/how_to_width_and_height.mp4" playsinline controls repeat preload='metadata'
+                amp-fx="fade-in">
                     <p>
                         横幅を測るときは、段差の一番手前の横幅を測ります。
                         測るのは、必要な長さだけで構いません。
@@ -120,13 +121,13 @@ $_SESSION['have_seen'] = true;
                         水平と垂直を意識して計測作業を行いましょう。
                     </p>
                 </video>
-                <div class='num_input'>
+                <div class='num_input' amp-fx="fade-in">
                     <p class="error_msg"><!--insert with Vue.js--></p>
                     <label for="width">横幅</label>
                     <input require='require' type="number" pattern="[0-9]*" name="width" id="width" placeholder='入力'>
                     <span class="cm">cm</span>
                 </div>
-                <div class='num_input'>
+                <div class='num_input' amp-fx="fade-in">
                     <p class="error_msg"><!--insert with Vue.js--></p>
                     <label for="height">高さ</label>
                     <input require='require' type="number" pattern="[0-9]*" name="height" id="height" placeholder='入力'>
@@ -139,7 +140,8 @@ $_SESSION['have_seen'] = true;
                     <span class="num">3</span>
                     <span class='title'>段差の奥行きについて<br>教えてください</span>
                 </legend>
-                <video src="images/home/how_to_width_and_height.mp4" playsinline controls repeat preload='metadata'>
+                <video src="images/home/how_to_width_and_height.mp4" playsinline controls repeat preload='metadata'
+                amp-fx="fade-in">
                     <p>
                         奥行きを測るときは「最短」と「最長」を考えます。
                         プレートが階段の角にぶつからないようにするには、段差の奥行きよりも少し伸ばす必要があります。
@@ -149,13 +151,13 @@ $_SESSION['have_seen'] = true;
                         こすうることにより、車いすでも安全に登れる坂の角度を求めることができます。
                     </p>
                 </video>
-                <div class='num_input'>
+                <div class='num_input' amp-fx="fade-in">
                     <p class="error_msg"><!--insert with Vue.js--></p>
                     <label for="min_depth">最短の奥行き</label>
                     <input require='require' type="number" pattern="[0-9]*" name="min_depth" id="min_depth" placeholder='入力'>
                     <span class="cm">cm</span>
                 </div>
-                <div class='num_input'>
+                <div class='num_input' amp-fx="fade-in">
                     <p class="error_msg"><!--insert with Vue.js--></p>
                     <label for="max_depth">最長の奥行き</label>
                     <input require='require' type="number" pattern="[0-9]*" name="max_depth" id="max_depth" placeholder='入力'>
@@ -168,10 +170,10 @@ $_SESSION['have_seen'] = true;
                     <span class="num">3</span>
                     <span class='title'>プレートを設置する場所で<br>設置できる最大の奥行きを<br>教えて下さい</span>
                 </legend>
-                <div class='num_input'>
+                <div class='num_input' amp-fx="fade-in">
                     <input type="hidden" name="min_depth" id="min_depth" value='0' v-bind:disabled='step_type != "single"'>
                 </div>
-                <div class='num_input'>
+                <div class='num_input' amp-fx="fade-in">
                     <p class="error_msg"><!--insert with Vue.js--></p>
                     <label for="max_depth">最大の奥行き</label>
                     <input require='require' type="number" pattern="[0-9]*" name="max_depth" id="max_depth" placeholder='入力' v-bind:disabled='step_type != "single"'>
@@ -179,7 +181,7 @@ $_SESSION['have_seen'] = true;
                 </div>
             </fieldset>
             <!--submitボタンとメッセージ-->
-            <div class='submit'>
+            <div class='submit' amp-fx="fade-in">
                 <input type="submit" value="ぴったりプレートを表示" v-show='step_type != null'>
                 <p class="require">全項目入力する必要があります</p>
                 <p class="error_msg"></p>
@@ -190,7 +192,7 @@ $_SESSION['have_seen'] = true;
 
 <!--ギャラリー-->
 <section class="gallery">
-    <h2>
+    <h2 amp-fx="fade-in">
         <span>ギャラリー</span>
         <span>#進めバリアフリー</span>
     </h2>
@@ -198,10 +200,10 @@ $_SESSION['have_seen'] = true;
         <?php 
         //ギャラリー動画コンポーネント
         function gallery_component($title,$youtubeID){?>
-        <li>
+        <li amp-fx="fade-in">
             <h3><?php echo '# '.$title;?></h3>
             <div class="youtube">
-                <iframe src="" frameborder="0"></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $youtubeID;?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <p class="twitter">
                 <a href="">
@@ -211,8 +213,7 @@ $_SESSION['have_seen'] = true;
         </li>
         <?php };?>
         <?php
-        gallery_component('ほにゃにゃら編','youtubeID');
-        gallery_component('ほにゃにゃら編','youtubeID');
+        gallery_component('なおっちゃさん','h8tB5BCWMQY');
         ?>
     </ol>
 </section>

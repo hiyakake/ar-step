@@ -61,22 +61,22 @@ include('mpa/match_plate_api.php');
     
     <?php if(count($PLATES) == 0):?>
     <section class="list unmatch" <?php post_class();?>>
-        <p>マッチするプレートが<br>見つかりません</p>
+        <p amp-fx="fade-in">マッチするプレートが<br>見つかりません</p>
     </section>
     <?php else:?>
     <section class="list matched" <?php post_class();?>>
         <h2>傾斜が緩やかな順</h2>
         <ol>
             <?php for($i = 0;$i < count($PLATES);$i++):?>
-            <li>
+            <li amp-fx="fade-in">
                 <a href="<?php echo $PLATES[$i]['POST_URL'].'?angle_when_used='.$PLATES[$i]['angle_when_used'].'&need_count='.$PLATES[$i]['need_count'];?>">
                     <figure>
                         <img src="<?php echo $PLATES[$i]['IMAGE_URL'];?>" alt="プレートの写真です">
                     </figure>
                     <dl>
-                        <dt><img src="images/search/angle-icon.svg" alt="傾斜"></dt>
+                        <dt><img src="images/plates/angle-icon.svg" alt="傾斜"></dt>
                         <dd>傾斜<?php echo round($PLATES[$i]['angle_when_used'],1);?>°</dd>
-                        <dt><img src="images/search/stack-icon.svg" alt="必要枚数"></dt>
+                        <dt><img src="images/plates/stack-icon.svg" alt="必要枚数"></dt>
                         <dd><?php echo $PLATES[$i]['need_count'];?>枚必要</dd>
                     </dl>
                 </a>
