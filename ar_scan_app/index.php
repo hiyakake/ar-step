@@ -15,6 +15,7 @@
     <script async src="https://apps.8thwall.com/xrweb?appKey=uDTf8XBaSUdFebkZ5EVegGhaxTHxDX4KcEzM4Z1fIUddUfwuE7JRHuVFgK3kvaDUmz8cTO"></script>
     
     <link rel="stylesheet" href="style/main.css">
+    <meta name="theme-color" content="#409FB5">
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="js/main.js"></script>
@@ -99,7 +100,7 @@
       id='preview_pin'
       :position='set_position(P.preview_pin.pos.x,P.preview_pin.pos.y,P.preview_pin.pos.z)'
       :rotation='set_rotation(0,0,0)'
-      scale='0.1 0.1 0.1'
+      scale='0.07 0.07 0.07'
       obj-model="obj: #pin-obj;"
       :material='set_material(P.preview_pin.color,P.preview_pin.opacity)'></a-entity>
       <!--千円ピン-->
@@ -107,19 +108,21 @@
       id='senen_pin_a'
       :position='set_position(B.pins[0].x,B.pins[0].y,B.pins[0].z)'
       :rotation='set_rotation(0,0,0)'
-      scale='0.1 0.1 0.1'
+      scale='0.07 0.07 0.07'
       obj-model="obj: #pin-obj;"
       :material='set_material(P.pins[0].color,P.pins[0].opacity)'>
-        <a-text
-        value="A"
-        position='0 1 0'
-        color='white'></a-text>
+        <a-entity
+        text="value: A;"
+        position='0 0 0'
+        scale='0.5 0.5 0.5'
+        align='center'
+        color='white'></a-entity>
       </a-entity>
       <a-entity
       id='senen_pin_b'
       :position='set_position(B.pins[1].x,B.pins[1].y,B.pins[1].z)'
       :rotation='set_rotation(0,0,0)'
-      scale='0.1 0.1 0.1'
+      scale='0.07 0.07 0.07'
       obj-model="obj: #pin-obj;"
       :material='set_material(P.pins[1].color,P.pins[1].opacity)'></a-entity>
       <!--横幅ピン-->
@@ -127,14 +130,14 @@
       id='step_pin_a'
       :position='set_position(B.pins[2].x,B.pins[2].y,B.pins[2].z)'
       :rotation='set_rotation(0,0,0)'
-      scale='0.1 0.1 0.1'
+      scale='0.07 0.07 0.07'
       obj-model="obj: #pin-obj;"
       :material='set_material(P.pins[2].color,P.pins[2].opacity)'></a-entity>
       <a-entity
       id='step_pin_b'
       :position='set_position(B.pins[3].x,B.pins[3].y,B.pins[3].z)'
       :rotation='set_rotation(0,0,0)'
-      scale='0.1 0.1 0.1'
+      scale='0.07 0.07 0.07'
       obj-model="obj: #pin-obj;"
       :material='set_material(P.pins[3].color,P.pins[3].opacity)'></a-entity>
       <!--Tool Base-->

@@ -2,7 +2,7 @@
 v-if='S.show_ui == "ar"'>
     <!--INFO再表示-->
     <button class="show_info_btn"
-    @click='S.show_ui = "info"'>説明</button>
+    @click='S.show_ui = "info"'>info</button>
     <!--バックボタン-->
     <button class="back_scene"
     v-if='S.timeline_cnt != 0'
