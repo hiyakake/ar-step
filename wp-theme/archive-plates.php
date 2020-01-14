@@ -26,7 +26,7 @@ include('mpa/match_plate_api.php');
             <?php endif;?>
         </p>
 </div>
-<main>
+<main class='archive'>
     <div class="sizes">
         <div class='sticky'>
             <h2>

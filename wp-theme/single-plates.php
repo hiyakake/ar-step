@@ -42,7 +42,7 @@ if(isset($_SESSION['have_seen'])){
     </div>
     <?php endif;?>
 
-    <main>
+    <main class='single'>
         <div class='header'>
             <h2>詳細</h2>
             <p class="backToList">
@@ -104,12 +104,15 @@ if(isset($_SESSION['have_seen'])){
                 <?php endif;?>
             </figure>
             <div class="actionBtns">
-                <button class="try_with_ar" title='ARでプレビュするボタンです。この機能を使用するには、目の見える方に手伝って貰う必要があります。'>
+                <button class="try_with_ar" title='ARでプレビュするボタンです。この機能を使用するには、目の見える方に手伝って貰う必要があります。' @click='toste = true'>
                     ARで試す
                 </button>
                 <p class="buy">
                     <a href="<?php echo esc_url($plate['url']);?>" target='new'>購入ページへ</a>
                 </p>
+                <div class="toste" :class='{ on : toste == true}'>
+                    <p>この機能は現在サポートされていません</p>
+                </div>
             </div>
             <div class="sizes">
                 <dl>

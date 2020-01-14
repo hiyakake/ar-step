@@ -28,7 +28,7 @@ function add_files(){
     );
     wp_enqueue_script(
         'vue',
-        'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js',
+        'https://cdn.jsdelivr.net/npm/vue/dist/vue.js',
         [],
         false,
         true
@@ -50,7 +50,7 @@ function add_files(){
         );
         wp_enqueue_style(
             'search-style',
-            get_template_directory_uri().'/style/page-search.css',
+            get_template_directory_uri().'/style/archive-plates.css',
             ['global-style'],
             date('U')
         );
