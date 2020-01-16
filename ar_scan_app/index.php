@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="style/main.css">
     <meta name="theme-color" content="#409FB5">
 
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
     
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700,900&display=swap&subset=japanese">
