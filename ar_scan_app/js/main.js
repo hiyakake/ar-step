@@ -569,6 +569,7 @@ function run_vue(){
             }
         },
         mounted:function(){
+            console.log('すべての準備が完了');
             //動画の再生開始
             document.querySelector('#info_video').play();
             //各パーツの初期化を行う

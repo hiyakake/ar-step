@@ -135,7 +135,7 @@ $_SESSION['have_seen'] = true;
                 </div>
             </fieldset>
             <!--3.段差の奥行きについて教えてください 多段型選択時-->
-            <fieldset class='ques3' v-show='step_type == "multipul"'>
+            <fieldset class='ques3' v-if='step_type == "multipul"'>
                 <legend>
                     <span class="num">3</span>
                     <span class='title'>段差の奥行きについて<br>教えてください</span>
@@ -165,18 +165,18 @@ $_SESSION['have_seen'] = true;
                 </div>
             </fieldset>
             <!--3.プレートを設置する場所で設置できる最大の奥行きを教えて下さい １段型選択時-->
-            <fieldset class='ques3' v-show='step_type == "single"'>
+            <fieldset class='ques3' v-if='step_type == "single"'>
                 <legend>
                     <span class="num">3</span>
                     <span class='title'>プレートを設置する場所で<br>設置できる最大の奥行きを<br>教えて下さい</span>
                 </legend>
                 <div class='num_input' amp-fx="fade-in">
-                    <input type="hidden" name="min_depth" id="min_depth" value='0' v-bind:disabled='step_type != "single"'>
+                    <input type="hidden" name="min_depth" id="min_depth" value='0' readonly>
                 </div>
                 <div class='num_input' amp-fx="fade-in">
                     <p class="error_msg"><!--insert with Vue.js--></p>
                     <label for="max_depth">最大の奥行き</label>
-                    <input required type="number" pattern="[0-9]*" name="max_depth" id="max_depth" placeholder='入力' v-bind:disabled='step_type != "single"'>
+                    <input required type="number" pattern="[0-9]*" name="max_depth" id="max_depth" placeholder='入力' :disabled='step_type != "single"'>
                     <span class="cm">cm</span>
                 </div>
             </fieldset>
