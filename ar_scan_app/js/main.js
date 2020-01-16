@@ -734,6 +734,10 @@ function run_vue(){
 };
 
 window.addEventListener('load',(event)=>{
+    ovs();
+});
+
+function ovs(){
     //bodyの監視
     const target = document.body;
     let _8th_wall_is_show = false; //一度登場したらtrueに
@@ -750,13 +754,16 @@ window.addEventListener('load',(event)=>{
         if(_8th_wall_is_show == true && document.getElementById("loadingContainer") == null){
             console.log('消滅');
             observer.disconnect();//bodyの監視を終了
-            run_vue(); //Vueを実行
+            //run_vue(); //Vueを実行
         }else{
             console.log('登場中');
+            //run_vue();
+            setTimeout(() => {
+                run_vue();
+            }, 500);
         }
     });
     observer.observe(target, {
         childList: true
     });
-});
-
+}
