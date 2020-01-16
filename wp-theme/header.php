@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <script async custom-element="amp-fx-collection" src="https://cdn.ampproject.org/v0/amp-fx-collection-0.1.js"></script>
+    <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="theme-color" content="#409FB5">
     <title>Document</title>

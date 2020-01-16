@@ -2,10 +2,10 @@
     <section class="share">
         <h4>#進めバリアフリー</h4>
         <ul>
-            <li><a href="" target='new'><img src="images/global/icon-twitter.svg" alt="Twitterでシェアする"></a></li>
-            <li><a href="" target='new'><img src="images/global/icon-line.svg" alt="LINEでシェアする"></a></li>
-            <li><a href="" target='new'><img src="images/global/icon-facebook.svg" alt="Facebookでシェアする"></a></li>
-            <li><a href="" target='new'><img src="images/global/icon-instagram.svg" alt="Instagramでシェアする"></a></li>
+            <li><amp-social-share type="twitter"></amp-social-share></li>
+            <li><amp-social-share type="facebook"></amp-social-share></li>
+            <li><amp-social-share type="line"></amp-social-share></li>
+            <li><amp-social-share type="email"></amp-social-share></li>
         </ul>
     </section>
     <div class="wave"><!--波--></div>

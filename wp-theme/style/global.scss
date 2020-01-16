@@ -78,11 +78,17 @@ footer.basic {
             grid-template-columns: repeat(4,auto);
             gap: 2em;
 			li {
-                margin: auto;
-				a {
-					img {
-					}
-				}
+                border-radius: 100px;
+                overflow: hidden;
+                position: relative;
+                background-color: $teamaColor;
+				amp-social-share{
+                    width: 100%!important;
+                    height: auto!important;
+                    padding-bottom: 100%;
+                    background-color: $teamaColor;
+                    transform: scale(0.7);
+                }
 			}
 		}
 	}
