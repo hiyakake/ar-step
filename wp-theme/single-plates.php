@@ -37,7 +37,7 @@ if(isset($_SESSION['have_seen'])){
             <p>
                 設置場所のサイズをARを使って簡単に計測し、サイズに合ったプレートを検索することができます。
             </p>
-            <p class="use_ar"><a href="">ARで計測</a></p>
+            <p class="use_ar"><a href="<?php echo home_url();?>">ARで計測</a></p>
         </div>
     </div>
     <?php endif;?>
