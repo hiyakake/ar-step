@@ -78,8 +78,6 @@ div.from_google_msg {
 	}
 }
 main.single {
-    padding: 0 1em;
-    box-sizing: border-box;
 	div.header {
         margin-top: 2rem;
         display: flex;
@@ -111,6 +109,7 @@ main.single {
 	}
 	article {
         padding: 3em calc((100% - 1200px) / 2);
+        margin: 0 1em;
         box-sizing: border-box;
         margin-top: 2rem;
         display: grid;
