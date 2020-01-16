@@ -20,7 +20,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" target='new'>
+                    <a href="http://yasukihara.kikirara.jp/code/index.php" target='new'>
                         <img src="images/global/logo-hara.svg" alt="原のサイト">
                         <p>横須賀周辺のバリアフリー情報サイト</p>
                     </a>
