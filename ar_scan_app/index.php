@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>MATCH STEP | ARで段差の寸法をかんたん計測・ピッタリ合うステップを提案</title>
 
+    <script async src="js/main.js"></script>
+
     <!-- We've included a slightly modified version of A-Frame, which fixes some polish concerns -->
     <script src="https://cdn.8thwall.com/web/aframe/8frame-0.8.2.min.js"></script>
 
@@ -17,8 +19,8 @@
     <link rel="stylesheet" href="style/main.css">
     <meta name="theme-color" content="#409FB5">
 
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700,900&display=swap&subset=japanese">
     <!-- Global site tag (gtag.js) - Google Analytics -->

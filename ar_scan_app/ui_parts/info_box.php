@@ -8,7 +8,7 @@ v-show='S.show_ui == "info"'>
     <video id='info_video'
     src='assets/info.mp4?ver=2'
     @timeupdate='video_cnt'
-    muted autoplay loop preload='auto' playsinline></video>
+    muted loop preload='metadata' playsinline></video>
     <div>
         <p
         class="msgs"
